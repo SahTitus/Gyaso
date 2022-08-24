@@ -1,0 +1,53 @@
+.form {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .form__container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(139, 135, 135);
+    padding: 0 8px;
+    height: 40px;
+    border-radius: 10px;
+    width: 85%;
+  }
+  
+  .input {
+    flex: 1;
+    margin-left: 6px;
+    width: 100%;
+    outline-width: 0;
+    outline-offset: 0;
+    outline: none;
+    border: none;
+    font-size: 16px !important;
+    height: 100%;
+    background-color: rgb(184, 181, 181);
+  }
+  
+  .input::placeholder {
+    font-size: 15px;
+    color: #576870;
+  }
+  
+  .searchBox {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #172b35;
+    color: #fff !important;
+    border-radius: 50%;
+    height: 35px;
+    width: 35px;
+    /* padding: 5px; */
+  }
+  
+  .linkIcon {
+    color: #576870;
+    font-size: 25px;
+  }

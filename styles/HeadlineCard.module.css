@@ -1,0 +1,102 @@
+.headlineCard {
+    display: flex;
+    width: 330px;
+    margin: 7px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.image__wrapper {
+    background-color: aquamarine;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    justify-content: center;
+    height: 250px;
+    width: 400px;
+    border-radius: 10px;
+    border: 1px solid rgb(228, 224, 224);
+}
+
+.category {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    z-index: 1;
+    background-color: rgb(227, 233, 233);
+    border-radius: 30px;
+    align-items: center;
+    justify-content: center;
+    min-width: 60px;
+    max-width: 150px;
+}
+
+.category span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 2px 18px;
+    color: #172b35;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.image {
+    position: relative;
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+    z-index: 0;
+    border-radius: 10px;
+    -webkit-mask-image: linear-gradient(
+            to top, transparent 20%, black 75%);
+    /* background-image: url(https://cdn.allbirds.com/image/upload/f_auto,q_auto,w_533,b_rgb:f5f5f5/cms/1iWBEgb7LzSkPNe2hZKOtv/81f36ef53123647708229b518f99480b/AB004ZM_SHOE_ANGLE_GLOBAL_MENS_TREE_RUNNER_DREAMY_GREEN__CREAM_HUSH.png); */
+    /* background-size: cover;
+    background-position: center; */
+    /* background-color: rgb(131, 29, 247); */
+  
+    mask-image: linear-gradient(to top, transparent 20%, black 75%);
+}
+
+.cardInfo {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    bottom: 5px;
+    left: 20px;   
+    width: 80%;
+}
+
+.source {
+    display: flex;
+    align-items: center;
+    bottom: 65px;
+    right: 80px; 
+}
+
+.source p {
+    margin-left: 5px;
+}
+
+.title {
+margin-bottom: -10px;
+color: #000000;
+font-weight: 650;
+line-height: 19px;
+display: -webkit-box;
+-webkit-box-orient: vertical;
+-webkit-line-clamp: 3;
+overflow: hidden;
+overflow-wrap: break-word;
+align-items: center;
+text-overflow: ellipsis;
+-webkit-box-orient: vertical;
+white-space: pre-wrap;
+font-size: 16px;
+font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+}
+
+.avatar {
+    height: 20px;
+    width: 20px;
+}

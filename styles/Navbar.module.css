@@ -1,0 +1,27 @@
+.navbar{
+    display: flex;
+    position: fixed;
+    width: 100%;
+    z-index: 100;
+    box-sizing: border-box;
+    align-items: center;
+    justify-content: space-between;
+    height: 50px;
+    background-color: white;
+    padding: 20px;
+    font-size: larger;
+    color: #1D9BF0;
+    /* box-shadow: 0 2px 1px 1px rgb(245, 244, 244); */
+}
+
+.navbar__right {
+    display: flex;
+align-items: center;
+justify-content: center;
+}
+
+.avatar {
+ cursor: pointer;
+ height: 28px !important;
+ width: 28px !important;
+}

@@ -6,13 +6,27 @@ body {
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
 * {
   box-sizing: border-box;
+}
+
+.layout {
+ height: 100vh;
+}
+
+.header {
+  height: 10%;
+  /* background-color: blue; */
+}
+
+.main {
+  height: 80%;
+  /* background-color: blue */
+}
+
+.footer{ 
+  height: 10%;
+  /* background-color: blue; */
 }
 
 @media (prefers-color-scheme: dark) {
