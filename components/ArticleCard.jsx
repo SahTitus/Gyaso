@@ -1,7 +1,8 @@
-import { MoreHoriz } from "@mui/icons-material";
+import { MoreHoriz, Star, StarOutline } from "@mui/icons-material";
 import { Bookmark, BoxArrowUp } from "react-bootstrap-icons";
 import React from "react";
 import styles from "../styles/ArticleCard.module.css";
+import { IconButton } from "@mui/material";
 
 const ArticleCard = () => {
   return (
@@ -21,9 +22,9 @@ const ArticleCard = () => {
             <p className={styles.title}>
               Im the title here Im the title here Im the ti v v v Im the title
               here Im the title here Im the title here Im the title heretle here
-              Im the title here Im the title here
-              here Im the title here Im the title here Im the title heretle here
-              Im the title here Im the title here
+              Im the title here Im the title here here Im the title here Im the
+              title here Im the title heretle here Im the title here Im the
+              title here
             </p>
           </div>
           <div className={styles.card__infoBottom}>
@@ -35,16 +36,22 @@ const ArticleCard = () => {
               />
               <p>Hookwal</p>
             </div>
-            <p>2d</p>
+            <div className={styles.bottom__right}>
+          <IconButton className={styles.bottom__iconsWrapper}>
+            <StarOutline className={styles.bottom__icons} />
+          </IconButton>
+          <IconButton className={styles.bottom__iconsWrapper}>
+            <BoxArrowUp className={styles.bottom__icons} />
+          </IconButton>
+        </div>
           </div>
         </div>
       </div>
       <div className={styles.bottom}>
-        <MoreHoriz className={styles.bottom__icons} />
-        <div className={styles.bottom__right}>
-          <Bookmark className={styles.bottom__icons} />
-          <BoxArrowUp className={styles.bottom__icons} />
-        </div>
+        {/* <IconButton className={styles.bottom__iconsWrapper}>
+          <MoreHoriz className={styles.bottom__icons} />
+        </IconButton> */}
+    
       </div>
     </div>
   );

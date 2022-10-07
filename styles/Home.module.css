@@ -1,15 +1,28 @@
 .home {
   height: 100%;
-  padding-bottom: 20px;
+  padding-bottom: 60px;
   flex: 1;
   display: flex;
   flex-direction: column;
 }
 
+.home__categories {
+  display: flex;
+  align-items: center;
+	padding: 0px 10px;
+	display: flex;
+	overflow-x: scroll;
+	background-color: rgb(255, 255, 255);
+  margin-bottom: 5px;
+}
+
+.home__categories::-webkit-scrollbar{
+  display: none;;
+}
+
 .headlines {
   display: flex;
   flex-direction: row;
-  /* align-items: center; */
   overflow-x: auto;
 }
 
@@ -22,10 +35,26 @@
     scrollbar-width: none;  /* Firefox */
 }
 
-.headlines__containerTop {
+.seeMore {
   display: flex;
-  justify-content: space-between;
-  margin: 0 10px;
+  justify-content: flex-end;
+  margin: 15px;
+}
+
+.seeMoreBtn {
+  background-color: #097efb !important;
+  color: #fafafa !important;
+  text-transform: capitalize;
+  padding: 7px 15px;
+}
+
+
+.justForYou__container {
+  margin-top: 50px;
+}
+
+.articles {
+  margin-top: 40px;
 }
 
 .code {

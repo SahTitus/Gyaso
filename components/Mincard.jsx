@@ -1,6 +1,6 @@
-import { MoreHoriz } from "@mui/icons-material";
+import { MoreHoriz, StarOutline } from "@mui/icons-material";
 import React from "react";
-import { Bookmark, BoxArrowUp, CircleFill } from "react-bootstrap-icons";
+import { BoxArrowUp, CircleFill } from "react-bootstrap-icons";
 import styles from "../styles/Mincard.module.css";
 import { IconButton } from "@mui/material";
 
@@ -20,12 +20,15 @@ const Mincard = () => {
               <CircleFill className={styles.bullet} />
               <span>12h</span>
             </p>
-           <IconButton >
-           <MoreHoriz className={styles.moreHoriz} />
-           </IconButton>
+            <IconButton>
+              <MoreHoriz className={styles.moreHoriz} />
+            </IconButton>
           </div>
           <div className={styles.content}>
-            <p className={styles.title}>Content y ufy 7f7yf7yf 7 c77 77 ojoj jojdy g8o 7t0 0-f68 8tf07t7ugv juu  v v -0vr -rjv0rvv9rhv r-vr0v0uv </p>
+            <p className={styles.title}>
+              Content y ufy 7f7yf7yf 7 c77 77 ojoj jojdy g8o 7t0 0-f68
+              8tf07t7ugv juu v v -0vr -rjv0rvv9rhv r-vr0v0uv{" "}
+            </p>
           </div>
         </div>
       </div>
@@ -39,10 +42,15 @@ const Mincard = () => {
           <p>Hookwal</p>
         </div>
         <div className={styles.bottomRight}>
-          <Bookmark className={styles.bottomRightIcon} />
-          <BoxArrowUp
-            className={`${styles.bottomRightIcon} ${styles.shareIcon}`}
-          />
+          <IconButton  className={styles.bottomRightIcon__wrapper}>
+            {" "}
+            <StarOutline className={styles.bottomRightIcon} />
+          </IconButton>
+          <IconButton className={styles.bottomRightIcon__wrapper}>
+            <BoxArrowUp
+              className={`${styles.bottomRightIcon} ${styles.shareIcon}`}
+            />
+          </IconButton>
         </div>
       </div>
     </div>

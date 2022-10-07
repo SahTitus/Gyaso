@@ -1,30 +1,27 @@
-.navbar {
+.searchPage {
   display: flex;
-  position: sticky;
+  flex-direction: column;
   width: 100%;
-  z-index: 100;
-  box-sizing: border-box;
-  align-items: center;
-  justify-content: space-between;
-  height: 50px;
-  background-color: white;
-  padding: 10px;
-  font-size: larger;
-  box-shadow: 0 0px 0px 1px rgb(0, 0, 0, 0.1);
+  user-select: none !important;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -webkit-user-select: none !important;
 }
 
-.navbar__right {
+.topBar {
+  position: fixed;
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 100%;
+  z-index: 100;
+  padding: 10px;
 }
 
-.avatar {
-  cursor: pointer;
-  height: 28px !important;
-  width: 28px !important;
+.searchInput {
+  flex: 1;
+  margin-left: 5px;
 }
-
 
 .search {
   display: flex;
@@ -40,19 +37,18 @@
   background-color: white;
   display: flex;
   align-items: center;
-  border-radius: 8px;
 
+  border-radius: 8px;
 }
 
 .searchContainer > input {
   width: 100%;
   border: none;
   outline-width: 0;
-  height: 38px;
   font-size: 16px;
-  padding-left: 10px;
-  border: 1px solid rgb(196, 192, 192);
-  border-radius: 5px;
+  margin-left: 5px;
+  border-bottom: 1px solid rgb(196, 192, 192);
+  padding-bottom: 5px;
 }
 .searchContainer > input:focus-visible {
   outline-offset: 0px;
