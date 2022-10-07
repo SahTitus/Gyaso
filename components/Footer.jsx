@@ -12,7 +12,7 @@ import {
 } from "@mui/icons-material";
 
 import { useRouter } from "next/router";
-import { NavLink } from "./Navlink";
+import { NavLink } from "./NavLink";
 
 const Footer = () => {
   const { pathname } = useRouter();
