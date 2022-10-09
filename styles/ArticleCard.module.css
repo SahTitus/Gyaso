@@ -14,7 +14,10 @@
 
 .category {
   margin: 10px 0 -7px 0;
-  font-size: 14px;
+  font-size: 16px;
+  text-transform: capitalize;
+  font-weight: 500;
+  /* font-family: Arial, Helvetica, sans-serif; */
 }
 
 .card__image {
@@ -69,10 +72,15 @@
   align-items: center;
 }
 
+.source p {
+  margin-left: 6px;
+}
+
 .source__image {
   height: 20px;
   width: 20px;
   margin-right: 5px;
+  border-radius: 5px;
 }
 
 .bottom {

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { scrape } from "../utils/scrapeApi";
+import { scrape } from "../lib/scrapeApi";
 import * as topics from "../constants/topics/topics.js";
 
 const initialState = {

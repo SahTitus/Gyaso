@@ -3,38 +3,40 @@ import { Bookmark, BoxArrowUp } from "react-bootstrap-icons";
 import React from "react";
 import styles from "../styles/ArticleCard.module.css";
 import { IconButton } from "@mui/material";
+import Image from "next/image";
 
-const ArticleCard = () => {
+const ArticleCard = ({article}) => {
   return (
     <div className={styles.articleCard__container}>
       <div className={styles.card}>
         <div className={styles.card__image}>
-          <img
+          <Image
+          layout="fill"
             className={styles.image}
-            src="https://greatpeopleinside.com/wp-content/uploads/2017/05/HR-GR8-technology.jpg"
-            alt="Hi"
+            src={article.image}
+            alt={article.title}
+            placeholder="blur"
+            blurDataURL={article.image}
           />
         </div>
         <div className={styles.card__info}>
           {/*CAN REPLACE WITH CREATOR OR AUTHOR NAME AVATAR MIF START POSTING */}
-          <p className={styles.category}>Technology</p>
+          <p className={styles.category}>{article.sub_category}</p>
           <div className={styles.card__text}>
             <p className={styles.title}>
-              Im the title here Im the title here Im the ti v v v Im the title
-              here Im the title here Im the title here Im the title heretle here
-              Im the title here Im the title here here Im the title here Im the
-              title here Im the title heretle here Im the title here Im the
-              title here
+            {article.title}
             </p>
           </div>
           <div className={styles.card__infoBottom}>
             <div className={styles.source}>
-              <img
+              <Image
                 className={styles.source__image}
-                src="https://cdn.allbirds.com/image/upload/f_auto,q_auto,w_533,b_rgb:f5f5f5/cms/1iWBEgb7LzSkPNe2hZKOtv/81f36ef53123647708229b518f99480b/AB004ZM_SHOE_ANGLE_GLOBAL_MENS_TREE_RUNNER_DREAMY_GREEN__CREAM_HUSH.png"
-                alt="Hi"
+                src={article.source_img}
+                alt={article.source}
+                width={30}
+                height={25}
               />
-              <p>Hookwal</p>
+              <p>{article.source}</p>
             </div>
             <div className={styles.bottom__right}>
           <IconButton className={styles.bottom__iconsWrapper}>
