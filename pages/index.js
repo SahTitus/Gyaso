@@ -13,10 +13,9 @@ import {
 } from "../components";
 import Footer from "../components/Footer";
 import { fetchArticles, fetchMoreArticles } from "../lib/articles";
-// import Auth from "../components/Auth";
 import styles from "../styles/Home.module.css";
 import { connectToDb } from "../utils/mongodb";
-import HumbleScraper from "./HumbleScraper";
+// import HumbleScraper from "./HumbleScraper";
 
 function Home({ articlesSSR }) {
   const [query, setQuery] = useState("");
