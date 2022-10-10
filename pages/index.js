@@ -86,32 +86,29 @@ function Home({ articlesSSR }) {
 
       {/* <div styles={styles.headlines__container}> */}
       <div className={styles.articles}>
-  {
-    !articles.length > 0 ? (
-      articlesSSR.map((article, i) => (
-        <ArticleCard key={article._id + i} article={article} />
-      ))
-    ) : (
-      <InfiniteScroll
-      dataLength={articles.length}
-      next={getMorePost}
-      hasMore={hasMore}
-      loader={
-        <Box className={styles.loadingState}>
-          <CircularProgress />
-          <h1>hhhhh</h1>
-        </Box>
-      }
-      endMessage={<h4>Nothing more to show</h4>}
-    >
-      {articles.map((article, i) => (
-        <ArticleCard key={article._id + i} article={article} />
-      ))}
-    </InfiniteScroll>
-    )
-  }
+        {!articles.length > 0 ? (
+          articlesSSR.map((article, i) => (
+            <ArticleCard article={article} key={article._id + i} />
+          ))
+        ) : (
+          <InfiniteScroll
+            dataLength={articles.length}
+            next={getMorePost}
+            hasMore={hasMore}
+            loader={
+              <Box className={styles.loadingState}>
+                <CircularProgress />
+                <h1>hhhhh</h1>
+              </Box>
+            }
+            endMessage={<h4>Nothing more to show</h4>}
+          >
+            {articles.map((article, i) => (
+              <ArticleCard key={article._id + i} article={article} />
+            ))}
+          </InfiniteScroll>
+        )}
 
-     
         {/* </div> */}
       </div>
 
@@ -122,7 +119,10 @@ function Home({ articlesSSR }) {
 
 export const getServerSideProps = async () => {
   const { db } = await connectToDb();
-  const data = await db.collection("articles").find().limit(10).toArray();
+  const data = await db
+    .collection("articles")
+    .aggregate([{ $sample: { size: 10 } }])
+    .toArray();
 
   const articlesSSR = JSON.parse(JSON.stringify(data));
 

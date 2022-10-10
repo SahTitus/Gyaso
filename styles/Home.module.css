@@ -5,6 +5,9 @@
   display: flex;
   flex-direction: column;
 }
+.home::-webkit-scrollbar{
+  display: none;
+}
 
 .home__categories {
   display: flex;
@@ -58,6 +61,8 @@
 
 /* margin-bottom: 00px; */
 }
+
+
 
 .loadingState {
   display: flex;
