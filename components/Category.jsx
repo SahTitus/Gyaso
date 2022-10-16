@@ -1,10 +1,33 @@
-import React from "react";
+import React, { useState } from "react";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { fetchByCategory } from "../lib/articles";
+import { getArticlesSSR } from "../redux/articles";
 import styles from "../styles/Category.module.css";
 
-const Category = ({ cate }) => {
+const Category = ({ cate, index, dataSSR, setCategory }) => {
+  const [selected, setSelected] = useState(0)
+  const dispatch = useDispatch();
+const isSelected= selected === index
+
+const handleClick = (u) => { 
+  setSelected(u)
+  if (cate)  dispatch(fetchByCategory(cate.cateSSR));
+  if (cate ==='all')  dispatch(getArticlesSSR(dataSSR));
+
+  setCategory(cate.cate)
+}
+
+
+
+
+useEffect(() => {
+if (index !== 0) setSelected(selected)
+} ,[selected])
+
   return (
-    <div className={styles.cateBtn}>
-      <p>{cate}</p>
+    <div onClick={handleClick} className={`${styles.cateBtn} ${selected === index ? styles.select : styles.cateBtn}`}>
+      <p>{cate.cate}</p>
     </div>
   );
 };

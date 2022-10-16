@@ -1,0 +1,23 @@
+export const categories = [
+  { cate: "all", cateSSR: "all" },
+  { cate: "nutrition", cateSSR: "nutrition" },
+  { cate: "fitness & wellness", cateSSR: "exercise-and-fitness" },
+  { cate: "mental health", cateSSR: "mental-health" },
+  { cate: "mens health", cateSSR: "mens-health" },
+  { cate: "sexual health", cateSSR: "sexual-health" },
+  { cate: "womens health", cateSSR: "womens-health" },
+  { cate: "parenting", cateSSR: "parenting" },
+  { cate: "eye health", cateSSR: "eye-health" },
+  { cate: "human biology", cateSSR: "human-biology" },
+  { cate: "meditation", cateSSR: "meditation" },
+  { cate: "spirituality", cateSSR: "spirituality" },
+  { cate: "movement", cateSSR: "movement" },
+  { cate: "sleep hygiene", cateSSR: "sleep-hygiene" },
+  { cate: "cardiovascular health", cateSSR: "cardiovascular-health" },
+  { cate: "dermatology & skincare", cateSSR: "dermatology-and-skincare" },
+  {
+    cate: "environment & sustainability",
+    cateSSR: "environment-and-sustainability",
+  },
+  { cate: "recovery", cateSSR: "recovery" },
+];

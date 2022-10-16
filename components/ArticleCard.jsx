@@ -10,6 +10,8 @@ const ArticleCard = ({ article }) => {
   const title = `${article?.title}`;
   const shareDetails = { title, url };
 
+  const liked = true;
+
   const handleSharing = async () => {
     if (navigator.share) {
       try {
@@ -32,19 +34,23 @@ const ArticleCard = ({ article }) => {
   return (
     <div className={styles.articleCard__container}>
       <div className={styles.card}>
-        <a href={article.link} target="_self" className={styles.link} >
-        <div className={styles.card__image}>
-          <Image
-            layout="fill"
-            className={styles.image}
-            src={article.image}
-            alt={article.title}
-            placeholder="blur"
-            blurDataURL={article.image}
-          />
-        </div>
+        <a href={article.link} target="_self" className={styles.link}>
+          <div className={styles.card__image}>
+            <Image
+              layout="fill"
+              className={styles.image}
+              src={article.image}
+              alt={article.title}
+              placeholder="blur"
+              blurDataURL={article.image}
+            />
+          </div>
         </a>
-        <a  target="_self" href={article.link} className={`${styles.link} ${styles.card__info}`}>
+        <a
+          target="_self"
+          href={article.link}
+          className={`${styles.link} ${styles.card__info}`}
+        >
           {/*CAN REPLACE WITH CREATOR OR AUTHOR NAME AVATAR MIF START POSTING */}
           <p className={styles.category}>{article.sub_category}</p>
           <div className={styles.card__text}>
@@ -53,20 +59,29 @@ const ArticleCard = ({ article }) => {
         </a>
         <div className={styles.card__info}>
           <div className={styles.card__infoBottom}>
-            <a href={article.link} target="_self" className={`${styles.link} ${styles.source}`}>
+            <a
+              href={article.link}
+              target="_self"
+              className={`${styles.link} ${styles.source}`}
+            >
               <Image
                 className={styles.source__image}
                 src={article.source_img}
                 alt={article.source}
-                width={30}
-                height={25}
+                width={20}
+                height={20}
               />
               <p>{article.source}</p>
             </a>
             <div className={styles.bottom__right}>
               <IconButton className={styles.bottom__iconsWrapper}>
-                <StarOutline className={styles.bottom__icons} />
+                {liked ? (
+                  <Star className={`${styles.bottom__icons} ${styles.saved}`} />
+                ) : (
+                  <StarOutline className={styles.bottom__icons} />
+                )}
               </IconButton>
+
               <IconButton
                 onClick={handleSharing}
                 className={styles.bottom__iconsWrapper}
@@ -77,9 +92,7 @@ const ArticleCard = ({ article }) => {
           </div>
         </div>
       </div>
-      <div className={styles.bottom}>
-      {""}
-      </div>
+      <div className={styles.bottom}>{""}</div>
     </div>
   );
 };

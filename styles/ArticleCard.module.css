@@ -103,6 +103,11 @@
   cursor: pointer;
   font-size: 20px ;
 }
+
+.saved {
+  color: goldenrod;
+}
+
 .link {
   text-decoration: none;
 }

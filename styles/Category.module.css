@@ -10,22 +10,31 @@
   align-items: center;
   text-align: center;
   margin: 5px;
-  box-shadow: 0px 0px 2px 1px #f0f1f1;
+  box-shadow: 0px 0px 1px 1px #f0f1f1;
   padding: 5px ;
   background-color: rgb(255, 255, 255);
   border-radius: 20px;
   min-width: fit-content;
 }
 
+.select {
+  background-color: rgb(31, 54, 73);
+  color: #fff;
+}
+
+.select:hover{
+  background-color: rgb(31, 54, 73) !important;
+}
+
 .cateBtn p {
   text-align: center;
   font-size: medium;
   margin: 0 10px;
-  font-family: Arial, Helvetica, sans-serif;
+  text-transform: capitalize;
 }
 
 .cateBtn:hover {
-  background-color: rgb(31, 54, 73);
+  background-color: rgb(181, 184, 187);
   cursor: pointer;
   color: white;
 }
