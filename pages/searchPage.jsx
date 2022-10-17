@@ -12,9 +12,7 @@ import SearchAvatar from '../assest/SearchAvatar.jpg'
 
 const SearchPage = () => {
   const dispatch = useDispatch();
-  // const navigate = useNavigate();
   const [searchTerm, setSearchTerm] = useState("");
-  // const { getSearchTerm } = useStateContex();
   const [hasMore, setHasMore] = useState(true);
   const { queriedArticles, isLoading } = useSelector((state) => state.articles);
 

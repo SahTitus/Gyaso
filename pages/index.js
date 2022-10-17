@@ -6,7 +6,6 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import { useDispatch, useSelector } from "react-redux";
 import {
   HeadlineCard,
-  SearchForm,
   Mincard,
   ArticleCard,
   Category,
@@ -14,7 +13,6 @@ import {
 import Footer from "../components/Footer";
 import {
   fetchArticles,
-  fetchByCategory,
   fetchMoreArticles,
   fetchMoreByCategory,
 } from "../lib/articles";
@@ -44,6 +42,7 @@ function Home({ articlesSSR }) {
     if (articlesSSR.length > 0) dispatch(getArticlesSSR(articlesSSR));
     dispatch(fetchArticles());
   }, []);
+
   return (
     <div className={styles.home}>
       <div styles={styles.headlines__container}>

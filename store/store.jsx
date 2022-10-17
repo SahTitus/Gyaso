@@ -1,13 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit';
 // import authSlice  from '../redux/auth';
-import  articlesSlice  from '../../redux/articles';
-// import  commentsSlice  from '../redux/comments';
+import  articlesSlice  from '../redux/articles';
+import  topicsSlice  from '../redux/topics';
 
 export default configureStore({
 	reducer: {
 		articles: articlesSlice,
 		// auth: authSlice,
-		// comments: commentsSlice,
+		topics: topicsSlice,
 	},
 	middleware: (getDefaultMiddleware) =>
 		getDefaultMiddleware({

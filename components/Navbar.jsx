@@ -6,14 +6,34 @@ import {
 } from "@mui/icons-material";
 import { IconButton } from "@mui/material";
 import { useRouter } from "next/router";
-import React from "react";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { searchMoreTopics, searchTopics } from "../lib/topics";
+import { loading } from "../redux/topics";
+import { useStateContex } from "../store/StateProvider";
 import styles from "../styles/Navbar.module.css";
 
 const Navbar = () => {
+  const dispatch = useDispatch();
   const { pathname } = useRouter();
   const router = useRouter();
   const show =
     pathname === "/explore" || pathname.includes("/explore/moretopics");
+
+  const { setSearchTerm } = useStateContex();
+  const [queryTerm, setQueryTerm] = useState("");
+  const handleChange = (e) => {
+    setQueryTerm(e.target.value);
+    setSearchTerm(e.target.value);
+    dispatch(loading());
+  };
+
+  const handleSearch = (e) => {
+    e.preventDefault();
+    if (queryTerm.trim()) {
+      dispatch(searchTopics(queryTerm));
+    }
+  };
 
   return (
     <div className={styles.navbar}>
@@ -42,14 +62,20 @@ const Navbar = () => {
         ) : (
           <>
             {!pathname.includes("/explore/moretopics") && (
-              <form className={styles.search}>
+              <form onSubmit={handleSearch} className={styles.search}>
                 <div className={styles.searchContainer}>
                   <input
                     className={styles.searchInput}
-                    onChange={(e) => setSearchTerm(e.target.value)}
+                    onChange={handleChange}
                     type="text"
                     placeholder="Search topics here..."
                   />
+                  <IconButton
+                    onClick={handleSearch}
+                    className={styles.searchIcon__wrapper}
+                  >
+                    <Search className={styles.searchIcon} />
+                  </IconButton>
                 </div>
               </form>
             )}

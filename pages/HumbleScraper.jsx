@@ -116,12 +116,12 @@ const HumbleScraper = () => {
       <h3>{successMsg.msg}</h3>
       
       
-      {/* <button onClick={handleNhs}>NHS</button> */}
+      <button onClick={handleNhs}>NHS</button>
       <button onClick={handleMbgPages}>Mbg Pages</button>
       <button onClick={handleMbgLatest}>Mbg Latest</button>
-      {/* <button onClick={handleMntTopics}>MNT Topics</button> */}
+      <button onClick={handleMntTopics}>MNT Topics</button>
       <button onClick={handleMntCate}>MNT Categories</button>
-      {/* <button onClick={handleHealthlineTopics}>Healthline Topics</button> */}
+      <button onClick={handleHealthlineTopics}>Healthline Topics</button>
       <button onClick={handleHealthlineCates}>Healthline Categories</button>
       <button className="scrape-reset-btn" onClick={reset}>
         Reset
