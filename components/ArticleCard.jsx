@@ -39,10 +39,16 @@ const ArticleCard = ({ article }) => {
             <Image
               layout="fill"
               className={styles.image}
-              src={article.image}
+              src={
+                article.image ||
+                " https://img.freepik.com/free-psd/3d-stethoscope-icon_23-2149257784.jpg?w=2000"
+              }
               alt={article.title}
               placeholder="blur"
-              blurDataURL={article.image}
+              blurDataURL={
+                article.image ||
+                " https://img.freepik.com/free-psd/3d-stethoscope-icon_23-2149257784.jpg?w=2000"
+              }
             />
           </div>
         </a>

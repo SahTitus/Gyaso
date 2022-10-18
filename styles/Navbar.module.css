@@ -64,3 +64,10 @@
 .searchIcon {
   font-size: 23px !important;
 }
+
+.drawer{
+  display: flex;
+  flex-direction: column;
+  top: -25%;
+
+}

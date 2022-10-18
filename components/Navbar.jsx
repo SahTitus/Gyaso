@@ -1,17 +1,21 @@
 import {
   AccountCircleOutlined,
   ArrowBack,
-  NotificationsOutlined,
   Search,
 } from "@mui/icons-material";
-import { IconButton } from "@mui/material";
+import { Button, Dialog, DialogActions, DialogTitle, IconButton, Slide } from "@mui/material";
 import { useRouter } from "next/router";
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { searchMoreTopics, searchTopics } from "../lib/topics";
+import { searchTopics } from "../lib/topics";
 import { loading } from "../redux/topics";
 import { useStateContex } from "../store/StateProvider";
 import styles from "../styles/Navbar.module.css";
+import Drawer from "./Drawer";
+
+const Transition = React.forwardRef(function Transition(props, ref) {
+  return <Slide direction="left" ref={ref} {...props} />;
+});
 
 const Navbar = () => {
   const dispatch = useDispatch();
@@ -22,6 +26,17 @@ const Navbar = () => {
 
   const { setSearchTerm } = useStateContex();
   const [queryTerm, setQueryTerm] = useState("");
+  const [open, setOpen] = useState(false);
+
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+
   const handleChange = (e) => {
     setQueryTerm(e.target.value);
     setSearchTerm(e.target.value);
@@ -56,7 +71,7 @@ const Navbar = () => {
       </div>
       <div className={styles.navbar__right}>
         {!show ? (
-          <IconButton className={styles.navbar__right}>
+          <IconButton onClick={handleOpen} className={styles.navbar__right}>
             <AccountCircleOutlined className={styles.avatar} />
           </IconButton>
         ) : (
@@ -82,6 +97,24 @@ const Navbar = () => {
           </>
         )}
       </div>
+
+      <Dialog
+        open={open}
+        TransitionComponent={Transition}
+        keepMounted
+        onClose={handleClose}
+        id='drawer'
+        maxWidth="lg"
+        className={styles.drawer}
+        aria-describedby="alert-dialog-slide-description"
+      >
+       
+        <Drawer />  
+
+      
+          {/* <Button onClick={handleClose}>Agree</Button> */}
+
+      </Dialog>
     </div>
   );
 };
