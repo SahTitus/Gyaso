@@ -11,13 +11,10 @@ export const categories = [
   { cate: "human biology", cateSSR: "human-biology" },
   { cate: "meditation", cateSSR: "meditation" },
   { cate: "spirituality", cateSSR: "spirituality" },
-  { cate: "movement", cateSSR: "movement" },
+
   { cate: "sleep hygiene", cateSSR: "sleep-hygiene" },
-  { cate: "cardiovascular health", cateSSR: "cardiovascular-health" },
-  { cate: "dermatology & skincare", cateSSR: "dermatology-and-skincare" },
-  {
-    cate: "environment & sustainability",
-    cateSSR: "environment-and-sustainability",
-  },
+
+  { cate: " skincare", cateSSR: "dermatology-and-skincare" },
+
   { cate: "recovery", cateSSR: "recovery" },
 ];

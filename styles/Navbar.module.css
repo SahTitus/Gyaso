@@ -13,6 +13,10 @@
   box-shadow: 0 0px 0px 1px rgb(0, 0, 0, 0.1);
 }
 
+.hide__navbar {
+  display: none;
+}
+
 .navbar__right {
   display: flex;
   align-items: center;
@@ -68,6 +72,11 @@
 .drawer{
   display: flex;
   flex-direction: column;
-  top: -25%;
+  /* top: -25%; */
 
 }
+
+/* .MuiDialog-container {
+  top: 3000px !important;
+  margin: 700px !important;
+} */

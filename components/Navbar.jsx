@@ -51,7 +51,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className={styles.navbar}>
+    <div className={`${styles.navbar} ${pathname==='/auth' && styles.hide__navbar}`}>
       <div className={styles.navbar__right}>
         {show ? (
           <>
@@ -104,15 +104,28 @@ const Navbar = () => {
         keepMounted
         onClose={handleClose}
         id='drawer'
-        maxWidth="lg"
+    
         className={styles.drawer}
+        sx={{
+          "& .MuiDialog-paper": { width: "90%", height: 435, borderRadius: 1.5 },
+        }}
+        // sx={{
+        //   "& .MuiDialog-container": {
+        //     justifyContent: "flex-end",
+        //     alignItems: "flex-start"
+        //   }
+        // }}
+        PaperProps={{
+          sx: {
+            m: 0,
+            top: -30,
+            right: 0
+          }
+        }}
         aria-describedby="alert-dialog-slide-description"
       >
        
-        <Drawer />  
-
-      
-          {/* <Button onClick={handleClose}>Agree</Button> */}
+        <Drawer handleClose={handleClose} />  
 
       </Dialog>
     </div>

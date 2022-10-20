@@ -4,9 +4,9 @@ import React from "react";
 import { CircleFill } from "react-bootstrap-icons";
 import styles from "../styles/Drawer.module.css";
 
-const Drawer = () => {
+const Drawer = ({handleClose}) => {
   return (
-    <div className={styles.drawer}>
+    <div onClick={handleClose} className={styles.drawer}>
       <div className={styles.top}>
         <Avatar src={' https://img.freepik.com/free-psd/3d-stethoscope-icon_23-2149257784.jpg?w=2000'} className={styles.avatar} />
         <h4>Sah Titus</h4>
