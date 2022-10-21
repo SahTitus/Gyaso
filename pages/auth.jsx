@@ -6,7 +6,7 @@ import {
   VisibilityOff,
   VpnKeyOutlined,
 } from "@mui/icons-material";
-import Go from "../assest/Go.png";
+import Go from "../assets/Go.png";
 import { Box, Button, IconButton, TextField } from "@mui/material";
 import { useRouter } from "next/router";
 import React, { useState } from "react";
