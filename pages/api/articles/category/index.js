@@ -8,7 +8,7 @@ export default async function handler(req, res) {
   const { db } = await connectToDb();
 
   if (method === "GET" && queryCategory) {
-    const sub_category = new RegExp(queryCategory, "i");
+    const category_id = new RegExp(queryCategory, "i");
 
     try {
       const articles = await db
@@ -16,13 +16,12 @@ export default async function handler(req, res) {
         .aggregate([
           {
             $match: {
-              sub_category: sub_category,
+              category_id: category_id,
             },
           },
           { $sample: { size: 10 } },
         ])
         .toArray();
-      console.log(articles);
       res.status(200).json(articles);
     } catch (error) {
       //   res.status(500).json(error);

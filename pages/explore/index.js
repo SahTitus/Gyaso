@@ -15,7 +15,7 @@ import {
 import { getTopicsSSR, loading } from "../../redux/topics";
 import { connectToDb } from "../../utils/mongodb";
 import { useStateContex } from "../../store/StateProvider";
-import SearchAvatar from "../../assets/SearchAvatar.jpg";
+import SearchAvatar from "../../assest/SearchAvatar.jpg";
 
 const Explore = ({ topicsSSR }) => {
   const dispatch = useDispatch();

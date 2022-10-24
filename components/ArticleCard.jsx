@@ -58,7 +58,7 @@ const ArticleCard = ({ article }) => {
           className={`${styles.link} ${styles.card__info}`}
         >
           {/*CAN REPLACE WITH CREATOR OR AUTHOR NAME AVATAR MIF START POSTING */}
-          <p className={styles.category}>{article.sub_category}</p>
+          <p className={styles.category}>{article.category}</p>
           <div className={styles.card__text}>
             <p className={styles.title}>{article.title}</p>
           </div>

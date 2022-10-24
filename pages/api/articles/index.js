@@ -30,7 +30,7 @@ if (method === "GET" && queryCategory) {
 
 
   const sub_category = new RegExp(queryCategory, "i");
-
+console.log('eeeeeeeeeeeeeee')
   try {
     const articles = await db
       .collection("articles")

@@ -8,7 +8,7 @@ import { ArticleCard } from "../components";
 import Footer from "../components/Footer";
 import { searchArticles, searchMoreArticles } from "../lib/articles";
 import styles from "../styles/SearchPage.module.css";
-import SearchAvatar from '../assets/SearchAvatar.jpg'
+import SearchAvatar from '../assest/SearchAvatar.jpg'
 
 const SearchPage = () => {
   const dispatch = useDispatch();

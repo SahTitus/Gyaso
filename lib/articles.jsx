@@ -49,10 +49,14 @@ export const fetchByCategory = (category, skip) => async (dispatch) => {
   }
 };
 export const fetchMoreByCategory = (category) => async (dispatch) => {
+ 
   try {
+    console.log('moreCategory', category);
+
     const { data } = await axios.get(
-      `/api/articles/category?queryCategory=${category}&skip=${skip}`
+      `/api/articles/category?queryCategory=${category}`
     );
+    console.log('moreCategory33', category);
     dispatch(getMoreArticles(data));
   } catch (error) {
     dispatch(isError(error));
