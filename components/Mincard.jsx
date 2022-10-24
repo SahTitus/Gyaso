@@ -13,12 +13,12 @@ const Mincard = ({ article }) => {
           className={styles.image}
           alt={article?.title}
           src={
-            article.image ||
+            article?.image ||
             " https://img.freepik.com/free-psd/3d-stethoscope-icon_23-2149257784.jpg?w=2000"
           }
           placeholder="blur"
           blurDataURL={
-            article.image ||
+            article?.image ||
             " https://img.freepik.com/free-psd/3d-stethoscope-icon_23-2149257784.jpg?w=2000"
           }
           height={100}
