@@ -3,15 +3,26 @@ import React from "react";
 import { BoxArrowUp, CircleFill } from "react-bootstrap-icons";
 import styles from "../styles/Mincard.module.css";
 import { IconButton } from "@mui/material";
+import Image from "next/image";
 
-const Mincard = ({article}) => {
+const Mincard = ({ article }) => {
   return (
     <div className={styles.mincard}>
       <div className={styles.main}>
-        <img
+        <Image
           className={styles.image}
-          src={article?.image}
           alt={article?.title}
+          src={
+            article.image ||
+            " https://img.freepik.com/free-psd/3d-stethoscope-icon_23-2149257784.jpg?w=2000"
+          }
+          placeholder="blur"
+          blurDataURL={
+            article.image ||
+            " https://img.freepik.com/free-psd/3d-stethoscope-icon_23-2149257784.jpg?w=2000"
+          }
+          height={100}
+          width={100}
         />
         <div className={styles.mainInfo}>
           <div className={styles.topbar}>
@@ -25,23 +36,23 @@ const Mincard = ({article}) => {
             </IconButton>
           </div>
           <div className={styles.content}>
-            <p className={styles.title}>
-        {article?.title}
-            </p>
+            <p className={styles.title}>{article?.title}</p>
           </div>
         </div>
       </div>
       <div className={styles.bottom}>
         <div className={styles.bottomLeft}>
-          <img
+          <Image
             className={styles.avatar}
             src={article?.source_img}
             alt="Hi"
+            height={20}
+            width={20}
           />
-          <p>{article?.source}</p>
+          <p style={{ marginLeft: "10px" }}>{article?.source}</p>
         </div>
         <div className={styles.bottomRight}>
-          <IconButton  className={styles.bottomRightIcon__wrapper}>
+          <IconButton className={styles.bottomRightIcon__wrapper}>
             {" "}
             <StarOutline className={styles.bottomRightIcon} />
           </IconButton>

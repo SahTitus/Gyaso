@@ -20,8 +20,6 @@ const handleClick = (u) => {
 }
 
 
-
-
 useEffect(() => {
 if (index !== 0) setSelected(selected)
 } ,[selected])

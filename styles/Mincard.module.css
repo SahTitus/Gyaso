@@ -91,6 +91,10 @@
   align-items: center;
 }
 
+.bottomLeft p {
+  margin-right: 10px;
+}
+
 .avatar {
   height: 20px;
   width: 20px;
