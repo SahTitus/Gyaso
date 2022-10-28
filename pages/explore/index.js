@@ -33,8 +33,8 @@ const Explore = ({ topicsSSR }) => {
   };
 
   useEffect(() => {
-    if (topicsSSR.length > 0) dispatch(getTopicsSSR(topicsSSR));
-    dispatch(fetchTopics(topicsSSR.length));
+    if (topicsSSR?.length > 0) dispatch(getTopicsSSR(topicsSSR));
+    dispatch(fetchTopics(topicsSSR?.length));
   }, []);
 
   return (
@@ -102,7 +102,7 @@ const Explore = ({ topicsSSR }) => {
           ))}
         </InfiniteScroll>
       )}
-
+<div>See more</div>
       <Footer />
     </div>
   );

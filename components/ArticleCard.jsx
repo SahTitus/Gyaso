@@ -52,6 +52,7 @@ const ArticleCard = ({ article }) => {
             />
           </div>
         </a>
+        <div className={styles.content__wrapper}>
         <a
           target="_self"
           href={article.link}
@@ -97,6 +98,7 @@ const ArticleCard = ({ article }) => {
             </div>
           </div>
         </div>
+      </div>
       </div>
       <div className={styles.bottom}>{""}</div>
     </div>

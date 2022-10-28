@@ -5,12 +5,15 @@ import styles from "../styles/Mincard.module.css";
 import { IconButton } from "@mui/material";
 import Image from "next/image";
 
-const Mincard = ({ article }) => {
+const Mincard = ({ article, isWidget }) => {
+
   return (
     <div className={styles.mincard}>
       <div className={styles.main}>
-        <Image
-          className={styles.image}
+       {
+        isWidget ? (
+          <Image
+          className={`${styles.image} `}
           alt={article?.title}
           src={
             article?.image ||
@@ -21,9 +24,27 @@ const Mincard = ({ article }) => {
             article?.image ||
             " https://img.freepik.com/free-psd/3d-stethoscope-icon_23-2149257784.jpg?w=2000"
           }
-          height={100}
-          width={100}
+          height={50}
+          width={60}
         />
+        ):(
+          <Image
+          className={`${styles.image} `}
+          alt={article?.title}
+          src={
+            article?.image ||
+            " https://img.freepik.com/free-psd/3d-stethoscope-icon_23-2149257784.jpg?w=2000"
+          }
+          placeholder="blur"
+          blurDataURL={
+            article?.image ||
+            " https://img.freepik.com/free-psd/3d-stethoscope-icon_23-2149257784.jpg?w=2000"
+          }
+          height={90}
+          width={110}
+        />
+        )
+       }
         <div className={styles.mainInfo}>
           <div className={styles.topbar}>
             <p className={styles.topLeft}>
@@ -31,10 +52,13 @@ const Mincard = ({ article }) => {
               {/* <CircleFill className={styles.bullet} />
               <span>12h</span> */}
             </p>
-            <IconButton>
-              <MoreHoriz className={styles.moreHoriz} />
-            </IconButton>
-          </div>
+           {!isWidget && (
+             <IconButton>
+             <MoreHoriz className={styles.moreHoriz} />
+           </IconButton>
+    
+           )}
+                </div>
           <div className={styles.content}>
             <p className={styles.title}>{article?.title}</p>
           </div>

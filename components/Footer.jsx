@@ -1,12 +1,9 @@
-import { useState } from "react";
 import {
   HomeOutlined,
   Search,
   HomeRounded,
   Star,
   StarOutline,
-  Explore,
-  ExploreOutlined,
   AutoAwesomeOutlined,
   AutoAwesome,
 } from "@mui/icons-material";
@@ -18,7 +15,7 @@ const Footer = () => {
   const { pathname } = useRouter();
 
   const homeActive = pathname === "/";
-  const searchActive = pathname === "/searchPage";
+  // const searchActive = pathname === "/searchPage";
   const favActive = pathname === "/favorites";
   const exActive = pathname === "/explore";
 

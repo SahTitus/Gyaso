@@ -28,10 +28,11 @@ const SearchPage = () => {
   };
 
   return (
-    <div styles={styles.searchPage}>
+    <div className={styles.searchPage}>
       <div className={styles.topBar}>
         <IconButton onClick={handleSearch}>
-          <Search className={styles.searchIcon} />
+          <Search className={styles.searchIcon__hideLg} />
+          <ArrowBack className={styles.searchIcon__showLg} />
         </IconButton>
         <form onSubmit={handleSearch} className={styles.searchForm}>
           <div className={styles.searchContainer}>
@@ -42,6 +43,10 @@ const SearchPage = () => {
               placeholder="Search for articles..."
             />
           </div>
+          <IconButton className={styles.searchIcon__showLg} onClick={handleSearch}>
+          <Search className={styles.searchIcon} />
+          
+        </IconButton>
         </form>
       </div>
 

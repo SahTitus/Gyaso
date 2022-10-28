@@ -3,7 +3,7 @@
   flex-direction: column;
   background-color: rgb(255, 255, 255);
   border-bottom: 2px dotted rgb(199, 191, 191);
-  padding: 10px 0;
+  padding: 8px ;
 }
 
 .main {
@@ -34,6 +34,7 @@
   font-size: 15px;
   font-weight: 500;
   text-transform: capitalize;
+  color: rgb(66, 65, 65);
 }
 
 .bullet {
@@ -46,8 +47,8 @@
 .mainInfo {
   display: flex;
   flex-direction: column;
-  flex: 0.8;
-  margin-left: 10px;
+  flex: 1;
+  margin-left: 17px;
 }
 
 .content {
@@ -67,6 +68,7 @@
   -webkit-box-orient: vertical;
   white-space: pre-wrap;
   font-size: 16px;
+  font-weight: 500;
 
 }
 
@@ -111,3 +113,7 @@
   cursor: pointer;
   font-size: 20px !important;
 }
+
+/* @media screen and (min-width: 720px) {
+
+} */

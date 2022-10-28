@@ -2,13 +2,16 @@ import React from 'react'
 import { Mincard } from '../components'
 import Footer from '../components/Footer'
 
-const favorites = () => {
+const favorites = ({isWidget}) => {
+  console.log(isWidget)
   return (
     <div>
-         <Mincard />
-         <Mincard />
-         <Mincard />
-         <Mincard />
+         <Mincard isWidget />
+         <Mincard isWidget />
+         <Mincard isWidget />
+         <Mincard isWidget />
+         <Mincard isWidget />
+ 
         <Footer />
     </div>
   )

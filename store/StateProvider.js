@@ -4,13 +4,19 @@ export const StateContext = createContext();
 
 //wrap our app and provide the Data layer
 export const StateProvider = ({ children }) => {
-  const [searchTerm, setSearchTerm] = useState('');
+  const [searchTerm, setSearchTerm] = useState("");
+  const [getSSRData, setGetSSRData] = useState([]);
+  const [category, setCategory] = useState({ cate: "all", category_id: "all" });
 
   return (
     <StateContext.Provider
       value={{
         searchTerm,
+        category,
+        getSSRData,
+        setGetSSRData,
         setSearchTerm,
+        setCategory,
       }}
     >
       {children}

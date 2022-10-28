@@ -16,17 +16,18 @@ import styles from "../styles/Home.module.css";
 import { connectToDb } from "../utils/mongodb";
 import { categories } from "../constants/categories.js";
 import HumbleScraper from "./HumbleScraper";
+import { useStateContex } from "../store/StateProvider";
 
 function Home({ articlesSSR }) {
   const dispatch = useDispatch();
-
+  console.log(articlesSSR)
   const { articles } = useSelector((state) => state.articles);
 
   const [hasMore, setHasMore] = useState(true);
-  const [category, setCategory] = useState(  { cate: "all", category_id: "all" });
 
+  const { category, setCategory,setGetSSRData } = useStateContex();
   const getMorePost = async () => {
-    console.log(category, 'yes')
+    console.log(category, "yes");
     if (category.cate !== "all") {
       dispatch(fetchMoreByCategory(category.category_id));
     } else {
@@ -38,6 +39,7 @@ function Home({ articlesSSR }) {
     if (articlesSSR.length > 0) dispatch(getArticlesSSR(articlesSSR));
 
     dispatch(fetchArticles());
+    setGetSSRData(articlesSSR);
   }, []);
 
   return (
@@ -53,22 +55,21 @@ function Home({ articlesSSR }) {
             />
           ))}
         </div>
-        {category.cate === "all" && (
+        {/* {category.cate === "all" && (
           <>
             <div className={styles.headlines}>
-              {/* <HumbleScraper /> */}
+              <HumbleScraper />
               <HeadlineCard image="https://newsghana.com.gh/wp-content/uploads/2021/04/zjwoqz4kiaq-696x392.jpg" />
               <HeadlineCard image="https://greatpeopleinside.com/wp-content/uploads/2017/05/HR-GR8-technology.jpg" />
               <HeadlineCard image="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcREn_4u__5oaROubmkAfBLtSgXyUz_M3WSOfG5P4-o5kA&s" />
             </div>
             <div className={styles.seeMore}>
-              {/* <h3>Headlines</h3> */}
+  
               <Button className={styles.seeMoreBtn}>See More</Button>
             </div>
           </>
-        )}
+        )} */}
       </div>
-
 
       {/* <div styles={styles.headlines__container}>
         <div className={styles.headlines__containerTop}>
@@ -98,15 +99,15 @@ function Home({ articlesSSR }) {
           }
           endMessage={<h4>Nothing more to show</h4>}
         >
-          {articles.map((article, i) =>
-         ( article?.link && article.title ) && (
-          
-          article?.mini_card ? (
-            <Mincard key={article._id + i} article={article} />
-          ) : (
-            <ArticleCard key={article._id + i} article={article} />
-          )
-         )
+          {articles.map(
+            (article, i) =>
+              article?.link &&
+              article.title &&
+              (article?.mini_card ? (
+                <Mincard key={article._id + i} article={article} />
+              ) : (
+                <ArticleCard key={article._id + i} article={article} />
+              ))
           )}
         </InfiniteScroll>
       </div>

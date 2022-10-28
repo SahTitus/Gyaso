@@ -80,3 +80,31 @@
   top: 3000px !important;
   margin: 700px !important;
 } */
+.searchArticles {
+display: none;
+}
+.lg__search{
+display: none;
+
+}
+
+
+@media screen and (min-width: 720px) {
+.navbar{
+  position: fixed;
+  /* display: contents; */
+}
+
+}
+@media screen and (min-width: 1000px) {
+  .searchArticles {
+    width: 40%;
+    margin-right: 80px;
+    display: flex;
+  }
+
+  .lg__search {
+    display: flex;
+  }
+
+}

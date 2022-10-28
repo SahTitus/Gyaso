@@ -5,6 +5,10 @@
   cursor: pointer;
 }
 
+.topic:hover{
+  background-color: rgb(250, 248, 248);
+}
+
 .avatar {
   margin: 0 10px;
   height: 25px !important;

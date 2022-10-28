@@ -1,3 +1,4 @@
+import Image from "next/image";
 import React, { useState } from "react";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
@@ -26,7 +27,17 @@ if (index !== 0) setSelected(selected)
 
   return (
     <div onClick={handleClick} className={`${styles.cateBtn} ${selected === index ? styles.select : styles.cateBtn}`}>
-      <p>{cate.cate}</p>
+        <Image
+          className={styles.icon}
+          alt={cate.title}
+          src={
+            cate?.icon
+          }
+
+          height={30}
+          width={30}
+        />
+      <p>{cate?.cate}</p>
     </div>
   );
 };
