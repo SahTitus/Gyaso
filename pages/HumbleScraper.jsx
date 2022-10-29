@@ -54,7 +54,6 @@ const HumbleScraper = () => {
   };
   const reset = () => {
     setScrapeParams(initialState);
-    console.log(scrapeParams);
   };
 
   const handleNhs = () => {
@@ -201,14 +200,10 @@ const HumbleScraper = () => {
     try {
       if (scrapeParams.action && scrapeParams.scrape_1) {
         const { data } = await scrape1(scrapeParams);
-
-        console.log(data);
       } else if (scrapeParams.action && scrapeParams.scrape_2) {
         const { data } = await scrape2(scrapeParams);
-        console.log(data);
       } else if (scrapeParams.action && scrapeParams.humble) {
         const { data } = await scrape(scrapeParams);
-        console.log(data);
       }
 
       setSuccessMsg(data);
@@ -223,7 +218,6 @@ const HumbleScraper = () => {
     if (scrapeParams.action) {
       handleScrape();
 
-      console.log(scrapeParams);
     }
     setScrapeParams(initialState);
   }, [scrapeParams.action]);

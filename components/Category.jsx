@@ -13,11 +13,9 @@ const isSelected= selected === index
 
 const handleClick = (u) => { 
   setSelected(u)
-  if (cate.category_id)  dispatch(fetchByCategory(cate.category_id));
+  if (cate.category_id && cate.cate !=='all')  dispatch(fetchByCategory(cate.category_id));
   if (cate.cate ==='all')  dispatch(getArticlesSSR(dataSSR));
-
   setCategory(cate)
-  console.log(cate)
 }
 
 

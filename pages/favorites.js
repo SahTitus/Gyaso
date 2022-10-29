@@ -3,7 +3,7 @@ import { Mincard } from '../components'
 import Footer from '../components/Footer'
 
 const favorites = ({isWidget}) => {
-  console.log(isWidget)
+
   return (
     <div>
          <Mincard isWidget />

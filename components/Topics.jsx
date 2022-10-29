@@ -117,7 +117,7 @@
 //     .sort({ title: 1 })
 //     .limit(20)
 //     .toArray();
-//   // console.log('ssr',data)
+
 //   const topicsSSR = JSON.parse(JSON.stringify(data));
 
 //   return {

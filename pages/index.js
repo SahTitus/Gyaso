@@ -20,14 +20,12 @@ import { useStateContex } from "../store/StateProvider";
 
 function Home({ articlesSSR }) {
   const dispatch = useDispatch();
-  console.log(articlesSSR)
   const { articles } = useSelector((state) => state.articles);
 
   const [hasMore, setHasMore] = useState(true);
 
   const { category, setCategory,setGetSSRData } = useStateContex();
   const getMorePost = async () => {
-    console.log(category, "yes");
     if (category.cate !== "all") {
       dispatch(fetchMoreByCategory(category.category_id));
     } else {

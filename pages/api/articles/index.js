@@ -5,8 +5,6 @@ export default async function handler(req, res) {
 
   const { queryCategory } = req.query;
 
-  console.log(method)
-
   // const skip = req.query.skip ? Number(req.query.skip) : 0
 
   const { db } = await connectToDb();
@@ -16,7 +14,7 @@ export default async function handler(req, res) {
         .collection("articles")
         .aggregate([ { $sample: { size: 10 } } ])
         .toArray();
-        // console.log(articles);
+    
       res.status(200).json(articles);
  
     } catch (error) {
@@ -30,7 +28,7 @@ if (method === "GET" && queryCategory) {
 
 
   const sub_category = new RegExp(queryCategory, "i");
-console.log('eeeeeeeeeeeeeee')
+
   try {
     const articles = await db
       .collection("articles")
@@ -40,7 +38,7 @@ console.log('eeeeeeeeeeeeeee')
         }
       }, { $sample: { size: 10 } } ])
       .toArray();
-      // console.log(articles);
+
     res.status(200).json(articles);
 
   } catch (error) {

@@ -12,6 +12,10 @@
     z-index: 100;
     padding: 10px;
   }
+
+  .fetchMore__lg{
+    display: none;
+  }
   
   .topics__wrapper {
     display: flex;
@@ -43,4 +47,19 @@
     -ms-user-select: none;
     -webkit-user-select: none !important;
   
+  }
+
+  @media screen and (min-width: 1000px){
+    .fetchMore__lg{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: -70px;
+    } 
+
+    .fetchMore__btn{
+text-transform: inherit;
+background-color:  #097efb !important;
+color: #fff !important;
+    }
   }

@@ -38,9 +38,18 @@ const Navbar = () => {
   const show =
     pathname === "/explore" || pathname.includes("/explore/moretopics");
 
-  const { setSearchTerm } = useStateContex();
+  const { setSearchTerm, setSearchTermLg } = useStateContex();
   const [queryTerm, setQueryTerm] = useState("");
   const [open, setOpen] = useState(false);
+
+  
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const [selectedSearchType, setSelectedSearchType] =
+    React.useState("articles");
+  const openFilter = Boolean(anchorEl);
+  const handleClickListItem = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
 
   const handleOpen = () => {
     setOpen(true);
@@ -58,17 +67,12 @@ const Navbar = () => {
 
   const handleSearch = (e) => {
     e.preventDefault();
-    if (queryTerm.trim()) {
+    if (queryTerm.trim() && selectedSearchType ==='topics') {
       dispatch(searchTopics(queryTerm));
+    } else {
+      router.push('/searchPage')
+      setSearchTermLg(queryTerm)
     }
-  };
-
-  const [anchorEl, setAnchorEl] = React.useState(null);
-  const [selectedSearchType, setSelectedSearchType] =
-    React.useState("articles");
-  const openFilter = Boolean(anchorEl);
-  const handleClickListItem = (event) => {
-    setAnchorEl(event.currentTarget);
   };
 
   const selectFilter = (event, index) => {

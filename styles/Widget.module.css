@@ -12,6 +12,10 @@
     height: 100%;
 }
 
+.widget h4 {
+line-height: 10px;
+}
+
 /* .widget::-webkit-scrollbar{
     display: none;
 } */

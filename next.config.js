@@ -1,5 +1,21 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {
+
+const withPWA = require("next-pwa");
+
+module.exports = withPWA({
+  pwa: {
+    dest: "public",
+    swSrc: "sw.js",
+    register: true,
+    skipWaiting: true,
+    reloadOnOnline: false,
+    disable: process.env.NODE_ENV === "development",
+  },
+  reactStrictMode: true,
+  swcMinify: true,
+});
+
+module.exports = {
   reactStrictMode: true,
   swcMinify: true,
 
@@ -29,11 +45,9 @@ const nextConfig = {
       "images.onhealth.com",
       "www.mindbodygreen.com",
       "res.cloudinary.com",
-      '20fd661yccar325znz1e9bdl-wpengine.netdna-ssl.com',
+      "20fd661yccar325znz1e9bdl-wpengine.netdna-ssl.com",
       "i0.wp.com",
       "mindbodygreen-res.cloudinary.com",
     ],
   },
 };
-
-module.exports = nextConfig;

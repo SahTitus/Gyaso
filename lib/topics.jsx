@@ -15,7 +15,7 @@ export const fetchTopics = (skip) => async (dispatch) => {
 
   try {
     const { data } = await axios.get(`/api/topics?skip=${skip}`);
-    console.log(skip)
+
 
     dispatch(getTopics(data));
   } catch (error) {
@@ -26,10 +26,9 @@ export const fetchTopics = (skip) => async (dispatch) => {
 export const fetchMoreTopics = (skip) => async (dispatch) => {
   dispatch(loading());
 
-  console.log("first");
   try {
     const { data } = await axios.get(`/api/topics?skip=${skip}`);
-    console.log('me more',data)
+   
     dispatch(getMoreTopics(data));
   } catch (error) {
     dispatch(isError(error));
@@ -37,7 +36,7 @@ export const fetchMoreTopics = (skip) => async (dispatch) => {
 };
 
 // export const fetchByCategory = (category, skip) => async (dispatch) => {
-//   console.log(category, skip);
+
 //   dispatch(loading);
 
 //   try {
@@ -62,7 +61,7 @@ export const fetchMoreTopics = (skip) => async (dispatch) => {
 
 export const searchTopics = (searchTerm, skip) => async (dispatch) => {
   dispatch(loading)
-  console.log(searchTerm)
+
   try {
     const { data } = await axios.get(
       `/api/topics/search?searchTerm=${searchTerm}&skip=${skip}`

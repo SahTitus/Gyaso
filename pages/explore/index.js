@@ -102,7 +102,14 @@ const Explore = ({ topicsSSR }) => {
           ))}
         </InfiniteScroll>
       )}
-<div>See more</div>
+      {queriedTopics.length > 0 ||
+        (topics.length > 0 && (
+          <div className={styles.fetchMore__lg}>
+            <Button onClick={getMorePost} className={styles.fetchMore__btn}>
+              See more
+            </Button>
+          </div>
+        ))}
       <Footer />
     </div>
   );
@@ -116,7 +123,7 @@ export const getServerSideProps = async () => {
     .sort({ title: 1 })
     .limit(20)
     .toArray();
-  // console.log('ssr',data)
+
   const topicsSSR = JSON.parse(JSON.stringify(data));
 
   return {
