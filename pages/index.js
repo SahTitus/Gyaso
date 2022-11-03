@@ -38,6 +38,7 @@ function Home({ articlesSSR }) {
 
     dispatch(fetchArticles());
     setGetSSRData(articlesSSR);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

@@ -220,6 +220,7 @@ const HumbleScraper = () => {
 
     }
     setScrapeParams(initialState);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [scrapeParams.action]);
 
   return (

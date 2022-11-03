@@ -9,8 +9,6 @@ import { AutoAwesomeOutlined, StarOutline } from "@mui/icons-material";
 import { useStateContex } from "../store/StateProvider";
 
 function Layout({ children }) {
-  
-
   const { setSignInAlert } = useStateContex();
 
   const { pathname } = useRouter();
@@ -30,8 +28,9 @@ function Layout({ children }) {
   return (
     <div className="layout">
       <Head>
-        <title>Gyaso</title>
+        <title>Healthtage</title>
         <link rel="icon" href="/favicon.ico" />
+       
       </Head>
       {!hide && (
         <header className="header">

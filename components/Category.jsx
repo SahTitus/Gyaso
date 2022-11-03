@@ -21,6 +21,7 @@ const handleClick = (u) => {
 
 useEffect(() => {
 if (index !== 0) setSelected(selected)
+// eslint-disable-next-line react-hooks/exhaustive-deps
 } ,[selected])
 
   return (

@@ -1,21 +1,17 @@
 /** @type {import('next').NextConfig} */
+const runtimeCaching = require("next-pwa/cache");
 
-const withPWA = require("next-pwa");
 
-module.exports = withPWA({
-  pwa: {
-    dest: "public",
-    swSrc: "sw.js",
-    register: true,
-    skipWaiting: true,
-    reloadOnOnline: false,
-    disable: process.env.NODE_ENV === "development",
-  },
-  reactStrictMode: true,
-  swcMinify: true,
+const withPWA = require("next-pwa")({
+  runtimeCaching,
+dest: "public",
+register: true,
+// disable: process.env.NODE_ENV === "development",
+skipWaiting: true,
 });
 
-module.exports = {
+
+const nextConfig = withPWA({
   reactStrictMode: true,
   swcMinify: true,
 
@@ -50,4 +46,5 @@ module.exports = {
       "mindbodygreen-res.cloudinary.com",
     ],
   },
-};
+});
+module.exports = nextConfig;

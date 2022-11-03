@@ -35,6 +35,7 @@ const Explore = ({ topicsSSR }) => {
   useEffect(() => {
     if (topicsSSR?.length > 0) dispatch(getTopicsSSR(topicsSSR));
     dispatch(fetchTopics(topicsSSR?.length));
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
