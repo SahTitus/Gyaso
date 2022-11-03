@@ -1,5 +1,4 @@
 import { connectToDb } from "../../../utils/mongodb";
-import { ValidateProps } from "../../../api-lib/constants";
 import {
   findUserByEmail,
   insertUser,
@@ -8,7 +7,6 @@ import {
 import jwt from "jsonwebtoken";
 import isEmail from "validator/lib/isEmail";
 import normalizeEmail from "validator/lib/normalizeEmail";
-// import { validateBody } from "../../../api-lib/middleware";
 
 const secret =
   "1**2v****hft26525w5d2sswxkbXX`Y8******771@425525DS8GCGGGSHV****a12e2e78e22e";
@@ -18,17 +16,6 @@ export default async function handler(req, res) {
   const { db } = await connectToDb();
 
   let { name, email, password, signin, google, photo } = req.body;
-
-  // validateBody({
-  //   type: 'object',
-  //   properties: {
-  //     name: ValidateProps.user.name,
-  //     password: ValidateProps.user.password,
-  //     email: ValidateProps.user.email,
-  //   },
-  //   required: ['name', 'password', 'email'],
-  //   additionalProperties: false,
-  // })
 
   email = normalizeEmail(req.body.email);
 
