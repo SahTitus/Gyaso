@@ -6,8 +6,13 @@ import Sidebar from "./Sidebar";
 import { Widget } from "./Widget";
 import { IconButton } from "@mui/material";
 import { AutoAwesomeOutlined, StarOutline } from "@mui/icons-material";
+import { useStateContex } from "../store/StateProvider";
 
 function Layout({ children }) {
+  
+
+  const { setSignInAlert } = useStateContex();
+
   const { pathname } = useRouter();
 
   const hide = pathname === "/searchPage";
@@ -15,7 +20,12 @@ function Layout({ children }) {
   const [showTopics, setShowTopics] = useState(true);
 
   const toggleShowWidget = () => {
-    setShowTopics(!showTopics);
+    const user = JSON.parse(localStorage.getItem("userProfile"));
+    if (!user?.result?._id) {
+      setSignInAlert(true);
+    } else {
+      setShowTopics(!showTopics);
+    }
   };
   return (
     <div className="layout">
@@ -32,14 +42,14 @@ function Layout({ children }) {
         style={{ display: "flex" }}
         className={`main ${pathname !== "/searchPage" && "main__lgSearch"}`}
       >
-        {pathname !== "/searchPage" && (
+        {pathname === "/" && (
           <div className="divFlex">
             <Sidebar />{" "}
           </div>
         )}
 
         {children}
-        {pathname !== "/searchPage" && (
+        {pathname === "/" && (
           <div className="divRight">
             <div className="widget__icons">
               <IconButton onClick={toggleShowWidget} className="icon">

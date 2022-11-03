@@ -14,19 +14,24 @@ import styles from "../styles/Auth.module.css";
 import Image from "next/image";
 import { auth } from "../utils/firebase";
 import { signInWithPopup, GoogleAuthProvider } from "@firebase/auth";
+import { logWithGoogle, register } from "../lib/auth";
+import { useDispatch } from "react-redux";
 
 const initialState = {
   name: "",
   email: "",
   password: "",
-  confirmPassword: "",
+  // confirmPassword: "",
 };
 
 const Auth = () => {
   const [userSwitch, setUserSwitch] = useState(true);
   const [showPassword, setShowPassword] = useState(false);
   const [formData, setFormData] = useState(initialState);
+
   const router = useRouter();
+
+  const dispatch = useDispatch();
 
   const disableBtn = false;
 
@@ -45,11 +50,12 @@ const Auth = () => {
 
     try {
       const loginData = {
-        // email: result.email,
-        // photoURL: result.photoURL,
-        // displayName: result.displayName,
+        email: result.email,
+        photo: result.photoURL,
+        name: result.displayName,
+        google: true,
       };
-      // dispatch(logWithGoogle(loginData, navigate));
+      dispatch(logWithGoogle(loginData, router));
       setLoading(true);
     } catch (error) {
       return error;
@@ -58,14 +64,7 @@ const Auth = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    // if (!user) {
-    //   dispatch(signup({ ...formData, image }, navigate));
-    // } else {
-    //   dispatch(signin(formData, navigate));
-    // }
-
-    setFormData({ ...formData, initialState: "" });
+    dispatch(register({ ...formData, signin: userSwitch }, router));
   };
 
   return (
@@ -87,22 +86,26 @@ const Auth = () => {
         {!userSwitch && <p>We are happy to see you here!</p>}
 
         <form className={styles.form}>
-          <Box
-            id={styles.auth_inputBox}
-            sx={{ display: "flex", alignItems: "flex-end" }}
-          >
-            <Person2Outlined sx={{ color: "action.active", mr: 1, my: 0.5 }} />
-            <TextField
-              onChange={handleChange}
-              id="demo-name"
-              required
-              label="Name"
-              variant="standard"
-              className={styles.auth_input}
-              name="name"
-              value={formData.name}
-            />
-          </Box>
+          {!userSwitch && (
+            <Box
+              id={styles.auth_inputBox}
+              sx={{ display: "flex", alignItems: "flex-end" }}
+            >
+              <Person2Outlined
+                sx={{ color: "action.active", mr: 1, my: 0.5 }}
+              />
+              <TextField
+                onChange={handleChange}
+                id="demo-name"
+                required
+                label="Name"
+                variant="standard"
+                className={styles.auth_input}
+                name="name"
+                value={formData.name}
+              />
+            </Box>
+          )}
           <Box
             id={styles.auth_inputBox}
             sx={{ display: "flex", alignItems: "flex-end" }}
@@ -119,38 +122,33 @@ const Auth = () => {
               className={styles.auth_input}
             />
           </Box>
-          {!userSwitch && (
-            <Box
-              id={styles.auth_inputBox}
-              sx={{ display: "flex", alignItems: "flex-end" }}
-            >
-              <VpnKeyOutlined sx={{ color: "action.active", mr: 1, my: 0.5 }} />
-              <TextField
-                onChange={handleChange}
-                id={styles.auth_input}
-                required
-                label="Password"
-                name="password"
-                variant="standard"
-                value={formData.password}
-                className={styles.auth_input}
-              />
 
-              <IconButton
-                className={`${styles.showPassword} ${
-                  // passError && styles.errEye''
-                  ""
-                }`}
-                onClick={toggleShowPassword}
-              >
-                {!showPassword ? (
-                  <VisibilityOff />
-                ) : (
-                  <Visibility />
-                )}
-              </IconButton>
-            </Box>
-          )}
+          <Box
+            id={styles.auth_inputBox}
+            sx={{ display: "flex", alignItems: "flex-end" }}
+          >
+            <VpnKeyOutlined sx={{ color: "action.active", mr: 1, my: 0.5 }} />
+            <TextField
+              onChange={handleChange}
+              id={styles.auth_input}
+              required
+              label="Password"
+              name="password"
+              variant="standard"
+              value={formData.password}
+              className={styles.auth_input}
+            />
+
+            <IconButton
+              className={`${styles.showPassword} ${
+                // passError && styles.errEye''
+                ""
+              }`}
+              onClick={toggleShowPassword}
+            >
+              {!showPassword ? <VisibilityOff /> : <Visibility />}
+            </IconButton>
+          </Box>
         </form>
         {/* {!userSwitch && (
           <p className={styles.terms}>
@@ -170,19 +168,24 @@ const Auth = () => {
           </Button>
         }
 
-<div className={styles.divider}>
-              <hr />
-              <p>or</p>
-              <hr />
-            </div>
-            <Button
-              className={styles.signInWithGoogle__button}
-              onClick={signInWithGoogle}
-            >
-              <Image height={20} width={20} className={styles.googleLogo} src={Go} alt="" />
-              <p>Continue with Google</p>
-            </Button>
-
+        <div className={styles.divider}>
+          <hr />
+          <p>or</p>
+          <hr />
+        </div>
+        <Button
+          className={styles.signInWithGoogle__button}
+          onClick={signInWithGoogle}
+        >
+          <Image
+            height={20}
+            width={20}
+            className={styles.googleLogo}
+            src={Go}
+            alt=""
+          />
+          <p>Continue with Google</p>
+        </Button>
 
         {
           <p className={styles.login__newUserSwitch}>

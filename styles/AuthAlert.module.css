@@ -1,0 +1,19 @@
+
+
+.image__wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100% !important;
+    margin: 30px 0;
+}
+
+.button {
+    text-transform: initial !important;
+ 
+}
+
+.signBtn{
+    background-color: #075ee0 !important;
+    color: #fff !important;
+}

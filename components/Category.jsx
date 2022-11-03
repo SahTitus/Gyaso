@@ -32,8 +32,8 @@ if (index !== 0) setSelected(selected)
             cate?.icon
           }
 
-          height={30}
-          width={30}
+          height={28}
+          width={28}
         />
       <p>{cate?.cate}</p>
     </div>

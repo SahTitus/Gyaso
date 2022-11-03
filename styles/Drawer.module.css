@@ -12,6 +12,10 @@
   margin-top: 20px;
 }
 
+/* .image {
+ 
+} */
+
 .avatar {
   height: 65px !important;
   width: 65px !important;
@@ -74,4 +78,15 @@
   margin: 0 7px;
   color: gray;
   font-size: 4px;
+}
+
+.signin__btn{
+  background-color: #075ee0 !important;
+  color:  #fff !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px 0 !important;
+  text-transform: inherit !important;
+  width: 170px !important;
 }

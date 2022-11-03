@@ -29,8 +29,6 @@ const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="left" ref={ref} {...props} />;
 });
 
-const options = ["articles", "aopics"];
-
 const Navbar = () => {
   const dispatch = useDispatch();
   const { pathname } = useRouter();
@@ -161,9 +159,9 @@ const Navbar = () => {
       <div className={styles.navbar__right}>
         {!show ? (
           <>
-            <IconButton onClick={handleOpen} className={styles.navbar__right}>
+            {/* <IconButton onClick={handleOpen} className={styles.navbar__right}>
               <ShoppingCartOutlined className={styles.avatar} />
-            </IconButton>
+            </IconButton> */}
             <IconButton onClick={handleOpen} className={styles.navbar__right}>
               <AccountCircleOutlined className={styles.avatar} />
             </IconButton>

@@ -9,15 +9,28 @@ import {
 } from "@mui/icons-material";
 
 import { useRouter } from "next/router";
-import { NavLink } from "./NavLink";
+import { useEffect, useState } from "react";
+import { useStateContex } from "../store/StateProvider";
+import AuthAlert from "./AuthAlert";
+import { NavLink} from "./NavLink";
 
 const Footer = () => {
   const { pathname } = useRouter();
+  const [user, setUser]=useState(null)
+  const { setSignInAlert } = useStateContex();
 
   const homeActive = pathname === "/";
-  // const searchActive = pathname === "/searchPage";
   const favActive = pathname === "/favorites";
   const exActive = pathname === "/explore";
+
+  const handleOnClick =()=>{
+if (!user) setSignInAlert(true);
+  }
+
+  useEffect(()=>{
+    const profile = JSON.parse(localStorage.getItem("userProfile"));
+    setUser(profile?.result?._id);
+  },[])
 
   return (
     <div className={`btmNav `}>
@@ -37,7 +50,7 @@ const Footer = () => {
           )}
         </NavLink>
 
-        <NavLink className={`btmNav__option`} href={"/favorites"}>
+        <NavLink onClick={handleOnClick} className={`btmNav__option`} href={`${user ? "/favorites": ''}`}>
           {favActive ? (
             <Star className="navBtm__icon" />
           ) : (
@@ -48,6 +61,8 @@ const Footer = () => {
           <Search className="navBtm__icon" />
         </NavLink>
       </div>
+
+      <AuthAlert />
     </div>
   );
 };

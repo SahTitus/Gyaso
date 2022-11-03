@@ -1,10 +1,10 @@
 import { Box, Button, CircularProgress } from "@mui/material";
-import Head from "next/head";
-import Image from "next/image";
+// import Head from "next/head";
+// import Image from "next/image";
 import { useEffect, useState } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { useDispatch, useSelector } from "react-redux";
-import { HeadlineCard, Mincard, ArticleCard, Category } from "../components";
+import { Mincard, ArticleCard, Category } from "../components";
 import Footer from "../components/Footer";
 import {
   fetchArticles,
@@ -15,7 +15,7 @@ import { getArticlesSSR, loading } from "../redux/articles";
 import styles from "../styles/Home.module.css";
 import { connectToDb } from "../utils/mongodb";
 import { categories } from "../constants/categories.js";
-import HumbleScraper from "./HumbleScraper";
+// import HumbleScraper from "./HumbleScraper";
 import { useStateContex } from "../store/StateProvider";
 
 function Home({ articlesSSR }) {
@@ -42,7 +42,7 @@ function Home({ articlesSSR }) {
 
   return (
     <div className={styles.home}>
-      <div styles={styles.headlines__container}>
+      <div className={styles.headlines__container}>
         <div className={styles.home__categories}>
           {categories.map((category, i) => (
             <Category
@@ -109,7 +109,7 @@ function Home({ articlesSSR }) {
           )}
         </InfiniteScroll>
       </div>
-
+     
       <Footer />
     </div>
   );

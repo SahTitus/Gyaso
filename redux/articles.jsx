@@ -3,6 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   isLoading: true,
   articles: [],
+  favoriteArticles: [],
   queriedArticles: [],
   error: [],
 };
@@ -19,6 +20,7 @@ export const articlesSlice = createSlice({
       state.articles = action.payload;
       state.isLoading = false;
     },
+
     search: (state, action) => {
       state.queriedArticles = action.payload;
       state.isLoading = false;
@@ -44,6 +46,19 @@ export const articlesSlice = createSlice({
       state.isLoading = false;
       state.error = action.payload;
     },
+    getFavoriteArticles: (state, action) => {
+      state.favoriteArticles = action.payload;
+      state.isLoading = false;
+    },
+    addFavoriteArticle: (state, action) => {
+      state.favoriteArticles = action.payload;
+      state.favoriteArticles = [...state.favoriteArticles, action.payload];
+    },
+    removeFromFavoriteArticles: (state, action) => {
+      state.favoriteArticles = state.favoriteArticles.filter(
+        (article) => article._id !== action.payload
+      );
+    },
   },
 });
 
@@ -51,6 +66,9 @@ export const {
   getArticles,
   getArticlesSSR,
   getArticlesByCategory,
+  getFavoriteArticles,
+  addFavoriteArticle,
+  removeFromFavoriteArticles,
   loading,
   getMoreArticles,
   isError,

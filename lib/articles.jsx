@@ -1,13 +1,15 @@
 import axios from "axios";
 import {
   getArticles,
-getArticlesSSR,
+  getArticlesSSR,
   getArticlesByCategory,
   getMoreArticles,
   loading,
   isError,
   search,
+  removeFromFavoriteArticles,
   searchMore,
+  getFavoriteArticles,
 } from "../redux/articles";
 
 export const fetchArticles = (skip) => async (dispatch) => {
@@ -35,7 +37,6 @@ export const fetchMoreArticles = (skip) => async (dispatch) => {
 };
 
 export const fetchByCategory = (category, skip) => async (dispatch) => {
-
   dispatch(loading);
 
   try {
@@ -48,14 +49,11 @@ export const fetchByCategory = (category, skip) => async (dispatch) => {
   }
 };
 export const fetchMoreByCategory = (category) => async (dispatch) => {
- 
   try {
-
-
     const { data } = await axios.get(
       `/api/articles/category?queryCategory=${category}`
     );
-   
+
     dispatch(getMoreArticles(data));
   } catch (error) {
     dispatch(isError(error));
@@ -63,7 +61,7 @@ export const fetchMoreByCategory = (category) => async (dispatch) => {
 };
 
 export const searchArticles = (searchTerm, skip) => async (dispatch) => {
-  dispatch(loading)
+  dispatch(loading);
   try {
     const { data } = await axios.get(
       `/api/articles/search?searchTerm=${searchTerm}&skip=${skip}`
@@ -74,7 +72,6 @@ export const searchArticles = (searchTerm, skip) => async (dispatch) => {
   }
 };
 export const searchMoreArticles = (searchTerm, skip) => async (dispatch) => {
-
   try {
     const { data } = await axios.get(
       `/api/articles/search?searchTerm=${searchTerm}&skip=${skip}`
@@ -82,5 +79,37 @@ export const searchMoreArticles = (searchTerm, skip) => async (dispatch) => {
     dispatch(searchMore(data));
   } catch (error) {
     dispatch(isError(error));
+  }
+};
+
+export const saveArticles = (id, articleId) => async (dispatch) => {
+  try {
+    const { data } = await axios.patch(
+      `/api/users/${id}?articleId=${articleId}`
+    );
+
+    dispatch(getUser(data));
+  } catch (error) {
+    dispatch(isError(error));
+  }
+};
+
+export const fetchSavedArticles = (userId) => async (dispatch) => {
+  dispatch(loading());
+
+  try {
+    const { data } = await axios.get(`/api/users/${userId}`);
+
+    dispatch(getFavoriteArticles(data));
+  } catch (error) {
+    dispatch(isError(error));
+  }
+};
+
+export const deleteFromFavorites = (id) => async (dispatch) => {
+  try {
+    dispatch(removeFromFavoriteArticles(id));
+  } catch (err) {
+    dispatch(isError(err));
   }
 };
