@@ -23,6 +23,17 @@ export const fetchArticles = (skip) => async (dispatch) => {
     dispatch(isError(error));
   }
 };
+export const fetchArticlesSSR = (skip) => async (dispatch) => {
+  // dispatch(loading());
+
+  try {
+    const { data } = await axios.get(`/api/articles?skip=${skip}`);
+
+    dispatch(getArticlesSSR(data));
+  } catch (error) {
+    dispatch(isError(error));
+  }
+};
 
 export const fetchMoreArticles = (skip) => async (dispatch) => {
   dispatch(loading());

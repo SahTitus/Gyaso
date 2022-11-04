@@ -11,12 +11,14 @@ import styles from "../styles/SearchPage.module.css";
 import SearchAvatar from "../assets/SearchAvatar.jpg";
 import { useStateContex } from "../store/StateProvider";
 import { useRouter } from "next/router";
+import PullToRefresh from "react-simple-pull-to-refresh";
 
 const SearchPage = () => {
   const dispatch = useDispatch();
   const router = useRouter();
   const [searchTerm, setSearchTerm] = useState("");
   const [hasMore, setHasMore] = useState(true);
+  const [boolToRefresh, setBoolToRefresh] = useState(false);
   const { queriedArticles, isLoading } = useSelector((state) => state.articles);
   const { searchTermLg } = useStateContex();
   const getMoreArticles = async () => {
@@ -36,7 +38,18 @@ const SearchPage = () => {
       dispatch(searchArticles(searchTermLg));
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [boolToRefresh]);
+
+  const refreshHandler = async () => {
+    const currentValue = boolToRefresh;
+    setBoolToRefresh(!currentValue);
+
+    setTimeout(() => {
+      setBoolToRefresh(false);
+    }, 8000);
+  };
+
+  
 
   return (
     <div className={styles.searchPage}>
@@ -105,9 +118,11 @@ const SearchPage = () => {
             }
             endMessage={<h4>Nothing more to show</h4>}
           >
+              <PullToRefresh onRefresh={refreshHandler}>
             {queriedArticles.map((article, i) => (
               <ArticleCard key={article._id + i} article={article} />
             ))}
+            </PullToRefresh>
           </InfiniteScroll>
         </div>
       )}
