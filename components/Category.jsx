@@ -28,7 +28,7 @@ if (index !== 0) setSelected(selected)
     <div onClick={handleClick} className={`${styles.cateBtn} ${selected === index ? styles.select : styles.cateBtn}`}>
         <Image
           className={styles.icon}
-          alt={cate.title}
+          alt={cate.cate}
           src={
             cate?.icon
           }

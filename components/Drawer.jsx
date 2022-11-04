@@ -63,11 +63,11 @@ const Drawer = ({ handleClose }) => {
       </div>
       <div className={styles.logOut}>
         {user?.result?._id ? (
-          <Button onClick={logOut} className={styles.logOut_btn}>
+          <Button onClick={logOut} className={styles.logOut_btn}  type="button" >
             Log Out
           </Button>
         ) : (
-          <Button onClick={()=>router.push('/auth')} className={styles.signin__btn}>
+          <Button onClick={()=>router.push('/auth')} className={styles.signin__btn}  type="button" >
             Sign in
           </Button>
         )}

@@ -41,7 +41,6 @@ body {
 
 .header {
   height: 10%;
-  /* background-color: blue; */
 }
 
 .main {
@@ -51,12 +50,11 @@ body {
 
 .footer {
   height: 10%;
-  /* background-color: blue; */
 }
 
 /* // footer */
 
-@import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
+/* @import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap"); */
 
 .btmNav {
   display: flex;
@@ -125,7 +123,6 @@ body {
 
   .main {
     background-color: rgb(247, 251, 255);
-
     height: 100vh;
   }
 
@@ -135,7 +132,6 @@ body {
     flex-direction: column;
     justify-content: center;
     height: 90%;
-    /* margin-top: 60px; */
     position: fixed;
     right: 0;
     top: 60px;
@@ -146,16 +142,15 @@ body {
     align-items: center;
   }
 
-  .icon{
+  .icon {
     margin: 0 10px;
   }
 }
 
 @media screen and (max-width: 1000px) {
-  
   .main {
     background-color: rgb(247, 251, 255);
-  
+
     height: 100vh;
   }
   .divRight {
@@ -169,37 +164,32 @@ body {
   }
 }
 @media screen and (max-width: 720px) {
-  
   .main {
     background-color: #fff;
-  
+
     height: 100vh;
   }
   .divRight {
     display: none;
   }
   .divFlex {
-   display: none;
-  } 
-
+    display: none;
+  }
 }
-@media screen and  (min-width: 720px) {
-  body{
+@media screen and (min-width: 720px) {
+  body {
     background-color: rgb(247, 251, 255);
   }
-  
+
   .btmNav {
     width: 60% !important;
-
   }
 }
-@media screen and  (min-width: 520px) {
-  
-  .main__lgSearch{
+@media screen and (min-width: 520px) {
+  .main__lgSearch {
     width: 100%;
   }
 }
-
 
 /* @media (prefers-color-scheme: dark) { */
 /* html {

@@ -30,7 +30,6 @@ function Layout({ children }) {
       <Head>
         <title>Healthtage</title>
         <link rel="icon" href="/favicon.ico" />
-       
       </Head>
       {!hide && (
         <header className="header">
@@ -51,7 +50,7 @@ function Layout({ children }) {
         {pathname === "/" && (
           <div className="divRight">
             <div className="widget__icons">
-              <IconButton onClick={toggleShowWidget} className="icon">
+              <IconButton onClick={toggleShowWidget} className="icon"  type="button" >
                 <AutoAwesomeOutlined className={""} />
               </IconButton>
             </div>

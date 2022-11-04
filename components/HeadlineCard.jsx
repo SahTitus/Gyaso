@@ -25,11 +25,11 @@ const HeadlineCard = ({ image }) => {
               <p>Hookwal</p>
             </div>
             <div className={styles.bottomRight}>
-              <IconButton className={styles.bottomRightIcon__wrapper}>
+              <IconButton className={styles.bottomRightIcon__wrapper}  type="button" >
                 {" "}
                 <StarOutline className={styles.bottomRightIcon} />
               </IconButton>
-              <IconButton className={styles.bottomRightIcon__wrapper}>
+              <IconButton className={styles.bottomRightIcon__wrapper}  type="button" >
                 <BoxArrowUp
                   className={`${styles.bottomRightIcon} ${styles.shareIcon}`}
                 />

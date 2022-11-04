@@ -57,12 +57,14 @@ const SearchPage = () => {
         <IconButton
           onClick={handleSearch}
           className={styles.searchIcon__hideLg}
+          type="button" aria-label="search"
         >
           <Search />
         </IconButton>
         <IconButton
           onClick={handleSearch}
           className={styles.searchIcon__showLg}
+          type="button" aria-label="go back"
         >
           <ArrowBack onClick={() => router.back()} />
         </IconButton>
@@ -79,6 +81,7 @@ const SearchPage = () => {
           <IconButton
             className={styles.searchIcon__showLg}
             onClick={handleSearch}
+            type="button" aria-label="search"
           >
             <Search className={styles.searchIcon} />
           </IconButton>
@@ -113,7 +116,7 @@ const SearchPage = () => {
             hasMore={hasMore}
             loader={
               <Box className={styles.loadingState}>
-                <CircularProgress className={styles.progress} />
+                <CircularProgress className={styles.progress} role="progressbar" id="combo" aria-label="loading data" />
               </Box>
             }
             endMessage={<h4>Nothing more to show</h4>}

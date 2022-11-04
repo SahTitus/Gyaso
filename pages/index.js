@@ -60,25 +60,22 @@ function Home({ articlesSSR }) {
 
   return (
     <div className={styles.home}>
-
-        <div  className={styles.headlines__container}>
-          <div className={styles.home__categories}>
-            {categories.map((category, i) => (
-              <Category
-                dataSSR={articlesSSR}
-                setCategory={setCategory}
-                key={i}
-                cate={category}
-              />
-            ))}
-          </div>
-          {/* {category.cate === "all" && (
+      <div className={styles.headlines__container}>
+        <div className={styles.home__categories}>
+          {categories.map((category, i) => (
+            <Category
+              dataSSR={articlesSSR}
+              setCategory={setCategory}
+              key={i}
+              cate={category}
+            />
+          ))}
+        </div>
+        {/* {category.cate === "all" && (
           <>
             <div className={styles.headlines}>
               <HumbleScraper />
               <HeadlineCard image="https://newsghana.com.gh/wp-content/uploads/2021/04/zjwoqz4kiaq-696x392.jpg" />
-              <HeadlineCard image="https://greatpeopleinside.com/wp-content/uploads/2017/05/HR-GR8-technology.jpg" />
-              <HeadlineCard image="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcREn_4u__5oaROubmkAfBLtSgXyUz_M3WSOfG5P4-o5kA&s" />
             </div>
             <div className={styles.seeMore}>
   
@@ -86,38 +83,32 @@ function Home({ articlesSSR }) {
             </div>
           </>
         )} */}
-        </div>
+      </div>
 
-        {/* <div styles={styles.headlines__container}>
-        <div className={styles.headlines__containerTop}>
-          <h3>Headlines</h3>
-          <h4>See More</h4>
-        </div>
-        <div className={styles.headlines}>
-          <h1>Show random 10 topics on refresh </h1>
-        </div>
-      </div> */}
 
-        {/* <div styles={styles.headlines__container}> */}
-       
-        <div
-          className={`${styles.articles} ${
-            category?.cate?.length && category?.cate !== "all" && styles.pushup
-          }`}
+      <div
+        className={`${styles.articles} ${
+          category?.cate?.length && category?.cate !== "all" && styles.pushup
+        }`}
+      >
+        <InfiniteScroll
+          className={`${styles.articles__wrapper}`}
+          dataLength={articles.length}
+          next={getMorePost}
+          hasMore={hasMore}
+          loader={
+            <Box className={styles.loadingState}>
+              <CircularProgress
+                className={styles.progress}
+                role="progressbar"
+                id="combo"
+                aria-label="loading data"
+              />
+            </Box>
+          }
+          endMessage={<h4>Nothing more to show</h4>}
         >
-          <InfiniteScroll
-            className={`${styles.articles__wrapper}`}
-            dataLength={articles.length}
-            next={getMorePost}
-            hasMore={hasMore}
-            loader={
-              <Box className={styles.loadingState}>
-                <CircularProgress className={styles.progress} />
-              </Box>
-            }
-            endMessage={<h4>Nothing more to show</h4>}
-          >
-             <PullToRefresh   className='pull_to_refresh' onRefresh={refreshHandler}>
+          <PullToRefresh className="pull_to_refresh" onRefresh={refreshHandler}>
             {articles.map(
               (article, i) =>
                 article?.link &&
@@ -128,13 +119,11 @@ function Home({ articlesSSR }) {
                   <ArticleCard key={article._id + i} article={article} />
                 ))
             )}
-            </PullToRefresh>
-          </InfiniteScroll>
-        </div>
-     
+          </PullToRefresh>
+        </InfiniteScroll>
+      </div>
 
-        <Footer />
-
+      <Footer />
     </div>
   );
 }

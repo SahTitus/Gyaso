@@ -50,7 +50,7 @@ const Mincard = ({ article, isWidget, isFavorite }) => {
   };
 
   const Saved = () => (
-    <IconButton onClick={handleSave} className={styles.bottom__iconsWrapper}>
+    <IconButton onClick={handleSave} className={styles.bottom__iconsWrapper}  type="button" aria-label="save">
       {isSaved ? (
         <Star className={`${styles.bottom__icons} ${styles.saved}`} />
       ) : (
@@ -103,7 +103,7 @@ const Mincard = ({ article, isWidget, isFavorite }) => {
               <span>12h</span> */}
             </p>
             {!isWidget && (
-              <IconButton>
+              <IconButton  type="button" aria-label="more">
                 <MoreHoriz className={styles.moreHoriz} />
               </IconButton>
             )}
@@ -138,6 +138,7 @@ const Mincard = ({ article, isWidget, isFavorite }) => {
           <IconButton
             onClick={handleSharing}
             className={styles.bottomRightIcon__wrapper}
+            type="button" aria-label="share"
           >
             <BoxArrowUp
               className={`${styles.bottomRightIcon} ${styles.shareIcon}`}

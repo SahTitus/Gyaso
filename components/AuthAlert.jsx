@@ -84,12 +84,13 @@ export default function AuthAlert() {
         </DialogContent>
 
         <DialogActions>
-          <Button className={styles.button} onClick={handleClose}>
+          <Button className={styles.button} onClick={handleClose}  type="button">
             No, thanks
           </Button>
           <Button
             onClick={signin}
             className={`${styles.button} ${styles.signBtn}`}
+            type="button" 
           >
             Sign in
           </Button>

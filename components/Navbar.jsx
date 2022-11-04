@@ -3,14 +3,11 @@ import {
   ArrowBack,
   FilterAltOutlined,
   Search,
-  ShoppingCart,
-  ShoppingCartOutlined,
 } from "@mui/icons-material";
 import {
   Button,
   Dialog,
-  DialogActions,
-  DialogTitle,
+
   IconButton,
   Menu,
   MenuItem,
@@ -94,7 +91,7 @@ const Navbar = () => {
             {pathname === "/explore" && <h5>Topics</h5>}
             {pathname.includes("/explore/moretopics") && (
               <>
-                <IconButton onClick={() => router.back()}>
+                <IconButton onClick={() => router.back()}  type="button" aria-label="go back">
                   <ArrowBack className={styles.searchIcon} />
                 </IconButton>
                 <h5>Cancer</h5>
@@ -113,7 +110,7 @@ const Navbar = () => {
         >
           <div className={styles.searchContainer}>
             <IconButton
-            
+             type="button" aria-label="filter"
               onClick={handleClickListItem}
               className={styles.searchIcon__wrapper}
             >
@@ -149,6 +146,7 @@ const Navbar = () => {
             <IconButton
               onClick={handleSearch}
               className={styles.searchIcon__wrapper}
+              type="button" aria-label="search"
             >
               <Search className={styles.searchIcon} />
             </IconButton>
@@ -162,7 +160,7 @@ const Navbar = () => {
             {/* <IconButton onClick={handleOpen} className={styles.navbar__right}>
               <ShoppingCartOutlined className={styles.avatar} />
             </IconButton> */}
-            <IconButton onClick={handleOpen} className={styles.navbar__right}>
+            <IconButton onClick={handleOpen} className={styles.navbar__right}  type="button" aria-label="profile">
               <AccountCircleOutlined className={styles.avatar} />
             </IconButton>
           </>
@@ -180,6 +178,7 @@ const Navbar = () => {
                   <IconButton
                     onClick={handleSearch}
                     className={styles.searchIcon__wrapper}
+                    type="button" aria-label="search"
                   >
                     <Search className={styles.searchIcon} />
                   </IconButton>

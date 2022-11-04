@@ -70,7 +70,7 @@ const Auth = () => {
   return (
     <div className={styles.auth}>
       <div className={styles.top}>
-        <IconButton onClick={() => router.back()}>
+        <IconButton onClick={() => router.back()}  type="button" aria-label="go back">
           <ArrowBack />
         </IconButton>
       </div>
@@ -145,6 +145,7 @@ const Auth = () => {
                 ""
               }`}
               onClick={toggleShowPassword}
+              type="button" aria-label="show password"
             >
               {!showPassword ? <VisibilityOff /> : <Visibility />}
             </IconButton>
@@ -163,6 +164,7 @@ const Auth = () => {
             }`}
             onClick={handleSubmit}
             disabled={disableBtn}
+            type="submit" 
           >
             {userSwitch ? "Sign In" : "Sign Up"}
           </Button>
@@ -176,6 +178,7 @@ const Auth = () => {
         <Button
           className={styles.signInWithGoogle__button}
           onClick={signInWithGoogle}
+          type="submit" 
         >
           <Image
             height={20}

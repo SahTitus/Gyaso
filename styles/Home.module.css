@@ -56,14 +56,6 @@
   margin-top: 50px;
 }
 
-/* .articles {
-  margin-top: 5px;
-}
-
-.pushup {
-  margin-top: 10px;
-} */
-
 .articles__wrapper {
   display: flex;
   flex-direction: column;
@@ -75,7 +67,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 30px;
+  margin-top: 10px;
 }
 
 .progress {

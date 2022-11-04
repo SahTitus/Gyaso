@@ -101,25 +101,6 @@
   -webkit-user-select: none !important;
 }
 
-/* @media (min-width: 1000px) {
-  .searchPage {
-    width: 60%;
-  }
-
-  .articles__wrapper {
-    width: 100%;
-  
-  }
-
-  .searchedArticles {
-
-    width: 60%;
-     margin-top: 20px; 
-  
-  }
-
-}
-*/
 @media (min-width: 760px) {
 
   .searchPage {

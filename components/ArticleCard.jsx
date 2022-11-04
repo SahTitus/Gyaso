@@ -54,7 +54,7 @@ const ArticleCard = ({ article }) => {
   };  
 
   const Saved = () => (
-    <IconButton onClick={handleSave} className={styles.bottom__iconsWrapper}>
+    <IconButton onClick={handleSave} className={styles.bottom__iconsWrapper}  type="button" aria-label="save">
       {isSaved ? (
         <Star className={`${styles.bottom__icons} ${styles.saved}`} />
       ) : (
@@ -117,6 +117,7 @@ const ArticleCard = ({ article }) => {
                 <IconButton
                   onClick={handleSharing}
                   className={styles.bottom__iconsWrapper}
+                  type="button" aria-label="share"
                 >
                   <BoxArrowUp className={styles.bottom__icons} />
                 </IconButton>

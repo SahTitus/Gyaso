@@ -64,7 +64,7 @@ const Explore = ({ topicsSSR }) => {
           hasMore={hasMore}
           loader={
             <Box className={styles.loadingState}>
-              <CircularProgress className={styles.progress} />
+              <CircularProgress className={styles.progress} role="progressbar" id="combo" aria-label="loading data" />
             </Box>
           }
           endMessage={<h4>Nothing more to show</h4>}
@@ -87,7 +87,7 @@ const Explore = ({ topicsSSR }) => {
           hasMore={hasMore}
           loader={
             <Box className={styles.loadingState}>
-              <CircularProgress className={styles.progress} />
+              <CircularProgress className={styles.progress} role="progressbar" id="combo" aria-label="loading data" />
             </Box>
           }
           endMessage={<h4>Nothing more to show</h4>}
@@ -106,7 +106,7 @@ const Explore = ({ topicsSSR }) => {
       {queriedTopics.length > 0 ||
         (topics.length > 0 && (
           <div className={styles.fetchMore__lg}>
-            <Button onClick={getMorePost} className={styles.fetchMore__btn}>
+            <Button onClick={getMorePost} className={styles.fetchMore__btn}  type="button" aria-label="see more">
               See more
             </Button>
           </div>

@@ -35,14 +35,14 @@ if (!user) setSignInAlert(true);
   return (
     <div className={`btmNav `}>
       <div className="btmNav__container">
-        <NavLink className={`btmNav__option`} href={"/"}>
+        <NavLink className={`btmNav__option`} href={"/"} aria-label="Home">
           {!homeActive ? (
             <HomeOutlined className="navBtm__icon" />
           ) : (
             <HomeRounded className="navBtm__icon" />
           )}
         </NavLink>
-        <NavLink className={`btmNav__option`} href={"/explore"}>
+        <NavLink className={`btmNav__option`} href={"/explore"} aria-label="Topics">
           {!exActive ? (
             <AutoAwesomeOutlined className="navBtm__icon" />
           ) : (
@@ -50,14 +50,14 @@ if (!user) setSignInAlert(true);
           )}
         </NavLink>
 
-        <NavLink onClick={handleOnClick} className={`btmNav__option`} href={`${user ? "/favorites": ''}`}>
+        <NavLink onClick={handleOnClick} className={`btmNav__option`} href={`${user ? "/favorites": ''}`} aria-label="Favorites">
           {favActive ? (
             <Star className="navBtm__icon" />
           ) : (
             <StarOutline className="navBtm__icon" />
           )}
         </NavLink>
-        <NavLink className="btmNav__option" href={"/searchPage"}>
+        <NavLink className="btmNav__option" href={"/searchPage"} aria-label="Search page">
           <Search className="navBtm__icon" />
         </NavLink>
       </div>

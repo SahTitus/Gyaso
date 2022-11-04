@@ -16,10 +16,6 @@
 line-height: 10px;
 }
 
-/* .widget::-webkit-scrollbar{
-    display: none;
-} */
-
 .sidebar::-webkit-scrollbar{
     visibility: visible !important;
     

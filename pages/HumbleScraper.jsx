@@ -228,24 +228,24 @@ const HumbleScraper = () => {
       <h3>{errMsg.message}</h3>
       <h3>{successMsg.msg}</h3>
 
-      <button onClick={handleNhs}>NHS</button>
-      <button onClick={handleMbgPages}>Mbg Pages</button>
-      <button onClick={handleMbgLatest}>Mbg Latest</button>
-      <button onClick={handleMntTopics}>MNT Topics</button>
-      <button onClick={handleMntCate}>MNT Categories</button>
-      <button onClick={handleHealthlineTopics}>Healthline Topics</button>
-      <button onClick={handleHealthlineCates}>Healthline Categories</button>
+      <button  type="button" aria-label="humble" onClick={handleNhs}>NHS</button>
+      <button  type="button" aria-label="humble" onClick={handleMbgPages}>Mbg Pages</button>
+      <button  type="button" aria-label="humble" onClick={handleMbgLatest}>Mbg Latest</button>
+      <button  type="button" aria-label="humble" onClick={handleMntTopics}>MNT Topics</button>
+      <button  type="button" aria-label="humble" onClick={handleMntCate}>MNT Categories</button>
+      <button  type="button" aria-label="humble" onClick={handleHealthlineTopics}>Healthline Topics</button>
+      <button  type="button" aria-label="humble" onClick={handleHealthlineCates}>Healthline Categories</button>
 
-      <button onClick={handleOnHealth}>Onhealth</button>
-      <button onClick={handleGaiam}>Gaiam</button>
-      <button onClick={handleSanteplusmag}>Santeplusmag</button>
-      <button onClick={handleHarvard}>Harvard</button>
-      <button onClick={handleSelf}>Self</button>
-      <button onClick={handleShape}>Shape</button>
-      <button onClick={handleEatthis}>Eat this</button>
-      <button onClick={handleArtofhealthyliving}>Artofhealthyliving</button>
-      <button onClick={handleMountelizabeth}>Mountelizabeth</button>
-      <button className="scrape-reset-btn" onClick={reset}>
+      <button  type="button" aria-label="humble" onClick={handleOnHealth}>Onhealth</button>
+      <button  type="button" aria-label="humble" onClick={handleGaiam}>Gaiam</button>
+      <button  type="button" aria-label="humble" onClick={handleSanteplusmag}>Santeplusmag</button>
+      <button  type="button" aria-label="humble" onClick={handleHarvard}>Harvard</button>
+      <button  type="button" aria-label="humble" onClick={handleSelf}>Self</button>
+      <button  type="button" aria-label="humble" onClick={handleShape}>Shape</button>
+      <button  type="button" aria-label="humble" onClick={handleEatthis}>Eat this</button>
+      <button  type="button" aria-label="humble" onClick={handleArtofhealthyliving}>Artofhealthyliving</button>
+      <button  type="button" aria-label="humble" onClick={handleMountelizabeth}>Mountelizabeth</button>
+      <button  type="button" aria-label="humble" className="scrape-reset-btn" onClick={reset}>
         Reset
       </button>
     </div>

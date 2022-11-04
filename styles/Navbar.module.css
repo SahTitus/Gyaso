@@ -69,32 +69,23 @@
   font-size: 23px !important;
 }
 
-.drawer{
+.drawer {
   display: flex;
   flex-direction: column;
-  /* top: -25%; */
-
 }
 
-/* .MuiDialog-container {
-  top: 3000px !important;
-  margin: 700px !important;
-} */
 .searchArticles {
-display: none;
+  display: none;
 }
-.lg__search{
-display: none;
-
+.lg__search {
+  display: none;
 }
-
 
 @media screen and (min-width: 720px) {
-.navbar{
-  position: fixed;
-  /* display: contents; */
-}
-
+  .navbar {
+    position: fixed;
+    /* display: contents; */
+  }
 }
 @media screen and (min-width: 1000px) {
   .searchArticles {
@@ -106,5 +97,4 @@ display: none;
   .lg__search {
     display: flex;
   }
-
 }
