@@ -63,7 +63,7 @@ const Auth = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(register({ ...formData, signin: userSwitch }, router));
+    dispatch(register({ ...formData, signin: userSwitch, google:false }, router));
   };
 
   return (

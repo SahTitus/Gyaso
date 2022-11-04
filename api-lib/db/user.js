@@ -35,7 +35,7 @@ export const findUserByEmail = async (db, email) => {
 
 export const insertUser = async (
   db,
-  { email, originalPassword, name, photo, favoriteArticles }
+  { email, originalPassword, name, photo, favoriteArticles=[] }
 ) => {
   const user = {
     emailVerified: false,
@@ -58,7 +58,7 @@ export const insertUser = async (
 };
 export const insertUserGoogle = async (
   db,
-  { email, name, photo, favoriteArticles }
+  { email, name, photo,  favoriteArticles=[]}
 ) => {
   const user = {
     emailVerified: false,

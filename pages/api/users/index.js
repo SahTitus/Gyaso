@@ -2,6 +2,7 @@ import { connectToDb } from "../../../utils/mongodb";
 import {
   findUserByEmail,
   insertUser,
+  insertUserGoogle,
   loginWithEmailAndPassword,
 } from "../../../api-lib/db";
 import jwt from "jsonwebtoken";
@@ -55,7 +56,6 @@ export default async function handler(req, res) {
       email,
       originalPassword: password,
       name,
-      favoriteArticles: [],
     });
 
     const token = jwt.sign({ email: result.email, id: result._id }, secret, {
@@ -75,11 +75,10 @@ export default async function handler(req, res) {
       );
       res.status(200).json({ result: emailExist, token });
     } else {
-      const result = await insertUser(db, {
+      const result = await insertUserGoogle(db, {
         email,
         photo,
         name,
-        favoriteArticles: [],
       });
 
       const token = jwt.sign({ email: result.email, id: result._id }, secret, {
