@@ -44,9 +44,4 @@ if (method === "GET" && queryCategory) {
     res.status(500).json(error);
   }
 }
-  
-  // .collection("articles")
-  // .find()
-  // .skip(skip).limit(default_limit)
-  // .toArray();
 }

@@ -203,12 +203,6 @@ const Navbar = () => {
             borderRadius: 1.5,
           },
         }}
-        // sx={{
-        //   "& .MuiDialog-container": {
-        //     justifyContent: "flex-end",
-        //     alignItems: "flex-start"
-        //   }
-        // }}
         PaperProps={{
           sx: {
             m: 0,

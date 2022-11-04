@@ -3,9 +3,7 @@ import {
   isError,
   getUser,
   isLoading,
-
 } from "../redux/auth";
-// import * as api from "../api/index.js";
 import axios from 'axios'
 
 export const fetchUser = (id) => async (dispatch) => {

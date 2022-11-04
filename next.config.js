@@ -14,7 +14,7 @@ skipWaiting: true,
 const nextConfig = withPWA({
   reactStrictMode: true,
   swcMinify: true,
-
+  productionBrowserSourceMaps: false,
   images: {
     domains: [
       "img.freepik.com",

@@ -21,7 +21,6 @@ const initialState = {
   name: "",
   email: "",
   password: "",
-  // confirmPassword: "",
 };
 
 const Auth = () => {
@@ -140,10 +139,7 @@ const Auth = () => {
             />
 
             <IconButton
-              className={`${styles.showPassword} ${
-                // passError && styles.errEye''
-                ""
-              }`}
+              className={`${styles.showPassword} `}
               onClick={toggleShowPassword}
               type="button" aria-label="show password"
             >
@@ -151,12 +147,6 @@ const Auth = () => {
             </IconButton>
           </Box>
         </form>
-        {/* {!userSwitch && (
-          <p className={styles.terms}>
-            By signing up your`re agree to our <span>Terms & Conditions</span>{" "}
-            and <span>Privacy Policy</span>
-          </p>
-        )} */}
         {
           <Button
             className={`${styles.signIn__button} ${

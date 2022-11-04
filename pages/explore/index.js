@@ -46,7 +46,7 @@ const Explore = ({ topicsSSR }) => {
             <Image
               className={styles.image}
               src={SearchAvatar}
-              alt="Search Icon"
+              alt=""
               placeholder="blur"
               height={300}
               width={300}

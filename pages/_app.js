@@ -8,12 +8,12 @@ import { StateProvider } from "../store/StateProvider";
 function MyApp({ Component, pageProps }) {
   return (
     <Provider store={store}>
-            <StateProvider>
-    <Layout>
-      <Component {...pageProps} />
-    </Layout>
-    </StateProvider>
-    </Provider >
+      <StateProvider>
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+      </StateProvider>
+    </Provider>
   );
 }
 

@@ -92,7 +92,7 @@ const Mincard = ({ article, isWidget, isFavorite }) => {
               " https://img.freepik.com/free-psd/3d-stethoscope-icon_23-2149257784.jpg?w=2000"
             }
             height={90}
-            width={110}
+            width={120}
           />
         )}
         <div className={styles.mainInfo}>

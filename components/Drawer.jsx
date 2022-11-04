@@ -15,7 +15,7 @@ import { useRouter } from "next/router";
 
 const Drawer = ({ handleClose }) => {
   const dispatch = useDispatch();
-  const router= useRouter();
+  const router = useRouter();
   const user = JSON.parse(localStorage.getItem("userProfile"));
 
   const logOut = () => {
@@ -28,18 +28,16 @@ const Drawer = ({ handleClose }) => {
       <div className={styles.top}>
         {user?.result?._id ? (
           <Avatar
-            src={
-              " https://img.freepik.com/free-psd/3d-stethoscope-icon_23-2149257784.jpg?w=2000"
-            }
+            src="https://img.freepik.com/free-psd/3d-stethoscope-icon_23-2149257784.jpg?w=2000"
             className={styles.avatar}
           />
         ) : (
           <Image
-           height={60}
-           width={60}
+            height={60}
+            width={60}
             className={styles.image}
             src={Ava}
-            alt={'Profile'}
+            alt={"Profile"}
             placeholder="blur"
             blurDataURL={Ava}
           />
@@ -63,11 +61,15 @@ const Drawer = ({ handleClose }) => {
       </div>
       <div className={styles.logOut}>
         {user?.result?._id ? (
-          <Button onClick={logOut} className={styles.logOut_btn}  type="button" >
+          <Button onClick={logOut} className={styles.logOut_btn} type="button">
             Log Out
           </Button>
         ) : (
-          <Button onClick={()=>router.push('/auth')} className={styles.signin__btn}  type="button" >
+          <Button
+            onClick={() => router.push("/auth")}
+            className={styles.signin__btn}
+            type="button"
+          >
             Sign in
           </Button>
         )}

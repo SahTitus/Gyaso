@@ -1,7 +1,6 @@
 import React from "react";
 import styles from "../styles/HeadlineCard.module.css";
 import { Avatar, IconButton } from "@mui/material";
-import Pic from "./Pic.jpg";
 import { StarOutline } from "@mui/icons-material";
 import { BoxArrowUp } from "react-bootstrap-icons";
 import Image from "next/image";

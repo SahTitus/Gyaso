@@ -1,5 +1,4 @@
-import { MoreHoriz, Star, StarOutline } from "@mui/icons-material";
-import { Bookmark, BoxArrowUp } from "react-bootstrap-icons";
+import {  IosShareOutlined, Star, StarOutline } from "@mui/icons-material";
 import React, { useState } from "react";
 import styles from "../styles/ArticleCard.module.css";
 import { IconButton } from "@mui/material";
@@ -17,10 +16,6 @@ const ArticleCard = ({ article }) => {
   const url = `${article?.link}`;
   const title = `${article?.title}`;
   const shareDetails = { title, url };
-
-  // const handleSave = () => {
-  //   dispatch(saveArticles(user?.result?._id, article._id));
-  // };
 
   const handleSharing = async () => {
     if (navigator.share) {
@@ -66,13 +61,14 @@ const ArticleCard = ({ article }) => {
   return (
     <div className={styles.articleCard__container}>
       <div className={styles.card}>
-        <a href={article.link} target="_self" className={styles.link}>
+        <a href={article?.link} target="_self" className={styles.link}>
           <div className={styles.card__image}>
             <Image
               layout="fill"
+             
               className={styles.image}
               src={
-                article.image ||
+                article?.image ||
                 " https://img.freepik.com/free-psd/3d-stethoscope-icon_23-2149257784.jpg?w=2000"
               }
               alt={article.title}
@@ -87,7 +83,7 @@ const ArticleCard = ({ article }) => {
         <div className={styles.content__wrapper}>
           <a
             target="_self"
-            href={article.link}
+            href={article?.link}
             className={`${styles.link} ${styles.card__info}`}
           >
             {/*CAN REPLACE WITH CREATOR OR AUTHOR NAME AVATAR MIF START POSTING */}
@@ -99,13 +95,13 @@ const ArticleCard = ({ article }) => {
           <div className={styles.card__info}>
             <div className={styles.card__infoBottom}>
               <a
-                href={article.link}
+                href={article?.link}
                 target="_self"
                 className={`${styles.link} ${styles.source}`}
               >
                 <Image
                   className={styles.source__image}
-                  src={article.source_img}
+                  src={article?.source_img}
                   alt={article.source}
                   width={20}
                   height={20}
@@ -119,7 +115,7 @@ const ArticleCard = ({ article }) => {
                   className={styles.bottom__iconsWrapper}
                   type="button" aria-label="share"
                 >
-                  <BoxArrowUp className={styles.bottom__icons} />
+                  <IosShareOutlined className={styles.bottom__icons} />
                 </IconButton>
               </div>
             </div>
