@@ -35,7 +35,7 @@ export const createProduct = async (db, product) => {
   return product;
 };
 
-export async function updateProduct(db, id, data) {
+export function updateProduct(db, id, data) {
   return db
     .collection("products")
     .findOneAndUpdate({ _id: new ObjectId(id) }, { $set: data })
