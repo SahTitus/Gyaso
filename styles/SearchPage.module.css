@@ -13,6 +13,18 @@
   display: none;
 }
 
+.topBar div{
+  align-items: center;
+  color: rgb(105, 97, 97);
+  border-radius: 50%;
+  justify-content: center;
+  -webkit-tap-highlight-color: none;
+  padding: 2px;
+}
+.topBar div:hover{
+background-color: rgba(129, 121, 121, 0.24);
+}
+
 .searchIcon__showLg{
   display: none;
 }

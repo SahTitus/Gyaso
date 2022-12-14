@@ -52,22 +52,20 @@ const SearchPage = () => {
   return (
     <div className={styles.searchPage}>
       <div className={styles.topBar}>
-        <IconButton
+        <div
           onClick={handleSearch}
-    
-          type="button"
-          aria-label="search"
+          className={styles.searchIcon__hideLg}
         >
-          <Search       className={styles.searchIcon__hideLg} />
-        </IconButton>
-        <IconButton
+          <Search />
+        </div>
+        <div
           onClick={() => router.back()}
           className={styles.searchIcon__showLg}
           type="button"
           aria-label="go back"
         >
           <ArrowBack />
-        </IconButton>
+        </div>
         <form onSubmit={handleSearch} className={styles.searchForm}>
           <div className={styles.searchContainer}>
             <input
@@ -78,14 +76,14 @@ const SearchPage = () => {
               value={searchTerm}
             />
           </div>
-          <IconButton
-        
+          <div
+            className={styles.searchIcon__showLg}
             onClick={handleSearch}
             type="button"
             aria-label="search"
           >
-            <Search     className={`${styles.searchIcon__showLg} ${styles.searchIcon} `}/>
-          </IconButton>
+            <Search className={styles.searchIcon} />
+          </div>
         </form>
       </div>
 
