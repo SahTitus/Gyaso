@@ -73,7 +73,7 @@ export const insertUserGoogle = async (
   return user;
 };
 
-export function addToFavoriteArticles(db, userId, data) {
+export const addToFavoriteArticles=(db, userId, data)=> {
   return db
     .collection("users")
     .findOneAndUpdate(
@@ -85,7 +85,7 @@ export function addToFavoriteArticles(db, userId, data) {
 }
 
 
-export function updateProduct(db, id, data) {
+export const updateUser =(db, id, data) =>{
   return db
     .collection('users')
     .findOneAndUpdate(

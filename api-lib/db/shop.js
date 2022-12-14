@@ -35,7 +35,7 @@ export const createProduct = async (db, product) => {
   return product;
 };
 
-export function updateProduct(db, id, data) {
+export const updateProduct =(db, id, data) =>{
   return db
     .collection("products")
     .findOneAndUpdate({ _id: new ObjectId(id) }, { $set: data })
@@ -49,7 +49,7 @@ export const deleteProduct = async (db, id) => {
     .then((product) => product || null);
 };
 
-export async function addToWishlist(db, id, data) {
+export const addToWishlist = (db, id, data)=> {
   return db
     .collection("products")
     .findOneAndUpdate({ _id: new ObjectId(id) }, { $set: data })

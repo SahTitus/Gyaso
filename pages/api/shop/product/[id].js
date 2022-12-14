@@ -1,8 +1,8 @@
 import {
   deleteProduct,
   findProductById,
+  updateProduct,
 } from "../../../../api-lib/db";
-import { updateProduct } from "../../../../api-lib/db/shop";
 import { connectToDb } from "../../../../utils/mongodb";
 
 export default async function handler(req, res) {
