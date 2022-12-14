@@ -3,6 +3,7 @@ import {
   ArrowBack,
   FilterAltOutlined,
   Search,
+  ShoppingCartOutlined,
 } from "@mui/icons-material";
 import {
   Button,
@@ -13,6 +14,7 @@ import {
   MenuItem,
   Slide,
 } from "@mui/material";
+import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
@@ -82,7 +84,7 @@ const Navbar = () => {
   return (
     <div
       className={`${styles.navbar} ${
-        pathname === "/auth" && styles.hide__navbar
+       ( pathname === "/auth" )&& styles.hide__navbar
       }`}
     >
       <div className={styles.navbar__right}>
@@ -157,9 +159,11 @@ const Navbar = () => {
       <div className={styles.navbar__right}>
         {!show ? (
           <>
-            {/* <IconButton onClick={handleOpen} className={styles.navbar__right}>
+          {/* <Link href='/shop'>
+          <IconButton className={styles.navbar__right}>
               <ShoppingCartOutlined className={styles.avatar} />
-            </IconButton> */}
+            </IconButton>
+          </Link> */}
             <IconButton onClick={handleOpen} className={styles.navbar__right}  type="button" aria-label="profile">
               <AccountCircleOutlined className={styles.avatar} />
             </IconButton>

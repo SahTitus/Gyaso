@@ -1,0 +1,21 @@
+.navbar {
+    display: flex;
+    position: sticky;
+    width: 100%;
+    z-index: 100;
+    box-sizing: border-box;
+    align-items: center;
+    justify-content: space-between;
+    height: 50px;
+    background-color: white;
+    padding: 10px;
+    font-size: larger;
+    box-shadow: 0 0px 0px 1px rgb(0, 0, 0, 0.1);
+  }
+
+  .right, .left {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  

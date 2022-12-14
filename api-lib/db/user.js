@@ -84,6 +84,18 @@ export async function addToFavoriteArticles(db, userId, data) {
     .then((user) => user || null);
 }
 
+
+export async function updateProduct(db, id, data) {
+  return db
+    .collection('users')
+    .findOneAndUpdate(
+      { _id: new ObjectId(id) },
+      { $set: data },
+    )
+    .then(({ value }) => value);
+}
+
+
 export const fetchFavoriteArticles = async (db, ids) => {
   return db
     .collection("articles")

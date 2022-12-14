@@ -7,9 +7,11 @@ import { Widget } from "./Widget";
 import { IconButton } from "@mui/material";
 import { AutoAwesomeOutlined, StarOutline } from "@mui/icons-material";
 import { useStateContex } from "../store/StateProvider";
+// import ShopNavbar from "./shop/ShopNavbar";
 
 function Layout({ children }) {
   const { setSignInAlert } = useStateContex();
+  const shopPath = '/shop' || '/shop/product/[slug]'
 
   const { pathname } = useRouter();
 
@@ -31,16 +33,20 @@ function Layout({ children }) {
         <title>Healthtage</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
+
       {!hide && (
         <header className="header">
-          <Navbar />
+          {pathname.includes(shopPath) ?
+          //  <ShopNavbar /> 
+          ''
+           : <Navbar />}
         </header>
       )}
       <main
         style={{ display: "flex" }}
-        className={`main ${pathname !== "/searchPage" && "main__lgSearch"}`}
+        className={`main ${(pathname !== "/searchPage" || !pathname.includes(shopPath)) && "main__lgSearch"}`}
       >
-        {pathname === "/" && (
+        {(pathname === "/" || !pathname.includes(shopPath)) && (
           <div className="divFlex">
             <Sidebar />{" "}
           </div>
@@ -50,7 +56,11 @@ function Layout({ children }) {
         {pathname === "/" && (
           <div className="divRight">
             <div className="widget__icons">
-              <IconButton onClick={toggleShowWidget} className="icon"  type="button" >
+              <IconButton
+                onClick={toggleShowWidget}
+                className="icon"
+                type="button"
+              >
                 <AutoAwesomeOutlined className={""} />
               </IconButton>
             </div>

@@ -71,10 +71,11 @@ function Home({ articlesSSR }) {
             />
           ))}
         </div>
+         {/* <HumbleScraper /> */}
         {/* {category.cate === "all" && (
           <>
             <div className={styles.headlines}>
-              <HumbleScraper />
+             
               <HeadlineCard image="https://newsghana.com.gh/wp-content/uploads/2021/04/zjwoqz4kiaq-696x392.jpg" />
             </div>
             <div className={styles.seeMore}>

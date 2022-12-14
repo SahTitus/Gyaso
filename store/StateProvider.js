@@ -10,6 +10,26 @@ export const StateProvider = ({ children }) => {
   const [getSSRData, setGetSSRData] = useState([]);
   const [category, setCategory] = useState({ cate: "all", category_id: "all" });
 
+  const [showCart, setShowCart] = useState(false);
+  const [cartItems, setCartItems] = useState([]);
+
+  const onAdd = (product, quantity) => {
+    // const checkProductInCart = cartItems?.find(
+    //   (item) => item._id === product._id
+    // );
+    //add product to cart items
+    setCartItems([...cartItems, { ...product }]);
+
+    toast.success(`${product.name} added to the cart`);
+  };
+
+  const onRemove = (product) => {
+    foundProduct = cartItems.find((item) => item._id === product._id);
+    index = cartItems.findIndex((product) => product._id === product._id);
+    const newCartItems = cartItems.filter((item) => item._id !== product._id);
+    setCartItems(newCartItems);
+  };
+
   return (
     <StateContext.Provider
       value={{
@@ -18,6 +38,12 @@ export const StateProvider = ({ children }) => {
         getSSRData,
         searchTermLg,
         openSignInAlert,
+        showCart,
+        cartItems,
+        setShowCart,
+        setCartItems,
+        onAdd,
+        onRemove,
         setSignInAlert,
         setSearchTermLg,
         setGetSSRData,

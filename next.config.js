@@ -6,7 +6,7 @@ const withPWA = require("next-pwa")({
   runtimeCaching,
 dest: "public",
 register: true,
-// disable: process.env.NODE_ENV === "development",
+disable: process.env.NODE_ENV === "development",
 skipWaiting: true,
 });
 
@@ -19,6 +19,7 @@ const nextConfig = withPWA({
     domains: [
       "img.freepik.com",
       "upload.wikimedia.org",
+      "cdn.sanity.io",
       "www.health.harvard.edu",
       "domf5oio6qrcr.cloudfront.net",
       "www.freelogovectors.net",
