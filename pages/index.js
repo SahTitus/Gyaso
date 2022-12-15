@@ -8,7 +8,7 @@ import { Mincard, ArticleCard, Category } from "../components";
 import Footer from "../components/Footer";
 import {
   fetchArticles,
-  fetchArticlesSSR,
+  // fetchArticlesSSR,
   fetchMoreArticles,
   fetchMoreByCategory,
 } from "../lib/articles";
@@ -45,10 +45,10 @@ function Home({ articlesSSR }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  useEffect(() => {
-    dispatch(fetchArticlesSSR());
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [boolToRefresh]);
+  // useEffect(() => {
+  //   dispatch(fetchArticlesSSR());
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, [boolToRefresh]);
 
   const refreshHandler = async () => {
     const currentValue = boolToRefresh;
