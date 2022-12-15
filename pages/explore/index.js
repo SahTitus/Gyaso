@@ -19,9 +19,9 @@ import SearchAvatar from "../../assets/SearchAvatar.jpg";
 
 const Explore = ({ topicsSSR }) => {
   const dispatch = useDispatch();
-  const { topics } = useSelector((state) => state.topics);
-  const [hasMore, setHasMore] = useState(true);
-  const { queriedTopics, isLoading } = useSelector((state) => state.topics);
+  const { queriedTopics, isLoading, topics, totalCount } = useSelector(
+    (state) => state.topics
+  );
   const { searchTerm } = useStateContex();
 
   const getMorePost = async () => {
@@ -32,10 +32,12 @@ const Explore = ({ topicsSSR }) => {
     }
   };
 
+  const finish = totalCount <= queriedTopics?.length;
+
   useEffect(() => {
     if (topicsSSR?.length > 0) dispatch(getTopicsSSR(topicsSSR));
     dispatch(fetchTopics(topicsSSR?.length));
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -61,18 +63,26 @@ const Explore = ({ topicsSSR }) => {
           className={`${styles.topics__wrapper}`}
           dataLength={queriedTopics.length}
           next={getMorePost}
-          hasMore={hasMore}
+          hasMore={!finish}
           loader={
             <Box className={styles.loadingState}>
-              <CircularProgress className={styles.progress} role="progressbar" id="combo" aria-label="loading data" />
+              <CircularProgress
+                className={styles.progress}
+                role="progressbar"
+                id="combo"
+                aria-label="loading data"
+              />
             </Box>
           }
-          endMessage={<h4>Nothing more to show</h4>}
+          endMessage={
+            <div className={styles.endMessage}>
+              <p>Results has ended.</p>
+            </div>
+          }
         >
           {queriedTopics.map((topic, i) => (
             <Topic
               key={topic._id + i}
-              // more="false"
               link={topic.link}
               topic={topic.title}
               source={topic.source}
@@ -84,18 +94,21 @@ const Explore = ({ topicsSSR }) => {
           className={`${styles.topics__wrapper}`}
           dataLength={topics.length}
           next={getMorePost}
-          hasMore={hasMore}
           loader={
             <Box className={styles.loadingState}>
-              <CircularProgress className={styles.progress} role="progressbar" id="combo" aria-label="loading data" />
+              <CircularProgress
+                className={styles.progress}
+                role="progressbar"
+                id="combo"
+                aria-label="loading data"
+              />
             </Box>
           }
-          endMessage={<h4>Nothing more to show</h4>}
+          hasMore="true"
         >
           {topics.map((topic, i) => (
             <Topic
               key={topic._id + i}
-              // more="false"
               link={topic.link}
               topic={topic.title}
               source={topic.source}
@@ -106,7 +119,12 @@ const Explore = ({ topicsSSR }) => {
       {queriedTopics.length > 0 ||
         (topics.length > 0 && (
           <div className={styles.fetchMore__lg}>
-            <Button onClick={getMorePost} className={styles.fetchMore__btn}  type="button" aria-label="see more">
+            <Button
+              onClick={getMorePost}
+              className={styles.fetchMore__btn}
+              type="button"
+              aria-label="see more"
+            >
               See more
             </Button>
           </div>

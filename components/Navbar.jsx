@@ -8,7 +8,6 @@ import {
 import {
   Button,
   Dialog,
-
   IconButton,
   Menu,
   MenuItem,
@@ -39,7 +38,6 @@ const Navbar = () => {
   const [queryTerm, setQueryTerm] = useState("");
   const [open, setOpen] = useState(false);
 
-  
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [selectedSearchType, setSelectedSearchType] =
     React.useState("articles");
@@ -62,13 +60,18 @@ const Navbar = () => {
     dispatch(loading());
   };
 
+  const handleSearchTopics =(e)=>{
+    e.preventDefault();
+dispatch(searchTopics(queryTerm))
+  }
+
   const handleSearch = (e) => {
     e.preventDefault();
-    if (queryTerm.trim() && selectedSearchType ==='topics') {
+    if (queryTerm.trim() && selectedSearchType === "topics") {
       dispatch(searchTopics(queryTerm));
     } else {
-      router.push('/searchPage')
-      setSearchTermLg(queryTerm)
+      router.push("/searchPage");
+      setSearchTermLg(queryTerm);
     }
   };
 
@@ -84,7 +87,7 @@ const Navbar = () => {
   return (
     <div
       className={`${styles.navbar} ${
-       ( pathname === "/auth" )&& styles.hide__navbar
+        pathname === "/auth" && styles.hide__navbar
       }`}
     >
       <div className={styles.navbar__right}>
@@ -93,7 +96,11 @@ const Navbar = () => {
             {pathname === "/explore" && <h5>Topics</h5>}
             {pathname.includes("/explore/moretopics") && (
               <>
-                <IconButton onClick={() => router.back()}  type="button" aria-label="go back">
+                <IconButton
+                  onClick={() => router.back()}
+                  type="button"
+                  aria-label="go back"
+                >
                   <ArrowBack className={styles.searchIcon} />
                 </IconButton>
                 <h5>Cancer</h5>
@@ -112,7 +119,8 @@ const Navbar = () => {
         >
           <div className={styles.searchContainer}>
             <IconButton
-             type="button" aria-label="filter"
+              type="button"
+              aria-label="filter"
               onClick={handleClickListItem}
               className={styles.searchIcon__wrapper}
             >
@@ -148,7 +156,8 @@ const Navbar = () => {
             <IconButton
               onClick={handleSearch}
               className={styles.searchIcon__wrapper}
-              type="button" aria-label="search"
+              type="button"
+              aria-label="search"
             >
               <Search className={styles.searchIcon} />
             </IconButton>
@@ -159,19 +168,27 @@ const Navbar = () => {
       <div className={styles.navbar__right}>
         {!show ? (
           <>
-          {/* <Link href='/shop'>
+            {/* <Link href='/shop'>
           <IconButton className={styles.navbar__right}>
               <ShoppingCartOutlined className={styles.avatar} />
             </IconButton>
           </Link> */}
-            <IconButton onClick={handleOpen} className={styles.navbar__right}  type="button" aria-label="profile">
+            <IconButton
+              onClick={handleOpen}
+              className={styles.navbar__right}
+              type="button"
+              aria-label="profile"
+            >
               <AccountCircleOutlined className={styles.avatar} />
             </IconButton>
           </>
         ) : (
           <>
             {!pathname.includes("/explore/moretopics") && (
-              <form onSubmit={handleSearch} className={styles.search}>
+              <form
+                onSubmit={handleSearchTopics}
+                className={`${styles.search} ${styles.topicsSearch}`}
+              >
                 <div className={styles.searchContainer}>
                   <input
                     className={styles.searchInput}
@@ -180,9 +197,10 @@ const Navbar = () => {
                     placeholder="Search topics here..."
                   />
                   <IconButton
-                    onClick={handleSearch}
+                    onClick={handleSearchTopics}
                     className={styles.searchIcon__wrapper}
-                    type="button" aria-label="search"
+                    type="button"
+                    aria-label="search"
                   >
                     <Search className={styles.searchIcon} />
                   </IconButton>

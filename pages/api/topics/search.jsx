@@ -12,6 +12,10 @@ export default async function handler(req, res) {
     try {
       const topic = new RegExp(searchTerm, "i");
 
+      const totalCount = await db
+        .collection("topics")
+        .countDocuments({ title: topic });
+
       const topics = await db
         .collection("topics")
         .find({ title: topic })
@@ -20,7 +24,7 @@ export default async function handler(req, res) {
         .sort({ title: 1 })
         .toArray();
 
-      res.status(200).json(topics);
+      res.status(200).json({ topics, totalCount });
     } catch (error) {
       //   res.status(500).json(error);
       console.log(error);

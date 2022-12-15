@@ -45,6 +45,7 @@ const nextConfig = withPWA({
       "20fd661yccar325znz1e9bdl-wpengine.netdna-ssl.com",
       "i0.wp.com",
       "mindbodygreen-res.cloudinary.com",
+      "peopleshistorynhs.org",
     ],
   },
 });

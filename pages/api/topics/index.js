@@ -8,6 +8,7 @@ export default async function handler(req, res) {
   const { db } = await connectToDb();
   if (method === "GET") {
     try {
+
       const topics = await db
         .collection("topics")
         .find()

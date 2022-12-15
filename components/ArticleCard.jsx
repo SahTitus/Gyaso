@@ -1,4 +1,4 @@
-import {  IosShareOutlined, Star, StarOutline } from "@mui/icons-material";
+import { IosShareOutlined, Star, StarOutline } from "@mui/icons-material";
 import React, { useState } from "react";
 import styles from "../styles/ArticleCard.module.css";
 import { IconButton } from "@mui/material";
@@ -7,11 +7,11 @@ import { useDispatch } from "react-redux";
 import { saveArticles } from "../lib/articles";
 
 const ArticleCard = ({ article }) => {
-    const [favoriteArray, setFavoriteArray] = useState(article.saves);
+  const [favoriteArray, setFavoriteArray] = useState(article.saves);
   const dispatch = useDispatch();
   const user = JSON.parse(localStorage.getItem("userProfile"));
 
-  const userId =user?.result?._id 
+  const userId = user?.result?._id;
 
   const url = `${article?.link}`;
   const title = `${article?.title}`;
@@ -36,7 +36,6 @@ const ArticleCard = ({ article }) => {
     }
   };
 
-
   const isSaved = favoriteArray?.find((like) => like === userId);
 
   const handleSave = async () => {
@@ -46,10 +45,15 @@ const ArticleCard = ({ article }) => {
     } else {
       setFavoriteArray([...favoriteArray, userId]);
     }
-  };  
+  };
 
   const Saved = () => (
-    <IconButton onClick={handleSave} className={styles.bottom__iconsWrapper}  type="button" aria-label="save">
+    <IconButton
+      onClick={handleSave}
+      className={styles.bottom__iconsWrapper}
+      type="button"
+      aria-label="save"
+    >
       {isSaved ? (
         <Star className={`${styles.bottom__icons} ${styles.saved}`} />
       ) : (
@@ -65,7 +69,6 @@ const ArticleCard = ({ article }) => {
           <div className={styles.card__image}>
             <Image
               layout="fill"
-             
               className={styles.image}
               src={
                 article?.image ||
@@ -113,7 +116,8 @@ const ArticleCard = ({ article }) => {
                 <IconButton
                   onClick={handleSharing}
                   className={styles.bottom__iconsWrapper}
-                  type="button" aria-label="share"
+                  type="button"
+                  aria-label="share"
                 >
                   <IosShareOutlined className={styles.bottom__icons} />
                 </IconButton>

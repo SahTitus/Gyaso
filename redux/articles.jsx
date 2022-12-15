@@ -6,6 +6,7 @@ const initialState = {
   favoriteArticles: [],
   queriedArticles: [],
   error: [],
+  totalCount: 0,
 };
 
 export const articlesSlice = createSlice({
@@ -22,20 +23,22 @@ export const articlesSlice = createSlice({
     },
 
     search: (state, action) => {
-      state.queriedArticles = action.payload;
+      state.queriedArticles = action.payload.articles;
+      state.totalCount = action.payload.totalCount;;
       state.isLoading = false;
     },
     searchMore: (state, action) => {
-      state.queriedArticles = [...state.queriedArticles, ...action.payload];
+      state.queriedArticles = [...state.queriedArticles, ...action.payload.articles];
       state.isLoading = false;
     },
     getArticlesByCategory: (state, action) => {
-      state.articles = action.payload;
+      state.articles = action.payload.articles;
+      state.totalCount = action.payload.totalCount;
       state.isLoading = false;
     },
 
     getMoreArticles: (state, action) => {
-      state.articles = [...state.articles, ...action.payload];
+      state.articles = [...state.articles, ...action.payload.articles];
       state.isLoading = false;
     },
 

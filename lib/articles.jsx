@@ -88,6 +88,7 @@ export const searchMoreArticles = (searchTerm, skip) => async (dispatch) => {
       `/api/articles/search?searchTerm=${searchTerm}&skip=${skip}`
     );
     dispatch(searchMore(data));
+
   } catch (error) {
     dispatch(isError(error));
   }

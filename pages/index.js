@@ -22,9 +22,8 @@ import { useStateContex } from "../store/StateProvider";
 
 function Home({ articlesSSR }) {
   const dispatch = useDispatch();
-  const { articles } = useSelector((state) => state.articles);
+  const { articles, totalCount } = useSelector((state) => state.articles);
 
-  const [hasMore, setHasMore] = useState(true);
   const [boolToRefresh, setBoolToRefresh] = useState(false);
 
   const { category, setCategory, setGetSSRData } = useStateContex();
@@ -35,6 +34,8 @@ function Home({ articlesSSR }) {
       dispatch(fetchMoreArticles());
     }
   };
+
+  const finish = totalCount <= articles?.length;
 
   useEffect(() => {
     if (articlesSSR.length > 0) dispatch(getArticlesSSR(articlesSSR));
@@ -71,7 +72,7 @@ function Home({ articlesSSR }) {
             />
           ))}
         </div>
-         {/* <HumbleScraper /> */}
+        {/* <HumbleScraper /> */}
         {/* {category.cate === "all" && (
           <>
             <div className={styles.headlines}>
@@ -86,7 +87,6 @@ function Home({ articlesSSR }) {
         )} */}
       </div>
 
-
       <div
         className={`${styles.articles} ${
           category?.cate?.length && category?.cate !== "all" && styles.pushup
@@ -96,7 +96,6 @@ function Home({ articlesSSR }) {
           className={`${styles.articles__wrapper}`}
           dataLength={articles.length}
           next={getMorePost}
-          hasMore={hasMore}
           loader={
             <Box className={styles.loadingState}>
               <CircularProgress
@@ -107,7 +106,14 @@ function Home({ articlesSSR }) {
               />
             </Box>
           }
-          endMessage={<h4>Nothing more to show</h4>}
+          hasMore={!finish}
+          endMessage={
+            <div className={styles.endMessage}>
+              <p>
+                Results has ended.
+              </p>
+            </div>
+          }
         >
           <PullToRefresh className="pull_to_refresh" onRefresh={refreshHandler}>
             {articles.map(

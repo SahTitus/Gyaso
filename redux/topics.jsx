@@ -5,6 +5,7 @@ const initialState = {
 	topics: [],
 	queriedTopics: [],
 	error: [],
+	totalCount: 0,
 };
 
 export const topicsSlice = createSlice({
@@ -20,11 +21,12 @@ export const topicsSlice = createSlice({
 			state.isLoading = false;
 		},
 		search: (state, action) => {
-			state.queriedTopics = action.payload;
+			state.queriedTopics = action.payload.topics;
+            state.totalCount = action.payload.totalCount;;
 			state.isLoading = false;
 		},
 		searchMore: (state, action) => {
-			state.queriedTopics =[...state.queriedTopics, ...action.payload];
+			state.queriedTopics =[...state.queriedTopics, ...action.payload.topics];
 			state.isLoading = false;
 		},
 		

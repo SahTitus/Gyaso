@@ -9,6 +9,26 @@
   display: none;
 }
 
+.endMessage{
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  padding: 10px 0;
+  color: rgb(112, 110, 110);
+  }
+  
+  .endMessage p strong {
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
+    overflow-wrap: break-word;
+    text-overflow: ellipsis;
+    -webkit-box-orient: vertical;
+    white-space: pre-wrap;
+  }
+
 .home__categories {
   display: flex;
   align-items: center;

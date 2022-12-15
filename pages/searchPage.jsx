@@ -19,10 +19,15 @@ const SearchPage = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [hasMore, setHasMore] = useState(true);
   const [boolToRefresh, setBoolToRefresh] = useState(false);
-  const { queriedArticles, isLoading } = useSelector((state) => state.articles);
+  const { queriedArticles, totalCount, isLoading } = useSelector((state) => state.articles);
   const { searchTermLg } = useStateContex();
+
+  const finish = totalCount <= queriedArticles?.length;
+
   const getMoreArticles = async () => {
-    dispatch(searchMoreArticles(searchTerm, queriedArticles.length));
+    dispatch(
+      searchMoreArticles(searchTerm, queriedArticles?.length)
+    );
   };
 
   const handleSearch = (e) => {
@@ -52,10 +57,7 @@ const SearchPage = () => {
   return (
     <div className={styles.searchPage}>
       <div className={styles.topBar}>
-        <div
-          onClick={handleSearch}
-          className={styles.searchIcon__hideLg}
-        >
+        <div onClick={handleSearch} className={styles.searchIcon__hideLg}>
           <Search />
         </div>
         <div
@@ -87,7 +89,7 @@ const SearchPage = () => {
         </form>
       </div>
 
-      {!queriedArticles.length > 0 && (
+      {!queriedArticles?.length > 0 && (
         <div className={styles.searchIcon__wrapper}>
           <div className={styles.card__image}>
             <Image
@@ -99,33 +101,39 @@ const SearchPage = () => {
               width={300}
             />
           </div>
-          {!isLoading && queriedArticles.length === 0 && searchTerm && (
+          {!isLoading && queriedArticles?.length === 0 && searchTerm && (
             <h3>No results found</h3>
           )}
         </div>
       )}
 
-      {queriedArticles.length > 0 && (
+      {queriedArticles?.length > 0 && (
         <div className={`${styles.searchedArticles}`}>
           <InfiniteScroll
             className={`${styles.articles__wrapper}`}
-            dataLength={queriedArticles.length}
+            dataLength={queriedArticles?.length}
             next={getMoreArticles}
-            hasMore={hasMore}
+            hasMore={!finish}
             loader={
-              <Box className={styles.loadingState}>
-                <CircularProgress
-                  className={styles.progress}
-                  role="progressbar"
-                  id="combo"
-                  aria-label="loading data"
-                />
-              </Box>
+              !finish && (
+                <Box className={styles.loadingState}>
+                  <CircularProgress
+                    className={styles.progress}
+                    role="progressbar"
+                    id="combo"
+                    aria-label="loading data"
+                  />
+                </Box>
+              )
             }
-            endMessage={<h4>Nothing more to show</h4>}
+            endMessage={
+              <div className={styles.endMessage}>
+               <p>Results on <strong>{searchTerm}</strong>  has ended.</p>
+              </div>
+            }
           >
             <PullToRefresh onRefresh={refreshHandler}>
-              {queriedArticles.map((article, i) => (
+              {queriedArticles?.map((article, i) => (
                 <ArticleCard key={article._id + i} article={article} />
               ))}
             </PullToRefresh>

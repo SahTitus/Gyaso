@@ -13,19 +13,19 @@ export default async function handler(req, res) {
     try {
       const title = new RegExp(searchTerm, "i");
 
+      const totalCount = await db
+        .collection("articles")
+        .countDocuments({ title: title })
+         
       const articles = await db
         .collection("articles")
-        .aggregate([
-            {
-              $match: {
-                title: title,
-              },
-            },
-            { $sample: { size: 10 } },
-          ])
+        .find({ title: title })
+        .skip(skip)
         .limit(default_limit)
+        .sort({ title: 1 })
         .toArray();
-      res.status(200).json(articles);
+
+      res.status(200).json({articles, totalCount}); 
     } catch (error) {
       //   res.status(500).json(error);
       console.log(error);
