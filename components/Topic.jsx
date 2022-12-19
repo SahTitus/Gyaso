@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import React from "react";
 import styles from "../styles/Topic.module.css";
 
-const Topic = ({topic, more, source, link}) => {
+const Topic = ({topic, source, link}) => {
     const router = useRouter()
 
   return (

@@ -32,6 +32,9 @@ class MyDocument extends Document {
             content="healthtage, nutrition, food, spirituality, parenting, pregnancy, heart health, men's health, sexual health, women's health, mental health, healthy living, skincare, sleep, human biology, eye health, weight loss, fitness, yoga, health, wellness, recipes, meditation, mindfulness, love, Sah Titus Samuel.
       "
           />
+          
+          <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7529020050126706"
+     crossOrigin="anonymous"></script>
         </Head>
         <body>
           <Main />

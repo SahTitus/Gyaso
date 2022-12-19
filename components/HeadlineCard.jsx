@@ -15,7 +15,7 @@ const HeadlineCard = ({ image }) => {
         <Image className={styles.image} height={700} width={600} src={image} alt="Hi" />
         <div className={styles.cardInfo}>
           <h4 className={styles.title}>
-            Technology Is cdc cc7c c7c c t ccscgscp s8c sc[8syc8sc c8ys
+            Technology Is cdc cc7c c7c c t ccscgscp s8c sc8syc8sc c8ys
             csichs8cs csc gs8cgs8cs
           </h4>
           <div className={styles.bottom}>

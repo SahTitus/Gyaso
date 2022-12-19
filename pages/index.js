@@ -1,6 +1,5 @@
+/* eslint-disable react/no-unknown-property */
 import { Box, Button, CircularProgress } from "@mui/material";
-// import Head from "next/head";
-// import Image from "next/image";
 import { useEffect, useState } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { useDispatch, useSelector } from "react-redux";
@@ -36,7 +35,8 @@ function Home({ articlesSSR }) {
     }
   };
 
-  const finish = totalCount < articles?.length || totalCount === articles?.length;; 
+  const finish =
+    totalCount < articles?.length || totalCount === articles?.length;
 
   useEffect(() => {
     if (articlesSSR.length > 0) dispatch(getArticlesSSR(articlesSSR));
@@ -62,14 +62,13 @@ function Home({ articlesSSR }) {
 
   return (
     <div className={styles.home}>
-            <NextSeo
+      <NextSeo
         title="Healthtage: health and medical tips"
         description="Healthtage, discover incredible tips on your daily health.We've made your effort of searching for health information seamless. How to, treatments, cure, signs and symptoms, prevention. "
         canonical="https://www.healthtage.com"
         openGraph={{
           url: "https://healthtage.com",
-          title:
-            "Healthtage: health and medical tips",
+          title: "Healthtage: health and medical tips",
           description:
             "Healthtage, discover incredible tips on your daily health.We've made your effort of searching for health information seamless. How to, treatments, cure, signs and symptoms, prevention.",
           // images: [
@@ -137,9 +136,7 @@ function Home({ articlesSSR }) {
           hasMore={!finish}
           endMessage={
             <div className={styles.endMessage}>
-              <p>
-                Results has ended.
-              </p>
+              <p>Results has ended.</p>
             </div>
           }
         >
@@ -149,9 +146,60 @@ function Home({ articlesSSR }) {
                 article?.link &&
                 article.title &&
                 (article?.mini_card ? (
-                  <Mincard key={article._id + i} article={article} />
+                  <div key={article._id + i}>
+                    <Mincard
+                      key={article._id + i + article.title}
+                      article={article}
+                    />
+                    {i % 8 === 0 && (
+                      <div className={styles.ads} key={"ad1" + article._id + i}>
+                        <script
+                          async
+                          src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${process.env.GO_AD_KEY}`}
+                          crossOrigin="anonymous"
+                        ></script>
+                        <ins
+                          className="adsbygoogle"
+                          style={{ display: "block" }}
+                          data-ad-format="fluid"
+                          data-ad-layout-key="-6m+bz+1h-8+dv"
+                          data-ad-client={`${process.env.GO_AD_KEY}`}
+                          data-ad-slot="3517212256"
+                        ></ins>
+                        <script>
+                          (adsbygoogle = window.adsbygoogle || []).push({});
+                        </script>
+                      </div>
+                    )}
+                  </div>
                 ) : (
-                  <ArticleCard key={article._id + i} article={article} />
+                  <div key={article._id + i}>
+                    <ArticleCard key={article._id + i} article={article} />
+                    {/* <Ad /> */}
+                    {i % 4 === 0 && (
+                      <div
+                        className={styles.ads}
+                        key={i + "ads34" + article._id}
+                      >
+                        <script
+                          async
+                          src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${process.env.GO_AD_KEY}`}
+                          crossOrigin="anonymous"
+                        ></script>
+                        <ins
+                          className="adsbygoogle"
+                          style={{ display: "block" }}
+                          data-ad-format="fluid"
+                          data-ad-layout-key="-6m+bz+1h-8+dv"
+                          data-ad-client={`${process.env.GO_AD_KEY}`}
+                          data-ad-slot="3517212256"
+                        ></ins>
+                        <script>
+                          (adsbygoogle = window.adsbygoogle || []).push({});
+                        </script>
+                      </div>
+                    )}
+                  </div>
                 ))
             )}
           </PullToRefresh>

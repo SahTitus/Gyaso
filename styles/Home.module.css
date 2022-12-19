@@ -5,6 +5,10 @@
   flex-direction: column;
 }
 
+.ads{
+  /* min-height: 200px; */
+}
+
 .home::-webkit-scrollbar {
   display: none;
 }
