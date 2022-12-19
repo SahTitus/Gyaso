@@ -25,8 +25,11 @@ class MyDocument extends Document {
           />
           <meta name="theme-color" content="#fff" />
           <meta
-            name="description"
-            content="Healthtage! A health content aggregator. Get all your health stories or articles here.
+          name="description" content="Healthtage, discover incredible tips on your daily health.We've made your effort of searching for health information seamless. How to, treatments, cure, signs and symptoms, prevention."
+          />
+          <meta
+            name="keywords"
+            content="healthtage, nutrition, food, spirituality, parenting, pregnancy, heart health, men's health, sexual health, women's health, mental health, healthy living, skincare, sleep, human biology, eye health, weight loss, fitness, yoga, health, wellness, recipes, meditation, mindfulness, love, Sah Titus Samuel.
       "
           />
         </Head>
@@ -34,6 +37,16 @@ class MyDocument extends Document {
           <Main />
 
           <NextScript />
+          {/* Global Site Tag (gtag.js) - Google Analytics */}
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+          `,
+            }}
+          />
         </body>
       </Html>
     );

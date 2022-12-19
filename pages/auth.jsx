@@ -16,6 +16,7 @@ import { auth } from "../utils/firebase";
 import { signInWithPopup, GoogleAuthProvider } from "@firebase/auth";
 import { logWithGoogle, register } from "../lib/auth";
 import { useDispatch } from "react-redux";
+import Head from "next/head";
 
 const initialState = {
   name: "",
@@ -67,6 +68,19 @@ const Auth = () => {
   };
 
   return (
+    <>
+    <Head>
+      <title>Auth: healthtage health and medical tips</title>
+      <meta
+        name="description"
+        content="THealthtage, discover incredible tips on your daily health.We've made your effort of searching for health information seamless. How to, treatments, cure, signs and symptoms, prevention."
+      />
+      <meta
+        property="og:title"
+        content="Auth- Healthtage: health and medical tips"
+      />
+      <link rel="icon" href="/favicon.ico" />
+    </Head>
     <div className={styles.auth}>
       <div className={styles.top}>
         <IconButton onClick={() => router.back()}  type="button" aria-label="go back">
@@ -190,6 +204,7 @@ const Auth = () => {
         }
       </div>
     </div>
+    </>
   );
 };
 

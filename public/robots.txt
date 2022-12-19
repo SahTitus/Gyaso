@@ -1,4 +1,9 @@
-# robots.txt generated at http://tool.chinaz.com/robots/ 
+# https://www.robotstxt.org/robotstxt.html
 User-agent: *
-Disallow: 
+Allow: /
 
+# Host
+Host: https://www.healthtage.com
+
+# Sitemaps
+Sitemap: https://www.healthtage.com/sitemap.xml

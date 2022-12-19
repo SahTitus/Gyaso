@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Explore from "../pages/explore";
+import Explore from "../pages/topics";
 import Favorites from "../pages/favorites";
 
 import styles from "../styles/Widget.module.css";

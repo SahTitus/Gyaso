@@ -19,6 +19,7 @@ import { categories } from "../constants/categories.js";
 import PullToRefresh from "react-simple-pull-to-refresh";
 // import HumbleScraper from "./HumbleScraper";
 import { useStateContex } from "../store/StateProvider";
+import { NextSeo } from "next-seo";
 
 function Home({ articlesSSR }) {
   const dispatch = useDispatch();
@@ -35,7 +36,7 @@ function Home({ articlesSSR }) {
     }
   };
 
-  const finish = totalCount <= articles?.length;
+  const finish = totalCount < articles?.length || totalCount === articles?.length;; 
 
   useEffect(() => {
     if (articlesSSR.length > 0) dispatch(getArticlesSSR(articlesSSR));
@@ -61,6 +62,33 @@ function Home({ articlesSSR }) {
 
   return (
     <div className={styles.home}>
+            <NextSeo
+        title="Healthtage: health and medical tips"
+        description="Healthtage, discover incredible tips on your daily health.We've made your effort of searching for health information seamless. How to, treatments, cure, signs and symptoms, prevention. "
+        canonical="https://www.healthtage.com"
+        openGraph={{
+          url: "https://healthtage.com",
+          title:
+            "Healthtage: health and medical tips",
+          description:
+            "Healthtage, discover incredible tips on your daily health.We've made your effort of searching for health information seamless. How to, treatments, cure, signs and symptoms, prevention.",
+          // images: [
+          //   {
+          //     url: "/gyaso.png",
+          //     width: 1224,
+          //     height: 724,
+          //     alt: "Healthtage",
+          //     type: "image/jpeg",
+          //   },
+          // ],
+          site_name: "Healthtage",
+          twitter: {
+            handle: "@Healthtage",
+            site: "@Healthtage",
+            cardType: "summary_large_image",
+          },
+        }}
+      />
       <div className={styles.headlines__container}>
         <div className={styles.home__categories}>
           {categories.map((category, i) => (

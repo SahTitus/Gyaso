@@ -14,7 +14,8 @@ export const articlesSlice = createSlice({
   initialState,
   reducers: {
     getArticles: (state, action) => {
-      state.articles = [...state.articles, ...action.payload];
+      state.articles = [...state.articles, ...action.payload.articles];
+      state.totalCount = action.payload.totalCount;
       state.isLoading = false;
     },
     getArticlesSSR: (state, action) => {
@@ -24,11 +25,14 @@ export const articlesSlice = createSlice({
 
     search: (state, action) => {
       state.queriedArticles = action.payload.articles;
-      state.totalCount = action.payload.totalCount;;
+      state.totalCount = action.payload.totalCount;
       state.isLoading = false;
     },
     searchMore: (state, action) => {
-      state.queriedArticles = [...state.queriedArticles, ...action.payload.articles];
+      state.queriedArticles = [
+        ...state.queriedArticles,
+        ...action.payload.articles,
+      ];
       state.isLoading = false;
     },
     getArticlesByCategory: (state, action) => {
