@@ -32,7 +32,7 @@ const Navbar = () => {
   const { pathname } = useRouter();
   const router = useRouter();
   const show =
-    pathname === "/explore" || pathname.includes("/explore/moretopics");
+    pathname === "/topics" || pathname.includes("/topics/moretopics");
 
   const { setSearchTerm, setSearchTermLg } = useStateContex();
   const [queryTerm, setQueryTerm] = useState("");
@@ -93,8 +93,8 @@ dispatch(searchTopics(queryTerm))
       <div className={styles.navbar__right}>
         {show ? (
           <>
-            {pathname === "/explore" && <h5>Topics</h5>}
-            {pathname.includes("/explore/moretopics") && (
+            {pathname === "/topics" && <h5>Topics</h5>}
+            {pathname.includes("/topics/moretopics") && (
               <>
                 <IconButton
                   onClick={() => router.back()}
@@ -184,7 +184,7 @@ dispatch(searchTopics(queryTerm))
           </>
         ) : (
           <>
-            {!pathname.includes("/explore/moretopics") && (
+            {!pathname.includes("/topics/moretopics") && (
               <form
                 onSubmit={handleSearchTopics}
                 className={`${styles.search} ${styles.topicsSearch}`}

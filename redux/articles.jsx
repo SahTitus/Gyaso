@@ -20,6 +20,12 @@ export const articlesSlice = createSlice({
     },
     getArticlesSSR: (state, action) => {
       state.articles = action.payload;
+       state.totalCount = action.payload.totalCount;
+      state.isLoading = false;
+    },
+    getArticlesByRefresh: (state, action) => {
+      state.articles = action.payload.articles;
+       state.totalCount = action.payload.totalCount;
       state.isLoading = false;
     },
 
@@ -78,6 +84,7 @@ export const {
   removeFromFavoriteArticles,
   loading,
   getMoreArticles,
+  getArticlesByRefresh,
   isError,
   searchMore,
   search,

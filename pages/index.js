@@ -7,7 +7,7 @@ import { Mincard, ArticleCard, Category } from "../components";
 import Footer from "../components/Footer";
 import {
   fetchArticles,
-  // fetchArticlesSSR,
+  fetchArticlesSSR,
   fetchMoreArticles,
   fetchMoreByCategory,
 } from "../lib/articles";
@@ -23,7 +23,7 @@ import { NextSeo } from "next-seo";
 function Home({ articlesSSR }) {
   const dispatch = useDispatch();
   const { articles, totalCount } = useSelector((state) => state.articles);
-
+console.log(articles)
   const [boolToRefresh, setBoolToRefresh] = useState(false);
 
   const { category, setCategory, setGetSSRData } = useStateContex();
@@ -46,10 +46,11 @@ function Home({ articlesSSR }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // useEffect(() => {
-  //   dispatch(fetchArticlesSSR());
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, [boolToRefresh]);
+  useEffect(() => {
+    if (boolToRefresh) dispatch(fetchArticlesSSR());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [boolToRefresh]);
+
 
   const refreshHandler = async () => {
     const currentValue = boolToRefresh;
@@ -147,10 +148,6 @@ function Home({ articlesSSR }) {
                 article.title &&
                 (article?.mini_card ? (
                   <div key={article._id + i}>
-                    <Mincard
-                      key={article._id + i + article.title}
-                      article={article}
-                    />
                     {i % 8 === 0 && (
                       <div className={styles.ads} key={"ad1" + article._id + i}>
                         <script
@@ -171,12 +168,15 @@ function Home({ articlesSSR }) {
                         </script>
                       </div>
                     )}
+                    <Mincard
+                      key={article._id + i + article.title}
+                      article={article}
+                    />
+                    
                   </div>
                 ) : (
                   <div key={article._id + i}>
-                    <ArticleCard key={article._id + i} article={article} />
-                    {/* <Ad /> */}
-                    {i % 4 === 0 && (
+                       {i % 4 === 0 && (
                       <div
                         className={styles.ads}
                         key={i + "ads34" + article._id}
@@ -199,6 +199,8 @@ function Home({ articlesSSR }) {
                         </script>
                       </div>
                     )}
+                    <ArticleCard key={article._id + i} article={article} />
+                 
                   </div>
                 ))
             )}

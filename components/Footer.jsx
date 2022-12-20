@@ -21,7 +21,7 @@ const Footer = () => {
 
   const homeActive = pathname === "/";
   const favActive = pathname === "/favorites";
-  const exActive = pathname === "/explore";
+  const exActive = pathname === "/topics";
 
   const handleOnClick =()=>{
 if (!user) setSignInAlert(true);
@@ -42,7 +42,7 @@ if (!user) setSignInAlert(true);
             <HomeRounded className="navBtm__icon" />
           )}
         </NavLink>
-        <NavLink className={`btmNav__option`} href={"/explore"} aria-label="Topics">
+        <NavLink className={`btmNav__option`} href={"/topics"} aria-label="Topics">
           {!exActive ? (
             <AutoAwesomeOutlined className="navBtm__icon" />
           ) : (
