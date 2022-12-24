@@ -16,14 +16,14 @@ import styles from "../styles/Home.module.css";
 import { connectToDb } from "../utils/mongodb";
 import { categories } from "../constants/categories.js";
 import PullToRefresh from "react-simple-pull-to-refresh";
-// import HumbleScraper from "./HumbleScraper";
 import { useStateContex } from "../store/StateProvider";
 import { NextSeo } from "next-seo";
+// import HumbleScraper from "../components/HumbleScraper";
 
 function Home({ articlesSSR }) {
   const dispatch = useDispatch();
   const { articles, totalCount } = useSelector((state) => state.articles);
-console.log(articles)
+  console.log(articles);
   const [boolToRefresh, setBoolToRefresh] = useState(false);
 
   const { category, setCategory, setGetSSRData } = useStateContex();
@@ -50,7 +50,6 @@ console.log(articles)
     if (boolToRefresh) dispatch(fetchArticlesSSR());
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [boolToRefresh]);
-
 
   const refreshHandler = async () => {
     const currentValue = boolToRefresh;
@@ -172,11 +171,10 @@ console.log(articles)
                       key={article._id + i + article.title}
                       article={article}
                     />
-                    
                   </div>
                 ) : (
                   <div key={article._id + i}>
-                       {i % 4 === 0 && (
+                    {i % 4 === 0 && (
                       <div
                         className={styles.ads}
                         key={i + "ads34" + article._id}
@@ -200,7 +198,6 @@ console.log(articles)
                       </div>
                     )}
                     <ArticleCard key={article._id + i} article={article} />
-                 
                   </div>
                 ))
             )}

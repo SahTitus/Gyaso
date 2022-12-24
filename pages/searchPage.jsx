@@ -18,7 +18,6 @@ const SearchPage = () => {
   const dispatch = useDispatch();
   const router = useRouter();
   const [searchTerm, setSearchTerm] = useState("");
-  const [hasMore, setHasMore] = useState(true);
   const [boolToRefresh, setBoolToRefresh] = useState(false);
   const { queriedArticles, totalCount, isLoading } = useSelector(
     (state) => state.articles
