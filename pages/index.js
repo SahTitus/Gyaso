@@ -23,7 +23,6 @@ import { NextSeo } from "next-seo";
 function Home({ articlesSSR }) {
   const dispatch = useDispatch();
   const { articles, totalCount } = useSelector((state) => state.articles);
-  console.log(articles);
   const [boolToRefresh, setBoolToRefresh] = useState(false);
 
   const { category, setCategory, setGetSSRData } = useStateContex();

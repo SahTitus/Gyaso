@@ -17,7 +17,6 @@ export const fetchArticles = (skip) => async (dispatch) => {
 
   try {
     const { data } = await axios.get(`/api/articles?skip=${skip}`);
-    console.log(data)
 
     dispatch(getArticles(data));
   } catch (error) {

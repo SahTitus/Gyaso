@@ -66,22 +66,18 @@ const ArticleCard = ({ article }) => {
     <div className={styles.articleCard__container}>
       <div className={styles.card}>
         <a href={article?.link} target="_self" className={styles.link}>
-          <div className={styles.card__image}>
-            <Image
-              layout="fill"
-              className={styles.image}
-              src={
-                article?.image ||
-                " https://img.freepik.com/free-psd/3d-stethoscope-icon_23-2149257784.jpg?w=2000"
-              }
-              alt={article.title}
-              placeholder="blur"
-              blurDataURL={
-                article.image ||
-                " https://img.freepik.com/free-psd/3d-stethoscope-icon_23-2149257784.jpg?w=2000"
-              }
-            />
-          </div>
+          {article.image && (
+            <div className={styles.card__image}>
+              <Image
+                layout="fill"
+                className={styles.image}
+                src={article?.image}
+                alt={article.title}
+                placeholder="blur"
+                blurDataURL={article.image}
+              />
+            </div>
+          )}
         </a>
         <div className={styles.content__wrapper}>
           <a
@@ -102,13 +98,17 @@ const ArticleCard = ({ article }) => {
                 target="_self"
                 className={`${styles.link} ${styles.source}`}
               >
-                <Image
+                {
+                  article?.source_img && (
+                    <Image
                   className={styles.source__image}
                   src={article?.source_img}
                   alt={article.source}
-                  width={20}
-                  height={20}
+                  width={35}
+                height={30}
                 />
+                  )
+                }
                 <p>{article.source}</p>
               </a>
               <div className={styles.bottom__right}>

@@ -50,7 +50,12 @@ const Mincard = ({ article, isWidget, isFavorite }) => {
   };
 
   const Saved = () => (
-    <IconButton onClick={handleSave} className={styles.bottom__iconsWrapper}  type="button" aria-label="save">
+    <IconButton
+      onClick={handleSave}
+      className={styles.bottom__iconsWrapper}
+      type="button"
+      aria-label="save"
+    >
       {isSaved ? (
         <Star className={`${styles.bottom__icons} ${styles.saved}`} />
       ) : (
@@ -64,17 +69,11 @@ const Mincard = ({ article, isWidget, isFavorite }) => {
       <div className={styles.main}>
         {isWidget ? (
           <Image
-            className={`${styles.image} `}
+            className={`${styles.image}`}
             alt={article?.title}
-            src={
-              article?.image ||
-              " https://img.freepik.com/free-psd/3d-stethoscope-icon_23-2149257784.jpg?w=2000"
-            }
+            src={article?.image}
             placeholder="blur"
-            blurDataURL={
-              article?.image ||
-              " https://img.freepik.com/free-psd/3d-stethoscope-icon_23-2149257784.jpg?w=2000"
-            }
+            blurDataURL={article?.image}
             height={50}
             width={60}
           />
@@ -103,7 +102,7 @@ const Mincard = ({ article, isWidget, isFavorite }) => {
               <span>12h</span> */}
             </p>
             {!isWidget && (
-              <IconButton  type="button" aria-label="more">
+              <IconButton type="button" aria-label="more">
                 <MoreHoriz className={styles.moreHoriz} />
               </IconButton>
             )}
@@ -138,7 +137,8 @@ const Mincard = ({ article, isWidget, isFavorite }) => {
           <IconButton
             onClick={handleSharing}
             className={styles.bottomRightIcon__wrapper}
-            type="button" aria-label="share"
+            type="button"
+            aria-label="share"
           >
             <BoxArrowUp
               className={`${styles.bottomRightIcon} ${styles.shareIcon}`}
