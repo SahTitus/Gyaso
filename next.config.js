@@ -62,6 +62,7 @@ const nextConfig = withPWA({
       "justhealthlife.com",
       "prestigemensmedical.com",
       "cdn.lifehack.org",
+      "www.thinktecture.com",
       "dailyburn.com",
       "logodix.com",
       "scontent.facc6-1.fna.fbcdn.net",

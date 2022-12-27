@@ -71,7 +71,7 @@ const ArticleCard = ({ article }) => {
               <Image
                 layout="fill"
                 className={styles.image}
-                src={article?.image}
+                src={article?.image || 'https://media.istockphoto.com/vectors/first-aid-kit-ambulance-emergency-box-medical-help-suitcase-concept-vector-id1372326054?k=20&m=1372326054&s=612x612&w=0&h=Z1GLpkCGvjZFe9oHwLxfj9ehH_jUDUaAaG7l9-dktwE='}
                 alt={article.title}
                 placeholder="blur"
                 blurDataURL={article.image}

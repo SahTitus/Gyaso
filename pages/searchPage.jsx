@@ -70,9 +70,7 @@ const SearchPage = () => {
       </Head>
       <div className={styles.searchPage}>
         <div className={styles.topBar}>
-          <div onClick={handleSearch} className={styles.searchIcon__hideLg}>
-            <Search />
-          </div>
+          
           <div
             onClick={() => router.back()}
             className={styles.searchIcon__showLg}
@@ -82,6 +80,9 @@ const SearchPage = () => {
             <ArrowBack />
           </div>
           <form onSubmit={handleSearch} className={styles.searchForm}>
+          <div onClick={handleSearch} className={`${styles.smContainer} ${styles.searchIcon__hideLg}`}>
+            <Search />
+          </div>
             <div className={styles.searchContainer}>
               <input
                 className={styles.searchInput}

@@ -50,6 +50,16 @@ background-color: rgba(129, 121, 121, 0.24);
   display: none;
 }
 
+.searchIcon__hideLg{
+  background-color: rgba(228, 220, 220, 0.863);
+display: flex;
+align-items: center;
+justify-content: center;
+cursor: pointer;
+height: 35px;
+width: 35px;
+}
+
 .topBar {
   position: sticky;
   display: flex;
@@ -68,6 +78,7 @@ background-color: rgba(129, 121, 121, 0.24);
 .searchForm {
   display: flex;
   display: flex;
+  align-items: center;
   padding: 10px;
   height: 40px;
   flex: 1;
