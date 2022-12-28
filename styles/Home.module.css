@@ -9,6 +9,10 @@
   /* min-height: 200px; */
 }
 
+.cate{
+  background-color: tomato !important;
+}
+
 .home::-webkit-scrollbar {
   display: none;
 }

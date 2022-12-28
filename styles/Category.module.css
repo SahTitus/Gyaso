@@ -16,19 +16,20 @@
   text-align: center;
   margin: 5px;
   box-shadow: 0px 0px 1px 1px #f0f1f1;
-  padding: 0px ;
+
+  padding: 2px 4px;
   background-color: rgb(255, 255, 255);
   border-radius: 20px;
   min-width: fit-content;
 }
 
 .select {
-  background-color: rgb(31, 54, 73);
+  background-color: #097efb;
   color: #fff;
 }
 
 .select:hover {
-  background-color: rgb(31, 54, 73) !important;
+  background-color: #097efb !important;
 }
 
 .cateBtn p {

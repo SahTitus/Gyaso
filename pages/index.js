@@ -25,10 +25,10 @@ function Home({ articlesSSR }) {
   const { articles, totalCount } = useSelector((state) => state.articles);
   const [boolToRefresh, setBoolToRefresh] = useState(false);
 
-  const { category, setCategory, setGetSSRData } = useStateContex();
+  const { stateCategory, setCategory, setGetSSRData } = useStateContex();
   const getMorePost = async () => {
-    if (category.cate !== "all") {
-      dispatch(fetchMoreByCategory(category.category_id));
+    if (stateCategory.cate !== "all") {
+      dispatch(fetchMoreByCategory(stateCategory.category_id));
     } else {
       dispatch(fetchMoreArticles());
     }
@@ -66,7 +66,7 @@ function Home({ articlesSSR }) {
         description="Healthtage, discover incredible tips on your daily health.We've made your effort of searching for health information seamless. How to, treatments, cure, signs and symptoms, prevention. "
         canonical="https://www.healthtage.com"
         openGraph={{
-          url: "https://healthtage.com",
+          url: "https://www.healthtage.com",
           title: "Healthtage: health and medical tips",
           description:
             "Healthtage, discover incredible tips on your daily health.We've made your effort of searching for health information seamless. How to, treatments, cure, signs and symptoms, prevention.",
@@ -95,6 +95,7 @@ function Home({ articlesSSR }) {
               setCategory={setCategory}
               key={i}
               cate={category}
+              isSelect={stateCategory.category_id === category.category_id}
             />
           ))}
         </div>
@@ -115,7 +116,7 @@ function Home({ articlesSSR }) {
 
       <div
         className={`${styles.articles} ${
-          category?.cate?.length && category?.cate !== "all" && styles.pushup
+          stateCategory?.cate?.length && stateCategory?.cate !== "all" && styles.pushup
         }`}
       >
         <InfiniteScroll

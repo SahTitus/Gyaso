@@ -8,7 +8,7 @@ export const StateProvider = ({ children }) => {
   const [openSignInAlert, setSignInAlert] = useState(false);
   const [searchTermLg, setSearchTermLg] = useState("");
   const [getSSRData, setGetSSRData] = useState([]);
-  const [category, setCategory] = useState({ cate: "all", category_id: "all" });
+  const [stateCategory, setCategory] = useState({ cate: "all", category_id: "all" });
 
   const [showCart, setShowCart] = useState(false);
   const [cartItems, setCartItems] = useState([]);
@@ -34,7 +34,7 @@ export const StateProvider = ({ children }) => {
     <StateContext.Provider
       value={{
         searchTerm,
-        category,
+        stateCategory,
         getSSRData,
         searchTermLg,
         openSignInAlert,
