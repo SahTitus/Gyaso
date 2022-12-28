@@ -1,18 +1,22 @@
 import { initializeApp } from "@firebase/app";
 import { getAuth } from "@firebase/auth";
 import { getFirestore } from "@firebase/firestore";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
 
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-	apiKey: "AIzaSyDZi3vumA4uqFjj-AXhp26EyY3ynQcErwU",
-	authDomain: "hooklearn-dcd07.firebaseapp.com",
-	databaseURL: "https://hooklearn-dcd07-default-rtdb.firebaseio.com",
-	projectId: "hooklearn-dcd07",
-	storageBucket: "hooklearn-dcd07.appspot.com",
-	messagingSenderId: "817744596984",
-	appId: "1:817744596984:web:55e3b1fbaae5993b16900d",
-	measurementId: "G-SP81WZ19XS",
+  apiKey: "AIzaSyCO3A0dmqcuqtoGKbCIpnH3BRuYO_NiJf8",
+  authDomain: "healthtage-227a4.firebaseapp.com",
+  projectId: "healthtage-227a4",
+  storageBucket: "healthtage-227a4.appspot.com",
+  messagingSenderId: "388033242193",
+  appId: "1:388033242193:web:3854c0b53f689aac71c470",
+  measurementId: "G-F4EHWYP548"
 };
 
+// Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);

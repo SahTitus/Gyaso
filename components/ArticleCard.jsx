@@ -71,7 +71,7 @@ const ArticleCard = ({ article }) => {
               <Image
                 layout="fill"
                 className={styles.image}
-                src={article?.image ||'/hospital.png'}
+                src={article?.image || "/hospital.png"}
                 alt={article.title}
                 placeholder="blur"
                 blurDataURL={article.image}
@@ -98,17 +98,15 @@ const ArticleCard = ({ article }) => {
                 target="_self"
                 className={`${styles.link} ${styles.source}`}
               >
-                {
-                  article?.source_img && (
-                    <Image
-                  className={styles.source__image}
-                  src={article?.source_img}
-                  alt={article.source}
-                  width={35}
-                height={30}
-                />
-                  )
-                }
+                {article?.source_img && (
+                  <Image
+                    className={styles.source__image}
+                    src={article?.source_img}
+                    alt={article.source}
+                    width={35}
+                    height={30}
+                  />
+                )}
                 <p>{article.source}</p>
               </a>
               <div className={styles.bottom__right}>

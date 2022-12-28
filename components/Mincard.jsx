@@ -81,15 +81,9 @@ const Mincard = ({ article, isWidget, isFavorite }) => {
           <Image
             className={`${styles.image} `}
             alt={article?.title}
-            src={
-              article?.image ||
-              " https://img.freepik.com/free-psd/3d-stethoscope-icon_23-2149257784.jpg?w=2000"
-            }
+            src={article?.image || "/hospital.png"}
             placeholder="blur"
-            blurDataURL={
-              article?.image ||
-              " https://img.freepik.com/free-psd/3d-stethoscope-icon_23-2149257784.jpg?w=2000"
-            }
+            blurDataURL={article?.image || "/hospital.png"}
             height={90}
             width={120}
           />
