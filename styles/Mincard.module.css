@@ -10,15 +10,13 @@
   display: flex;
   align-items: center;
   padding: 0 10px;
-  padding-top: 10px;
   flex: 1;
 }
 
-.topbar {
+.text {
   display: flex;
-  align-items: center;
+  flex-direction: column;
   justify-content: space-between;
-  height: 20px;
 }
 
 .moreHoriz {
@@ -46,14 +44,41 @@
 
 .mainInfo {
   display: flex;
-  flex-direction: column;
   flex: 1;
   margin-left: 17px;
 }
 
+.mini__link {
+  flex: 1;
+  text-decoration: none;
+}
+
+.mini__link:active {
+  text-decoration: none;
+}
+
+.mini__link:link {
+  color: black;
+}
+
+.mini__link:visited {
+  color: black;
+}
+
+.link:active {
+  color: black;
+}
+
 .content {
   display: flex;
-  margin-top: -12px;
+  margin-top: -20px;
+}
+
+.moreHoriz__wrapper {
+  display: flex !important;
+  position: absolute !important;
+  right: 15px !important;
+  z-index: 100 !important;
 }
 
 .title {

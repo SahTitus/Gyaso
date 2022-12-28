@@ -67,56 +67,67 @@ const Mincard = ({ article, isWidget, isFavorite }) => {
   return (
     <div className={styles.mincard}>
       <div className={styles.main}>
-        {isWidget ? (
-          <Image
-            className={`${styles.image}`}
-            alt={article?.title}
-            src={article?.image}
-            placeholder="blur"
-            blurDataURL={article?.image}
-            height={50}
-            width={60}
-          />
-        ) : (
-          <Image
-            className={`${styles.image} `}
-            alt={article?.title}
-            src={article?.image || "/hospital.png"}
-            placeholder="blur"
-            blurDataURL={article?.image || "/hospital.png"}
-            height={90}
-            width={120}
-          />
-        )}
+        <a href={article.link}>
+          {isWidget ? (
+            <Image
+              className={`${styles.image}`}
+              alt={article?.title}
+              src={article?.image}
+              placeholder="blur"
+              blurDataURL={article?.image}
+              height={50}
+              width={60}
+            />
+          ) : (
+            <Image
+              className={`${styles.image} `}
+              alt={article?.title}
+              src={article?.image || "/hospital.png"}
+              placeholder="blur"
+              blurDataURL={article?.image || "/hospital.png"}
+              height={90}
+              width={120}
+            />
+          )}
+        </a>
         <div className={styles.mainInfo}>
-          <div className={styles.topbar}>
-            <p className={styles.topLeft}>
-              <span>{article?.category}</span>
-              {/* <CircleFill className={styles.bullet} />
+          <a href={article.link} className={styles.mini__link}>
+            <div className={styles.text}>
+              <p className={styles.topLeft}>
+                <span>{article?.category}</span>
+                {/* <CircleFill className={styles.bullet} />
               <span>12h</span> */}
-            </p>
-            {!isWidget && (
-              <IconButton type="button" aria-label="more">
-                <MoreHoriz className={styles.moreHoriz} />
-              </IconButton>
-            )}
-          </div>
-          <div className={styles.content}>
-            <p className={styles.title}>{article?.title}</p>
-          </div>
+              </p>
+
+              <div className={styles.content}>
+                <p className={styles.title}>{article?.title}</p>
+              </div>
+            </div>
+          </a>
+          {!isWidget && (
+            <IconButton
+              className={styles.moreHoriz__wrapper}
+              type="button"
+              aria-label="more"
+            >
+              <MoreHoriz className={styles.moreHoriz} />
+            </IconButton>
+          )}
         </div>
       </div>
       <div className={styles.bottom}>
-        <div className={styles.bottomLeft}>
-          <Image
-            className={styles.avatar}
-            src={article?.source_img}
-            alt="Hi"
-            height={20}
-            width={20}
-          />
-          <p style={{ marginLeft: "10px" }}>{article?.source}</p>
-        </div>
+        <a href={article.link} className={styles.mini__link}>
+          <div className={styles.bottomLeft}>
+            <Image
+              className={styles.avatar}
+              src={article?.source_img}
+              alt="Hi"
+              height={20}
+              width={20}
+            />
+            <p style={{ marginLeft: "10px" }}>{article?.source}</p>
+          </div>
+        </a>
         <div className={styles.bottomRight}>
           {isFavorite ? (
             <Star

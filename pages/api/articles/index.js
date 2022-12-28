@@ -11,6 +11,9 @@ export default async function handler(req, res) {
   const { db } = await connectToDb();
   if (method === "GET") {
     try {
+       // Just added a new field to articles doc called ''saves'
+      // db.collection('articles').updateMany({}, {$set:{"saves": []}})
+
       const totalCount = await db
       .collection("articles")
       .countDocuments({});
