@@ -3,7 +3,6 @@ import {
   ArrowBack,
   FilterAltOutlined,
   Search,
-  ShoppingCartOutlined,
 } from "@mui/icons-material";
 import {
   Button,
