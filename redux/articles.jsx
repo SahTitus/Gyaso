@@ -19,7 +19,7 @@ export const articlesSlice = createSlice({
       state.isLoading = false;
     },
     getArticlesSSR: (state, action) => {
-      state.articles = action.payload;
+      state.articles = action.payload.articles;
        state.totalCount = action.payload.totalCount;
       state.isLoading = false;
     },

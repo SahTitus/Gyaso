@@ -1,8 +1,7 @@
-import Image from "next/image";
 import React from "react";
 import { useDispatch } from "react-redux";
-import { fetchByCategory } from "../lib/articles";
-import { getArticlesSSR } from "../redux/articles";
+import { fetchArticles, fetchByCategory } from "../lib/articles";
+import { getArticlesSSR, loading } from "../redux/articles";
 import styles from "../styles/Category.module.css";
 
 const Category = ({ cate, dataSSR, isSelect, setCategory }) => {
@@ -11,8 +10,11 @@ const Category = ({ cate, dataSSR, isSelect, setCategory }) => {
   const handleClick = () => {
     if (cate.category_id && cate.cate !== "all")
       dispatch(fetchByCategory(cate.category_id));
-    if (cate.cate === "all") dispatch(getArticlesSSR(dataSSR));
+    if (cate.cate === "all") dispatch(fetchArticles());
+    // if (cate.cate === "all") dispatch(getArticlesSSR(dataSSR));
     setCategory(cate);
+    dispatch(loading());
+
   };
 
   return (
@@ -22,13 +24,6 @@ const Category = ({ cate, dataSSR, isSelect, setCategory }) => {
         isSelect ? styles.select : styles.cateBtn
       }`}
     >
-      <Image
-        className={styles.icon}
-        alt={cate.cate}
-        src={cate?.icon}
-        height={28}
-        width={28}
-      />
       <p>{cate?.cate}</p>
     </div>
   );

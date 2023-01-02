@@ -74,7 +74,7 @@ const ArticleCard = ({ article }) => {
                 src={article?.image || "/hospital.png"}
                 alt={article.title}
                 placeholder="blur"
-                blurDataURL={article.image}
+                blurDataURL= "/hospital.png"
               />
             </div>
           )}

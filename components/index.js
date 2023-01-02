@@ -6,3 +6,4 @@ export { default as ArticleCard } from './ArticleCard';
 export { default as Category } from './Category';
 export { default as Topic } from './Topic';
 export { default as Footer } from './Footer';
+export { default as MediaQuery } from './MediaQuery';

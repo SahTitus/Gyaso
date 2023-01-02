@@ -74,7 +74,7 @@ const Mincard = ({ article, isWidget, isFavorite }) => {
               alt={article?.title}
               src={article?.image}
               placeholder="blur"
-              blurDataURL={article?.image}
+              blurDataURL="/hospital.png"
               height={50}
               width={60}
             />
@@ -84,7 +84,7 @@ const Mincard = ({ article, isWidget, isFavorite }) => {
               alt={article?.title}
               src={article?.image || "/hospital.png"}
               placeholder="blur"
-              blurDataURL={article?.image || "/hospital.png"}
+              blurDataURL="/hospital.png"
               height={90}
               width={120}
             />

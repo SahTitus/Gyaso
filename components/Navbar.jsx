@@ -13,6 +13,7 @@ import {
   MenuItem,
   Slide,
 } from "@mui/material";
+import dynamic from "next/dynamic";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useState } from "react";
@@ -21,7 +22,8 @@ import { searchTopics } from "../lib/topics";
 import { loading } from "../redux/topics";
 import { useStateContex } from "../store/StateProvider";
 import styles from "../styles/Navbar.module.css";
-import Drawer from "./Drawer";
+
+const Drawer = dynamic(() => import("./Drawer"));
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="left" ref={ref} {...props} />;
@@ -60,10 +62,10 @@ const Navbar = () => {
     dispatch(loading());
   };
 
-  const handleSearchTopics =(e)=>{
+  const handleSearchTopics = (e) => {
     e.preventDefault();
-dispatch(searchTopics(queryTerm))
-  }
+    dispatch(searchTopics(queryTerm));
+  };
 
   const handleSearch = (e) => {
     e.preventDefault();

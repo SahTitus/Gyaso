@@ -170,12 +170,12 @@ body {
 
     height: 100vh;
   }
-  .divRight {
+  /* .divRight {
     display: none;
-  }
-  .divFlex {
+  } */
+  /* .divFlex {
     display: none;
-  }
+  } */
 }
 @media screen and (min-width: 720px) {
   body {

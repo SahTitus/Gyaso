@@ -28,7 +28,7 @@ const Drawer = ({ handleClose }) => {
       <div className={styles.top}>
         {user?.result?._id ? (
           <Avatar
-            src="https://img.freepik.com/free-psd/3d-stethoscope-icon_23-2149257784.jpg?w=2000"
+            src="/hospital.png"
             className={styles.avatar}
           />
         ) : (
@@ -39,7 +39,7 @@ const Drawer = ({ handleClose }) => {
             src={Ava}
             alt={"Profile"}
             placeholder="blur"
-            blurDataURL={Ava}
+            blurDataURL="/hospital.png"
           />
         )}
         <h4>{user?.result?.name}</h4>

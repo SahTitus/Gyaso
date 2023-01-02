@@ -1,9 +1,9 @@
 /* eslint-disable react/no-unknown-property */
-import { Box, Button, CircularProgress } from "@mui/material";
+import { Box, CircularProgress } from "@mui/material";
 import { useEffect, useState } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { useDispatch, useSelector } from "react-redux";
-import { Mincard, ArticleCard, Category } from "../components";
+import { Category } from "../components";
 import Footer from "../components/Footer";
 import {
   fetchArticles,
@@ -11,18 +11,24 @@ import {
   fetchMoreArticles,
   fetchMoreByCategory,
 } from "../lib/articles";
-import { getArticlesSSR, loading } from "../redux/articles";
+
 import styles from "../styles/Home.module.css";
-import { connectToDb } from "../utils/mongodb";
+// import { connectToDb } from "../utils/mongodb";
 import { categories } from "../constants/categories.js";
 import PullToRefresh from "react-simple-pull-to-refresh";
 import { useStateContex } from "../store/StateProvider";
 import { NextSeo } from "next-seo";
+import Script from "next/script";
+import dynamic from "next/dynamic";
 // import HumbleScraper from "../components/HumbleScraper";
+const ArticleCard = dynamic(() => import('../components/ArticleCard'))
+const  Mincard = dynamic(() => import('../components/Mincard'))
 
-function Home({ articlesSSR }) {
+function Home() {
   const dispatch = useDispatch();
-  const { articles, totalCount } = useSelector((state) => state.articles);
+  const { articles, totalCount, isLoading } = useSelector(
+    (state) => state.articles
+  );
   const [boolToRefresh, setBoolToRefresh] = useState(false);
 
   const { stateCategory, setCategory, setGetSSRData } = useStateContex();
@@ -36,12 +42,12 @@ function Home({ articlesSSR }) {
 
   const finish =
     totalCount < articles?.length || totalCount === articles?.length;
-
+  console.log(articles);
   useEffect(() => {
-    if (articlesSSR.length > 0) dispatch(getArticlesSSR(articlesSSR));
+    // if (articlesSSR.length > 0) dispatch(getArticlesSSR(articlesSSR));
 
     dispatch(fetchArticles());
-    setGetSSRData(articlesSSR);
+    // setGetSSRData(articlesSSR);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -91,7 +97,7 @@ function Home({ articlesSSR }) {
         <div className={styles.home__categories}>
           {categories.map((category, i) => (
             <Category
-              dataSSR={articlesSSR}
+              dataSSR={articles}
               setCategory={setCategory}
               key={i}
               cate={category}
@@ -99,6 +105,7 @@ function Home({ articlesSSR }) {
             />
           ))}
         </div>
+
         {/* <HumbleScraper /> */}
         {/* {category.cate === "all" && (
           <>
@@ -116,93 +123,105 @@ function Home({ articlesSSR }) {
 
       <div
         className={`${styles.articles} ${
-          stateCategory?.cate?.length && stateCategory?.cate !== "all" && styles.pushup
+          stateCategory?.cate?.length &&
+          stateCategory?.cate !== "all" &&
+          styles.pushup
         }`}
       >
-        <InfiniteScroll
-          className={`${styles.articles__wrapper}`}
-          dataLength={articles.length}
-          next={getMorePost}
-          loader={
-            <Box className={styles.loadingState}>
-              <CircularProgress
-                className={styles.progress}
-                role="progressbar"
-                id="combo"
-                aria-label="loading data"
-              />
-            </Box>
-          }
-          hasMore={!finish}
-          endMessage={
-            <div className={styles.endMessage}>
-              <p>Results has ended.</p>
-            </div>
-          }
-        >
-          <PullToRefresh className="pull_to_refresh" onRefresh={refreshHandler}>
-            {articles.map(
-              (article, i) =>
-                article?.link &&
-                article.title &&
-                (article?.mini_card ? (
-                  <div key={article._id + i}>
-                    {i % 8 === 0 && (
-                      <div className={styles.ads} key={"ad1" + article._id + i}>
-                        <script
-                          async
-                          src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${process.env.GO_AD_KEY}`}
-                          crossOrigin="anonymous"
-                        ></script>
-                        <ins
-                          className="adsbygoogle"
-                          style={{ display: "block" }}
-                          data-ad-format="fluid"
-                          data-ad-layout-key="-6m+bz+1h-8+dv"
-                          data-ad-client={`${process.env.GO_AD_KEY}`}
-                          data-ad-slot="3517212256"
-                        ></ins>
-                        <script>
-                          (adsbygoogle = window.adsbygoogle || []).push({});
-                        </script>
-                      </div>
-                    )}
-                    <Mincard
-                      key={article._id + i + article.title}
-                      article={article}
-                    />
-                  </div>
-                ) : (
-                  <div key={article._id + i}>
-                    {i % 4 === 0 && (
-                      <div
-                        className={styles.ads}
-                        key={i + "ads34" + article._id}
-                      >
-                        <script
-                          async
-                          src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${process.env.GO_AD_KEY}`}
-                          crossOrigin="anonymous"
-                        ></script>
-                        <ins
-                          className="adsbygoogle"
-                          style={{ display: "block" }}
-                          data-ad-format="fluid"
-                          data-ad-layout-key="-6m+bz+1h-8+dv"
-                          data-ad-client={`${process.env.GO_AD_KEY}`}
-                          data-ad-slot="3517212256"
-                        ></ins>
-                        <script>
-                          (adsbygoogle = window.adsbygoogle || []).push({});
-                        </script>
-                      </div>
-                    )}
-                    <ArticleCard key={article._id + i} article={article} />
-                  </div>
-                ))
-            )}
-          </PullToRefresh>
-        </InfiniteScroll>
+        {isLoading ? (
+          <Box className={styles.loadingState}>
+            <CircularProgress
+              className={styles.progress}
+              role="progressbar"
+              id="combo"
+              aria-label="loading data"
+            />
+          </Box>
+        ) : (
+          <InfiniteScroll
+            className={`${styles.articles__wrapper}`}
+            dataLength={articles.length}
+            next={getMorePost}
+            loader={
+              <Box className={styles.loadingState}>
+                <CircularProgress
+                  className={styles.progress}
+                  role="progressbar"
+                  id="combo"
+                  aria-label="loading data"
+                />
+              </Box>
+            }
+            hasMore={!finish}
+            endMessage={
+              <div className={styles.endMessage}>
+                <p>Results has ended.</p>
+              </div>
+            }
+          >
+            <PullToRefresh
+              className="pull_to_refresh"
+              onRefresh={refreshHandler}
+            >
+              {articles?.map(
+                (article, i) =>
+                  article?.link &&
+                  article.title &&
+                  (article?.mini_card ? (
+                    <div key={article._id + i}>
+                      {/* {i % 8 === 0 && (
+                        <div
+                          className={styles.ads}
+                          key={"ad1" + article._id + i}
+                        >
+                          <ins
+                            className="adsbygoogle"
+                            style={{ display: "block" }}
+                            data-ad-format="fluid"
+                            data-full-width-responsive="true"
+                            data-ad-layout-key="-6m+bz+1h-8+dv"
+                            data-ad-client={process.env.GO_AD_KEY}
+                            data-ad-slot="3517212256"
+                          ></ins>
+                          <Script id={process.env.GO_AD_KEY}>
+                            (adsbygoogle = window.adsbygoogle || []).push({});
+                          </Script>
+                        </div>
+                      )} */}
+                      <Mincard
+                        key={article._id + i + article.title}
+                        article={article}
+                      />
+                    </div>
+                  ) : (
+                    <div key={article._id + i}>
+                      {i % 4 === 0 && (
+                        <div
+                          className={styles.ads}
+                          key={i + "ads34" + article._id}
+                        >
+                          <ins
+                            className="adsbygoogle"
+                            style={{ display: "block" }}
+                            data-ad-format="fluid"
+                            data-full-width-responsive="true"
+                            data-ad-layout-key="-6m+bz+1h-8+dv"
+                            data-ad-client={`${process.env.GO_AD_KEY}`}
+                            data-ad-slot="3517212256"
+                            // strategy="afterInteractive"
+                          ></ins>
+                          <Script id={process.env.GO_AD_KEY}>
+                            (adsbygoogle = window.adsbygoogle || []).push({});
+                          </Script>
+                        </div>
+                      )}
+                      <ArticleCard key={article._id + i} article={article} />
+                    </div>
+                  ))
+              )}
+            </PullToRefresh>
+          </InfiniteScroll>
+        )}
       </div>
 
       <Footer />
@@ -210,18 +229,18 @@ function Home({ articlesSSR }) {
   );
 }
 
-export const getServerSideProps = async () => {
-  const { db } = await connectToDb();
-  const data = await db
-    .collection("articles")
-    .aggregate([{ $sample: { size: 5 } }])
-    .toArray();
+// export const getServerSideProps = async () => {
+//   const { db } = await connectToDb();
+//   const data = await db
+//     .collection("articles")
+//     .aggregate([{ $sample: { size: 5 } }])
+//     .toArray();
 
-  const articlesSSR = JSON.parse(JSON.stringify(data));
+//   const articlesSSR = JSON.parse(JSON.stringify(data));
 
-  return {
-    props: { articlesSSR },
-  };
-};
+//   return {
+//     props: { articlesSSR },
+//   };
+// };
 
 export default Home;

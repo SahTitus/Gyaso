@@ -7,6 +7,7 @@ import {
   loading,
   isError,
   search,
+  getArticlesSSR,
   removeFromFavoriteArticles,
   searchMore,
   getFavoriteArticles,
@@ -18,7 +19,7 @@ export const fetchArticles = (skip) => async (dispatch) => {
   try {
     const { data } = await axios.get(`/api/articles?skip=${skip}`);
 
-    dispatch(getArticles(data));
+    dispatch(getArticlesSSR(data));
   } catch (error) {
     dispatch(isError(error));
   }
@@ -36,7 +37,6 @@ export const fetchArticlesSSR = (skip) => async (dispatch) => {
 };
 
 export const fetchMoreArticles = (skip) => async (dispatch) => {
-  dispatch(loading());
 
   try {
     const { data } = await axios.get(`/api/articles?skip=${skip}`);

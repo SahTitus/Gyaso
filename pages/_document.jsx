@@ -1,4 +1,5 @@
 import Document, { Head, Html, Main, NextScript } from "next/document";
+import Script from "next/script";
 
 class MyDocument extends Document {
   static async getInitialProps(ctx) {
@@ -25,16 +26,23 @@ class MyDocument extends Document {
           />
           <meta name="theme-color" content="#fff" />
           <meta
-          name="description" content="Healthtage, discover incredible tips on your daily health.We've made your effort of searching for health information seamless. How to, treatments, cure, signs and symptoms, prevention."
+            name="description"
+            content="Healthtage, discover incredible tips on your daily health.We've made your effort of searching for health information seamless. How to, treatments, cure, signs and symptoms, prevention."
           />
           <meta
             name="keywords"
             content="healthtage, nutrition, food, spirituality, parenting, pregnancy, heart health, men's health, sexual health, women's health, mental health, healthy living, skincare, sleep, human biology, eye health, weight loss, fitness, yoga, health, wellness, recipes, meditation, mindfulness, love, Sah Titus Samuel.
       "
           />
-          
-          <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7529020050126706"
-     crossOrigin="anonymous"></script>
+          <Script
+            async
+            // strategy="afterInteractive"
+            onError={(e) => {
+              console.error("Ads Script failed to load", e);
+            }}
+            src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${process.env.GO_AD_KEY}`}
+            crossOrigin="anonymous"
+          ></Script>
         </Head>
         <body>
           <Main />
