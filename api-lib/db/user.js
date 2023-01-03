@@ -2,40 +2,40 @@ import bcrypt from "bcryptjs";
 import { ObjectId } from "mongodb";
 import normalizeEmail from "validator/lib/normalizeEmail";
 
-export const loginWithEmailAndPassword = async (db, email, password) => {
+export const loginWithEmailAndPassword = (db, email, password) => {
   email = normalizeEmail(email);
-  const user = await db.collection("users").findOne({ email });
-  if (user && (await bcrypt.compare(password, user.password))) {
+  const user = db.collection("users").findOne({ email });
+  if (user && bcrypt.compare(password, user.password)) {
     return { ...user, password: undefined }; // filtered out password
   }
   return null;
 };
 
-export const login = async (db, userId) => {
-  return await db
+export const login = (db, userId) => {
+  return db
     .collection("users")
     .findOne({ _id: new ObjectId(userId) }, { projection: { password: 0 } })
     .then((user) => user || null);
 };
 
-export const findUserById = async (db, userId) => {
-  return await db
+export const findUserById = (db, userId) => {
+  return db
     .collection("users")
     .findOne({ _id: new ObjectId(userId) })
     .then((user) => user || null);
 };
 
-export const findUserByEmail = async (db, email) => {
+export const findUserByEmail = (db, email) => {
   email = normalizeEmail(email);
-  return await db
+  return db
     .collection("users")
     .findOne({ email })
     .then((user) => user || null);
 };
 
-export const insertUser = async (
+export const insertUser = (
   db,
-  { email, originalPassword, name, photo, favoriteArticles=[] }
+  { email, originalPassword, name, photo, favoriteArticles = [] }
 ) => {
   const user = {
     emailVerified: false,
@@ -45,20 +45,20 @@ export const insertUser = async (
     favoriteArticles,
   };
 
-  const password = await bcrypt.hash(originalPassword, 10);
+  const password = bcrypt.hash(originalPassword, 10);
 
   // Just added a new field to articles doc called ''saves'
   // db.collection('articles').updateMany({}, {$set:{"saves": []}})
 
-  const { insertedId } = await db
+  const { insertedId } = db
     .collection("users")
     .insertOne({ ...user, password });
   user._id = insertedId;
   return { ...user, password: undefined };
 };
-export const insertUserGoogle = async (
+export const insertUserGoogle = (
   db,
-  { email, name, photo,  favoriteArticles=[]}
+  { email, name, photo, favoriteArticles = [] }
 ) => {
   const user = {
     emailVerified: false,
@@ -68,13 +68,13 @@ export const insertUserGoogle = async (
     favoriteArticles,
   };
 
-  const { insertedId } = await db.collection("users").insertOne(user);
+  const { insertedId } = db.collection("users").insertOne(user);
   user._id = insertedId;
   return user;
 };
 
-export const addToFavoriteArticles=async(db, userId, data)=> {
-  return await db
+export const addToFavoriteArticles = (db, userId, data) => {
+  return db
     .collection("users")
     .findOneAndUpdate(
       { _id: new ObjectId(userId) },
@@ -82,22 +82,17 @@ export const addToFavoriteArticles=async(db, userId, data)=> {
       { projection: { password: 0 } }
     )
     .then((user) => user || null);
-}
+};
 
-
-export const updateUser =async(db, id, data) =>{
-  return await db
-    .collection('users')
-    .findOneAndUpdate(
-      { _id: new ObjectId(id) },
-      { $set: data },
-    )
+export const updateUser = (db, id, data) => {
+  return db
+    .collection("users")
+    .findOneAndUpdate({ _id: new ObjectId(id) }, { $set: data })
     .then(({ value }) => value);
-}
+};
 
-
-export const fetchFavoriteArticles = async (db, ids) => {
-  return await db
+export const fetchFavoriteArticles = (db, ids) => {
+  return db
     .collection("articles")
     .find({ _id: { $in: ids } })
     .sort({
