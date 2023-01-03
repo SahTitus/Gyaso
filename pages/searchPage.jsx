@@ -15,44 +15,44 @@ import PullToRefresh from "react-simple-pull-to-refresh";
 import Head from "next/head";
 
 const SearchPage = () => {
-  const dispatch = useDispatch();
-  const router = useRouter();
-  const [searchTerm, setSearchTerm] = useState("");
-  const [boolToRefresh, setBoolToRefresh] = useState(false);
-  const { queriedArticles, totalCount, isLoading } = useSelector(
-    (state) => state.articles
-  );
-  const { searchTermLg } = useStateContex();
+  // const dispatch = useDispatch();
+  // const router = useRouter();
+  // const [searchTerm, setSearchTerm] = useState("");
+  // const [boolToRefresh, setBoolToRefresh] = useState(false);
+  // const { queriedArticles, totalCount, isLoading } = useSelector(
+  //   (state) => state.articles
+  // );
+  // const { searchTermLg } = useStateContex();
 
-  const finish = totalCount <= queriedArticles?.length;
+  // const finish = totalCount <= queriedArticles?.length;
 
-  const getMoreArticles = async () => {
-    dispatch(searchMoreArticles(searchTerm, queriedArticles?.length));
-  };
+  // const getMoreArticles = async () => {
+  //   dispatch(searchMoreArticles(searchTerm, queriedArticles?.length));
+  // };
 
-  const handleSearch = (e) => {
-    e.preventDefault();
-    if (searchTerm.trim()) {
-      dispatch(searchArticles(searchTerm));
-    }
-  };
+  // const handleSearch = (e) => {
+  //   e.preventDefault();
+  //   if (searchTerm.trim()) {
+  //     dispatch(searchArticles(searchTerm));
+  //   }
+  // };
 
-  useEffect(() => {
-    if (searchTermLg.trim()) {
-      setSearchTerm(searchTermLg);
-      dispatch(searchArticles(searchTermLg));
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [boolToRefresh]);
+  // useEffect(() => {
+  //   if (searchTermLg.trim()) {
+  //     setSearchTerm(searchTermLg);
+  //     dispatch(searchArticles(searchTermLg));
+  //   }
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, [boolToRefresh]);
 
-  const refreshHandler = async () => {
-    const currentValue = boolToRefresh;
-    setBoolToRefresh(!currentValue);
+  // const refreshHandler = async () => {
+  //   const currentValue = boolToRefresh;
+  //   setBoolToRefresh(!currentValue);
 
-    setTimeout(() => {
-      setBoolToRefresh(false);
-    }, 8000);
-  };
+  //   setTimeout(() => {
+  //     setBoolToRefresh(false);
+  //   }, 8000);
+  // };
 
   return (
     <>
@@ -69,9 +69,13 @@ const SearchPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className={styles.searchPage}>
-        <div className={styles.topBar}>
+        <h1>GGGGGGGGG</h1>
+        <h1>GGGGGGGGG</h1>
+        <h1>GGGGGGGGG</h1>
+        <h1>GGGGGGGGG</h1>
+        {/* <div className={styles.topBar}> */}
           
-          <div
+          {/* <div
             onClick={() => router.back()}
             className={styles.searchIcon__showLg}
             type="button"
@@ -155,7 +159,7 @@ const SearchPage = () => {
               </PullToRefresh>
             </InfiniteScroll>
           </div>
-        )}
+        )} */}
 
         <Footer />
       </div>

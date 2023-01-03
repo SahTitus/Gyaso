@@ -51,10 +51,10 @@ function Home() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  useEffect(() => {
-    if (boolToRefresh) dispatch(fetchArticlesSSR());
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [boolToRefresh]);
+  // useEffect(() => {
+  //   if (boolToRefresh) dispatch(fetchArticlesSSR());
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, [boolToRefresh]);
 
   const refreshHandler = async () => {
     const currentValue = boolToRefresh;

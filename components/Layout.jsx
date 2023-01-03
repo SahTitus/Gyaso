@@ -10,7 +10,7 @@ import { useStateContex } from "../store/StateProvider";
 import useMediaQuery from "./MediaQuery";
 
 function Layout({ children }) {
-  const { isLarge, isMedium, isSidebar } = useMediaQuery();
+  const { isLarge, isSidebar } = useMediaQuery();
   const { setSignInAlert } = useStateContex();
   const shopPath = "/shop" || "/shop/product/[slug]";
 

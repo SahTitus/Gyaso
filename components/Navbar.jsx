@@ -4,16 +4,8 @@ import {
   FilterAltOutlined,
   Search,
 } from "@mui/icons-material";
-import {
-  Button,
-  Dialog,
-  IconButton,
-  Menu,
-  MenuItem,
-  Slide,
-} from "@mui/material";
+import { Dialog, IconButton, Menu, MenuItem, Slide } from "@mui/material";
 import dynamic from "next/dynamic";
-import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
@@ -40,8 +32,7 @@ const Navbar = () => {
   const [open, setOpen] = useState(false);
 
   const [anchorEl, setAnchorEl] = React.useState(null);
-  const [selectedSearchType, setSelectedSearchType] =
-    React.useState("articles");
+  const [selectedSearchType, setSelectedSearchType] = useState("articles");
   const openFilter = Boolean(anchorEl);
   const handleClickListItem = (event) => {
     setAnchorEl(event.currentTarget);

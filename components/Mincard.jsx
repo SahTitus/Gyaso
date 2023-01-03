@@ -1,6 +1,6 @@
 import { MoreHoriz, Star, StarOutline } from "@mui/icons-material";
 import React, { useState } from "react";
-import { BoxArrowUp, CircleFill } from "react-bootstrap-icons";
+import { BoxArrowUp } from "react-bootstrap-icons";
 import styles from "../styles/Mincard.module.css";
 import { IconButton } from "@mui/material";
 import Image from "next/image";
