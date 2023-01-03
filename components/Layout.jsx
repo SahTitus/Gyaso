@@ -65,7 +65,7 @@ function Layout({ children }) {
 
         {children}
 
-        {/* {isLarge && (
+        {isLarge && (
           <>
             {pathname === "/" && (
               <div className="divRight">
@@ -82,7 +82,7 @@ function Layout({ children }) {
               </div>
             )}
           </>
-        )} */}
+        )}
       </main>
     </div>
   );
