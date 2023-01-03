@@ -47,9 +47,10 @@ class MyDocument extends Document {
         <body>
           <Main />
 
-          {/* <NextScript />
-          Global Site Tag (gtag.js) - Google Analytics 
-          <script
+          <NextScript />
+          {/* Global Site Tag (gtag.js) - Google Analytics */}
+          {/* <Script
+           id={process.env.GO_AD_KEY}
             dangerouslySetInnerHTML={{
               __html: `
             window.dataLayer = window.dataLayer || [];
