@@ -12,14 +12,14 @@ export const loginWithEmailAndPassword = async (db, email, password) => {
 };
 
 export const login = async (db, userId) => {
-  return db
+  return await db
     .collection("users")
     .findOne({ _id: new ObjectId(userId) }, { projection: { password: 0 } })
     .then((user) => user || null);
 };
 
 export const findUserById = async (db, userId) => {
-  return db
+  return await db
     .collection("users")
     .findOne({ _id: new ObjectId(userId) })
     .then((user) => user || null);
@@ -27,7 +27,7 @@ export const findUserById = async (db, userId) => {
 
 export const findUserByEmail = async (db, email) => {
   email = normalizeEmail(email);
-  return db
+  return await db
     .collection("users")
     .findOne({ email })
     .then((user) => user || null);
@@ -73,8 +73,8 @@ export const insertUserGoogle = async (
   return user;
 };
 
-export const addToFavoriteArticles=(db, userId, data)=> {
-  return db
+export const addToFavoriteArticles=async(db, userId, data)=> {
+  return await db
     .collection("users")
     .findOneAndUpdate(
       { _id: new ObjectId(userId) },
@@ -85,8 +85,8 @@ export const addToFavoriteArticles=(db, userId, data)=> {
 }
 
 
-export const updateUser =(db, id, data) =>{
-  return db
+export const updateUser =async(db, id, data) =>{
+  return await db
     .collection('users')
     .findOneAndUpdate(
       { _id: new ObjectId(id) },
@@ -97,7 +97,7 @@ export const updateUser =(db, id, data) =>{
 
 
 export const fetchFavoriteArticles = async (db, ids) => {
-  return db
+  return await db
     .collection("articles")
     .find({ _id: { $in: ids } })
     .sort({
