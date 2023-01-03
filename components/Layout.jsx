@@ -36,7 +36,7 @@ function Layout({ children }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      {/* {!hide && (
+      {!hide && (
         <header className="header">
           {pathname.includes(shopPath) ? (
             //  <ShopNavbar />
@@ -45,7 +45,7 @@ function Layout({ children }) {
             <Navbar />
           )}
         </header>
-      )} */}
+      )}
       <main
         style={{ display: "flex" }}
         className={`main ${
@@ -53,7 +53,7 @@ function Layout({ children }) {
           "main__lgSearch"
         }`}
       >
-         {/* { isSidebar && 
+         { isSidebar && 
          <>
         {(pathname === "/" || !pathname.includes(shopPath)) && (
           <div className="divFlex">
@@ -61,11 +61,11 @@ function Layout({ children }) {
           </div>
         )}
 
-        </>} */}
+        </>}
 
         {children}
 
-        {/* {isLarge && (
+        {isLarge && (
           <>
             {pathname === "/" && (
               <div className="divRight">
@@ -82,7 +82,7 @@ function Layout({ children }) {
               </div>
             )}
           </>
-        )} */}
+        )}
       </main>
     </div>
   );

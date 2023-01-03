@@ -12,22 +12,22 @@ import SEO from "../next-seo.config";
 
 function MyApp({ Component, pageProps }) {
   const router = useRouter();
-  // useEffect(() => {
-  //   const handleRouteChange = (url) => {
-  //     gtag.pageview(url);
-  //   };
-  //   router.events.on("routeChangeComplete", handleRouteChange);
-  //   router.events.on("hashChangeComplete", handleRouteChange);
-  //   return () => {
-  //     router.events.off("routeChangeComplete", handleRouteChange);
-  //     router.events.off("hashChangeComplete", handleRouteChange);
-  //   };
-  // }, [router.events]);
+  useEffect(() => {
+    const handleRouteChange = (url) => {
+      gtag.pageview(url);
+    };
+    router.events.on("routeChangeComplete", handleRouteChange);
+    router.events.on("hashChangeComplete", handleRouteChange);
+    return () => {
+      router.events.off("routeChangeComplete", handleRouteChange);
+      router.events.off("hashChangeComplete", handleRouteChange);
+    };
+  }, [router.events]);
   
   return (
     <>
          {/* Global Site Tag (gtag.js) - Google Analytics */}
-         {/* <Script
+         <Script
         strategy="afterInteractive"
         src={`https://www.googletagmanager.com/gtag/js?id=${gtag.GA_TRACKING_ID}`}
       />
@@ -44,7 +44,7 @@ function MyApp({ Component, pageProps }) {
             });
           `,
         }}
-      /> */}
+      />
 
     <Provider store={store}>
       <StateProvider>
