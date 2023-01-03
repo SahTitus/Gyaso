@@ -47,8 +47,8 @@ class MyDocument extends Document {
         <body>
           <Main />
 
-          <NextScript />
-          {/* Global Site Tag (gtag.js) - Google Analytics */}
+          {/* <NextScript />
+          Global Site Tag (gtag.js) - Google Analytics 
           <script
             dangerouslySetInnerHTML={{
               __html: `
@@ -57,7 +57,7 @@ class MyDocument extends Document {
             gtag('js', new Date());
           `,
             }}
-          />
+          /> */}
         </body>
       </Html>
     );
