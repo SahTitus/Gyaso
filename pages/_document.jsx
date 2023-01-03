@@ -36,7 +36,6 @@ class MyDocument extends Document {
           />
           <Script
             async
-            strategy="afterInteractive"
             onError={(e) => {
               console.error("Ads Script failed to load", e);
             }}
