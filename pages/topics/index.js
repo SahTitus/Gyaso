@@ -34,15 +34,19 @@ const Explore = ({ topicsSSR }) => {
 
   const finish = totalCount <= queriedTopics?.length;
 
-  useEffect(() => {
-    if (topicsSSR?.length > 0) dispatch(getTopicsSSR(topicsSSR));
-    dispatch(fetchTopics(topicsSSR?.length));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  // useEffect(() => {
+  //   if (topicsSSR?.length > 0) dispatch(getTopicsSSR(topicsSSR));
+  //   dispatch(fetchTopics(topicsSSR?.length));
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, []);
 
   return (
     <div className={styles.topics}>
-      {!isLoading && queriedTopics.length === 0 && !!searchTerm.length ? (
+      <h1>topics</h1>
+      <h1>topics</h1>
+      <h1>topics</h1>
+      <h1>topics</h1>
+      {/* {!isLoading && queriedTopics.length === 0 && !!searchTerm.length ? (
         <div className={styles.searchIcon__wrapper}>
           <div className={styles.card__image}>
             <Image
@@ -128,7 +132,7 @@ const Explore = ({ topicsSSR }) => {
               See more
             </Button>
           </div>
-        ))}
+        ))} */}
       <Footer />
     </div>
   );
