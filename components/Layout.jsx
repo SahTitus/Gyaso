@@ -53,7 +53,7 @@ function Layout({ children }) {
           "main__lgSearch"
         }`}
       >
-         { isSidebar && 
+         {/* { isSidebar && 
          <>
         {(pathname === "/" || !pathname.includes(shopPath)) && (
           <div className="divFlex">
@@ -61,7 +61,7 @@ function Layout({ children }) {
           </div>
         )}
 
-        </>}
+        </>} */}
 
         {children}
 
