@@ -17,10 +17,10 @@ export const fetchArticles = (skip) => async (dispatch) => {
   dispatch(loading());
 
   try {
-    const { data } = await axios.get(`/api/hello`);
+    const data  = await axios.get(`/api/hello`);
     console.log('Data',data)
 
-    dispatch(getArticlesSSR(data));
+    // dispatch(getArticlesSSR(data));
   } catch (error) {
     dispatch(isError(error));
     console.log( error)
