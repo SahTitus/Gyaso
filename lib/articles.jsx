@@ -14,7 +14,7 @@ import {
 } from "../redux/articles";
 
 export const fetchArticles = (skip) => async (dispatch) => {
-  dispatch(loading());
+  // dispatch(loading());
 
   try {
     const data  = await axios.get(`/api/hello`);
