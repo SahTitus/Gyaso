@@ -17,7 +17,7 @@ export const fetchArticles = (skip) => async (dispatch) => {
   dispatch(loading());
 
   try {
-    const { data } = await axios.get(`/api/hello`);
+    const data  = await axios.get(`/api/hello`);
     console.log(data)
 
     // dispatch(getArticlesSSR(data));
