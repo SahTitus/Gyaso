@@ -94,7 +94,14 @@ function Home() {
         }}
       />
       <div className={styles.headlines__container}>
-        <div className={styles.home__categories}>
+        <h1>HIIIIIIIII</h1>
+        <h1>HIIIIIIIII</h1>
+        <h1>HIIIIIIIII</h1>
+        <h1>HIIIIIIIII</h1>
+        <h1>HIIIIIIIII</h1>
+        <h1>HIIIIIIIII</h1>
+        <h1>HIIIIIIIII</h1>
+        {/* <div className={styles.home__categories}>
           {categories.map((category, i) => (
             <Category
               dataSSR={articles}
@@ -104,7 +111,7 @@ function Home() {
               isSelect={stateCategory.category_id === category.category_id}
             />
           ))}
-        </div>
+        </div> */}
 
         {/* <HumbleScraper /> */}
         {/* {category.cate === "all" && (
@@ -121,7 +128,7 @@ function Home() {
         )} */}
       </div>
 
-      <div
+      {/* <div
         className={`${styles.articles} ${
           stateCategory?.cate?.length &&
           stateCategory?.cate !== "all" &&
@@ -168,7 +175,7 @@ function Home() {
                   article?.link &&
                   article.title &&
                   (article?.mini_card ? (
-                    <div key={article._id + i}>
+                    <div key={article._id + i}> */}
                       {/* {i % 8 === 0 && (
                         <div
                           className={styles.ads}
@@ -188,7 +195,7 @@ function Home() {
                           </Script>
                         </div>
                       )} */}
-                      <Mincard
+                      {/* <Mincard
                         key={article._id + i + article.title}
                         article={article}
                       />
@@ -222,7 +229,7 @@ function Home() {
             </PullToRefresh>
           </InfiniteScroll>
         )}
-      </div>
+      </div> */}
 
       <Footer />
     </div>

@@ -18,6 +18,7 @@ export const fetchArticles = (skip) => async (dispatch) => {
 
   try {
     const { data } = await axios.get(`/api/hello`);
+    console.log('Data',data)
 
     dispatch(getArticlesSSR(data));
   } catch (error) {
