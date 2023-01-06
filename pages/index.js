@@ -11,9 +11,7 @@ import {
   fetchMoreArticles,
   fetchMoreByCategory,
 } from "../lib/articles";
-
 import styles from "../styles/Home.module.css";
-// import { connectToDb } from "../utils/mongodb";
 import { categories } from "../constants/categories.js";
 import PullToRefresh from "react-simple-pull-to-refresh";
 import { useStateContex } from "../store/StateProvider";
