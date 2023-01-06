@@ -34,21 +34,21 @@ class MyDocument extends Document {
             content="healthtage, nutrition, food, spirituality, parenting, pregnancy, heart health, men's health, sexual health, women's health, mental health, healthy living, skincare, sleep, human biology, eye health, weight loss, fitness, yoga, health, wellness, recipes, meditation, mindfulness, love, Sah Titus Samuel.
       "
           />
-          {/* <Script
+          <Script
             async
             onError={(e) => {
               console.error("Ads Script failed to load", e);
             }}
             src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${process.env.GO_AD_KEY}`}
             crossOrigin="anonymous"
-          ></Script> */}
+          ></Script>
         </Head>
         <body>
           <Main />
 
           <NextScript />
           {/* Global Site Tag (gtag.js) - Google Analytics */}
-          {/* <Script
+          <Script
            id={process.env.GO_AD_KEY}
             dangerouslySetInnerHTML={{
               __html: `
@@ -56,8 +56,8 @@ class MyDocument extends Document {
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
           `,
-            }} */}
-          {/* /> */}
+            }}
+          />
         </body>
       </Html>
     );

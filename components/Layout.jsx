@@ -47,7 +47,7 @@ function Layout({ children }) {
         </header>
       )}
       <main
-        style={{ display: "flex" }}
+        style={{display: "flex" }}
         className={`main ${
           (pathname !== "/searchPage" || !pathname.includes(shopPath)) &&
           "main__lgSearch"

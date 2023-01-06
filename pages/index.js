@@ -20,11 +20,13 @@ import { useStateContex } from "../store/StateProvider";
 import { NextSeo } from "next-seo";
 import Script from "next/script";
 import dynamic from "next/dynamic";
+import { connectToDb } from "../utils/mongodb";
+import { getArticlesSSR } from "../redux/articles";
 // import HumbleScraper from "../components/HumbleScraper";
 const ArticleCard = dynamic(() => import('../components/ArticleCard'))
 const  Mincard = dynamic(() => import('../components/Mincard'))
 
-function Home() {
+function Home({articlesSSR}) {
   const dispatch = useDispatch();
   const { articles, totalCount, isLoading } = useSelector(
     (state) => state.articles
@@ -44,17 +46,17 @@ function Home() {
     totalCount < articles?.length || totalCount === articles?.length;
   console.log(articles);
   useEffect(() => {
-    // if (articlesSSR.length > 0) dispatch(getArticlesSSR(articlesSSR));
+    if (articlesSSR.length > 0) dispatch(getArticlesSSR(articlesSSR));
 
     dispatch(fetchArticles());
-    // setGetSSRData(articlesSSR);
+    setGetSSRData(articlesSSR);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // useEffect(() => {
-  //   if (boolToRefresh) dispatch(fetchArticlesSSR());
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, [boolToRefresh]);
+  useEffect(() => {
+    if (boolToRefresh) dispatch(fetchArticlesSSR());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [boolToRefresh]);
 
   const refreshHandler = async () => {
     const currentValue = boolToRefresh;
@@ -94,14 +96,7 @@ function Home() {
         }}
       />
       <div className={styles.headlines__container}>
-        <h1>HIIIIIIIII</h1>
-        <h1>HIIIIIIIII</h1>
-        <h1>HIIIIIIIII</h1>
-        <h1>HIIIIIIIII</h1>
-        <h1>HIIIIIIIII</h1>
-        <h1>HIIIIIIIII</h1>
-        <h1>HIIIIIIIII</h1>
-        {/* <div className={styles.home__categories}>
+        <div className={styles.home__categories}>
           {categories.map((category, i) => (
             <Category
               dataSSR={articles}
@@ -111,7 +106,7 @@ function Home() {
               isSelect={stateCategory.category_id === category.category_id}
             />
           ))}
-        </div> */}
+        </div>
 
         {/* <HumbleScraper /> */}
         {/* {category.cate === "all" && (
@@ -128,7 +123,7 @@ function Home() {
         )} */}
       </div>
 
-      {/* <div
+      <div
         className={`${styles.articles} ${
           stateCategory?.cate?.length &&
           stateCategory?.cate !== "all" &&
@@ -175,7 +170,7 @@ function Home() {
                   article?.link &&
                   article.title &&
                   (article?.mini_card ? (
-                    <div key={article._id + i}> */}
+                    <div key={article._id + i}>
                       {/* {i % 8 === 0 && (
                         <div
                           className={styles.ads}
@@ -195,7 +190,7 @@ function Home() {
                           </Script>
                         </div>
                       )} */}
-                      {/* <Mincard
+                      <Mincard
                         key={article._id + i + article.title}
                         article={article}
                       />
@@ -229,25 +224,25 @@ function Home() {
             </PullToRefresh>
           </InfiniteScroll>
         )}
-      </div> */}
+      </div>
 
       <Footer />
     </div>
   );
 }
 
-// export const getServerSideProps = async () => {
-//   const { db } = await connectToDb();
-//   const data = await db
-//     .collection("articles")
-//     .aggregate([{ $sample: { size: 5 } }])
-//     .toArray();
+export const getServerSideProps = async () => {
+  const { db } = await connectToDb();
+  const data = await db
+    .collection("articles")
+    .aggregate([{ $sample: { size: 5 } }])
+    .toArray();
 
-//   const articlesSSR = JSON.parse(JSON.stringify(data));
+  const articlesSSR = JSON.parse(JSON.stringify(data));
 
-//   return {
-//     props: { articlesSSR },
-//   };
-// };
+  return {
+    props: { articlesSSR },
+  };
+};
 
 export default Home;

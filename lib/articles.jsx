@@ -14,13 +14,12 @@ import {
 } from "../redux/articles";
 
 export const fetchArticles = (skip) => async (dispatch) => {
-  // dispatch(loading());
+  dispatch(loading());
 
   try {
-    const data  = await axios.get(`/api/hello`);
-    console.log(data)
+    const { data } = await axios.get(`/api/articles?skip=${skip}`);
 
-    // dispatch(getArticlesSSR(data));
+    dispatch(getArticlesSSR(data));
   } catch (error) {
     dispatch(isError(error));
   }

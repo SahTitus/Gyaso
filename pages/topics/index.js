@@ -13,7 +13,7 @@ import {
   searchMoreTopics,
 } from "../../lib/topics";
 import { getTopicsSSR, loading } from "../../redux/topics";
-// import { connectToDb } from "../../utils/mongodb";
+import { connectToDb } from "../../utils/mongodb";
 import { useStateContex } from "../../store/StateProvider";
 import SearchAvatar from "../../assets/SearchAvatar.jpg";
 
@@ -34,19 +34,15 @@ const Explore = ({ topicsSSR }) => {
 
   const finish = totalCount <= queriedTopics?.length;
 
-  // useEffect(() => {
-  //   if (topicsSSR?.length > 0) dispatch(getTopicsSSR(topicsSSR));
-  //   dispatch(fetchTopics(topicsSSR?.length));
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, []);
+  useEffect(() => {
+    if (topicsSSR?.length > 0) dispatch(getTopicsSSR(topicsSSR));
+    dispatch(fetchTopics(topicsSSR?.length));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <div className={styles.topics}>
-      <h1>topics</h1>
-      <h1>topics</h1>
-      <h1>topics</h1>
-      <h1>topics</h1>
-      {/* {!isLoading && queriedTopics.length === 0 && !!searchTerm.length ? (
+      {!isLoading && queriedTopics.length === 0 && !!searchTerm.length ? (
         <div className={styles.searchIcon__wrapper}>
           <div className={styles.card__image}>
             <Image
@@ -132,26 +128,26 @@ const Explore = ({ topicsSSR }) => {
               See more
             </Button>
           </div>
-        ))} */}
+        ))}
       <Footer />
     </div>
   );
 };
 
-// export const getServerSideProps = async () => {
-//   const { db } = await connectToDb();
-//   const data = await db
-//     .collection("topics")
-//     .find()
-//     .sort({ title: 1 })
-//     .limit(20)
-//     .toArray();
+export const getServerSideProps = async () => {
+  const { db } = await connectToDb();
+  const data = await db
+    .collection("topics")
+    .find()
+    .sort({ title: 1 })
+    .limit(20)
+    .toArray();
 
-//   const topicsSSR = JSON.parse(JSON.stringify(data));
+  const topicsSSR = JSON.parse(JSON.stringify(data));
 
-//   return {
-//     props: { topicsSSR },
-//   };
-// };
+  return {
+    props: { topicsSSR },
+  };
+};
 
 export default Explore;

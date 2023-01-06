@@ -10,24 +10,23 @@ import styles from "../styles/Favorites.module.css";
 // import storage from "local-storage-fallback";
 
 const Favorites = ({ isWidget }) => {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-  // const { setSignInAlert } = useStateContex();
+  const { setSignInAlert } = useStateContex();
 
-  // const [name, setName] = useState('');
+  const [name, setName] = useState('');
 
-  // const { favoriteArticles } = useSelector((state) => state.articles);
+  const { favoriteArticles } = useSelector((state) => state.articles);
 
-  // useEffect(() => {
-  //   const user = JSON.parse(localStorage.getItem("userProfile"));
-  //   setName(user?.result?.name);
-  //   dispatch(fetchSavedArticles(user?.result?._id));
-  // }, [dispatch]);
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem("userProfile"));
+    setName(user?.result?.name);
+    dispatch(fetchSavedArticles(user?.result?._id));
+  }, [dispatch]);
 
   return (
     <div className={styles.favorites}>
-      <h1>favoooo</h1>
-      {/* {favoriteArticles.length > 0 ? (
+      {favoriteArticles.length > 0 ? (
         favoriteArticles?.map((article, i) => (
           <Mincard
             isFavorite
@@ -41,7 +40,7 @@ const Favorites = ({ isWidget }) => {
           <p>Hi {name?.split(" ")[0]},</p>
           <h3>You have no favorite stories yet</h3>
         </div>
-      )} */}
+      )}
       <AuthAlert />
       <Footer />
     </div>

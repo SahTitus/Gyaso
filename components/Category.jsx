@@ -10,8 +10,8 @@ const Category = ({ cate, dataSSR, isSelect, setCategory }) => {
   const handleClick = () => {
     if (cate.category_id && cate.cate !== "all")
       dispatch(fetchByCategory(cate.category_id));
-    if (cate.cate === "all") dispatch(fetchArticles());
-    // if (cate.cate === "all") dispatch(getArticlesSSR(dataSSR));
+    // if (cate.cate === "all") dispatch(fetchArticles());
+    if (cate.cate === "all") dispatch(getArticlesSSR(dataSSR));
     setCategory(cate);
     dispatch(loading());
 
